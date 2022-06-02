@@ -15,7 +15,6 @@ export default async function ApiArticle(req, res) {
 
 const handlePostRequest = async (req, res) => {
   const { title, content, lang, t } = req.body
-  console.log(title, content, lang)
   const newArticle = await new Article({
     title,
     content,

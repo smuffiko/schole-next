@@ -34,7 +34,6 @@ const CreateArticle = ({t}) => {
   React.useEffect(()=>{
     const isArticle = Object.values(article).every(el => Boolean(el))
     isArticle ? setDisabled(false) : setDisabled(true)
-    console.log(article)
   },[article])
 
   const handleChange = (event, { value }) => {
