@@ -1,0 +1,218 @@
+{
+  "en": {
+    "lang": "en",
+    "menu": {
+      "schole": "Scholé",
+      "packs": "Packs",
+      "myPacks": "My packs",
+      "cart": "Cart",
+      "account": "Account",
+      "logout": "Logout",
+      "login": "Log in",
+      "signup": "Sign up",
+      "articles": "Articles",
+      "videos": "Videos"
+    },
+    "footer": {
+      "contact": "Contact us",
+      "terms": "Terms and conditions",
+      "privacy": "Privacy policy"
+    },
+    "err404": "Error 404, page not found",
+    "schole": {
+      "content": [
+        {
+          "header": "Scholé!",
+          "content": "Some pretty content"
+        },
+        {
+          "header": "Welcome!",
+          "content": "Some text"
+        },
+        {
+          "header": "Welcome!",
+          "content": "Some text"
+        },
+        {
+          "header": "Welcome!",
+          "content": "Some text"
+        },
+        {
+          "header": "Welcome!",
+          "content": "Some text"
+        }
+      ]
+    },
+    "signup": {
+      "header": "Get started!",
+      "content": "Create new account",
+      "exists": "Existing user?",
+      "login": "Log in here.",
+      "error": {
+        "header": "Oops!",
+        "content": {
+          "nameLength": "Name must be 4-30 characters long.",
+          "nameChars": "Name must contain letters and numbers.",
+          "loginLength": "Login must be 4-30 characters long.",
+          "loginChars": "Login must contain letters and numbers.",
+          "loginName": "Login and name must not be same.",
+          "email": "Email must be valid.",
+          "passwordSame": "Passwords must be same.",
+          "passwordLength": "Password must be at least 6 characters long.",
+          "agrreeCheck": "You must agree with terms and conditions.",
+          "nameExists": "This name already exists.",
+          "loginExists": "This login already exists.",
+          "emailExists": "This email already exists."
+        },
+        "success": "Signing up successful!"
+      },
+      "form": {
+        "email": "E-mail",
+        "name": "Name",
+        "login": "Login",
+        "password": "Password",
+        "password2": "Password again",
+        "agree": "I agree with terms and conditions",
+        "signup": "Signup"
+      },
+      "email": {
+        "subject": "Welcome to Scholé!",
+        "hello": "Hello",
+        "message": "Welcome to Scholé! Let start and confirm your account here:"
+      }
+    },
+    "login": {
+      "header": "Welcome back!",
+      "content": "Log in with your login name and password.",
+      "newUser": "Are you first time here?",
+      "signup": "Sign up here.",
+      "error": {
+        "header": "Oops!",
+        "content": {
+          "notUserExists": "User with this login doesn't exists.",
+          "passwordsMatch": "Password is wrong."
+        }
+      },
+      "form": {
+        "login": "Login",
+        "password": "Password",
+        "submit": "Log in"
+      }
+    },
+    "article": {
+      "create": {
+        "language": "Language",
+        "header": "Create new article!",
+        "title": "Title",
+        "content": "Content",
+        "submit": "Create new article"
+      }
+    }
+  },
+  "cz": {
+    "lang": "cz",
+    "menu": {
+      "schole": "Scholé",
+      "packs": "Balíčky",
+      "myPacks": "Mé balíčky",
+      "cart": "Košík",
+      "account": "Účet",
+      "logout": "Odhlásit se",
+      "login": "Přihlásit se",
+      "signup": "Registrace",
+      "articles": "Články",
+      "videos": "Videa"
+    },
+    "footer": {
+      "contact": "Kontakt",
+      "terms": "Podmínky pro používání",
+      "privacy": "Zásady ochrany osobních údajů"
+    },
+    "err404": "Chyba 404, stránka nenalezena",
+    "schole": {
+      "content": [
+        {
+          "header": "Scholé!",
+          "content": "Nějaké pěkné info o stránce"
+        },
+        {
+          "header": "Vítejte!",
+          "content": "Nějaké počteníčko"
+        },
+        {
+          "header": "Vítejte!",
+          "content": "Nějaké počteníčko"
+        },
+        {
+          "header": "Vítejte!",
+          "content": "Nějaké počteníčko"
+        }
+      ]
+    },
+    "signup": {
+      "header": "Začínáme!",
+      "content": "Vytvoření nového účtu",
+      "exists": "Už máte účet?",
+      "login": "Přihlašte se zde.",
+      "error": {
+        "header": "Ajaj!",
+        "content": {
+          "nameLength": "Zobrazované jméno musí mít 4-30 znaků.",
+          "nameChars": "Zobrazované jméno může obsahovat pouze písmena a čísla.",
+          "loginLength": "Přihlašovací jméno musí mít 4-30 znaků.",
+          "loginChars": "Přihlašovací jméno může obsahovat pouze písmena a čísla.",
+          "loginName": "Přihlašovací jméno a zobrazované jméno nesmí být stejné.",
+          "email": "Email musí být validní.",
+          "passwordSame": "Hesla musí být stejná.",
+          "passwordLength": "Heslo musí mít minimálně 6 znaků.",
+          "agrreeCheck": "Musíte souhlasit s podmínkami pro používání.",
+          "nameExists": "Zobrazované jméno už existuje.",
+          "loginExists": "Přihlašovací jméno už existuje.",
+          "emailExists": "Email už existuje."
+        },
+        "success": "Registrace úspěšná!"
+      },
+      "form": {
+        "email": "E-mail",
+        "name": "Zobrazované jméno",
+        "login": "Přihlašovací jméno",
+        "password": "Heslo",
+        "password2": "Heslo znovu",
+        "agree": "Souhlasím s podmínkami pro používání",
+        "signup": "Registrovat"
+      },
+      "email": {
+        "subject": "Vítejte ve Scholé!",
+        "hello": "Vítej",
+        "message": "Vítejte ve Scholé! Potvrďte svůj email zde:"
+      }
+    },
+    "login": {
+      "header": "Vítejte zpět!",
+      "content": "Pro přihlášení použijte Vaše přihlašovací jméno a heslo.",
+      "newUser": "Jste zde poprvé?",
+      "signup": "Zaregistrujte se zde.",
+      "error": {
+        "header": "Ajaj!",
+        "content": {
+          "notUserExists": "Toto přihlašovací jméno neexistuje.",
+          "passwordsMatch": "Heslo není správné."
+        }
+      },
+      "form": {
+        "login": "Přihlašovací jméno",
+        "password": "Heslo",
+        "submit": "Přihlásit se"
+      }
+    },
+    "article": {
+      "create": {
+        "language": "Jazyk",
+        "header": "Vytvoření nového článku.",
+        "title": "Nadpis",
+        "content": "Obsah",
+        "submit": "Vytvořit článek"
+      }
+    }
+  }
+}
