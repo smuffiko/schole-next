@@ -1,8 +1,8 @@
 import User from "../../models/User"
 import jwt from "jsonwebtoken"
-import connectDb from "../../utils/connectDb"
+import connectDB from "../../utils/connectDB"
 
-connectDb()
+connectDB()
 
 export default async function ApiAccount(req, res) {
   switch (req.method) {

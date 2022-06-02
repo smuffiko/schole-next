@@ -1,9 +1,9 @@
-import connectDb from "../../utils/connectDb"
+import connectDB from "../../utils/connectDB"
 import User from "../../models/User"
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
 
-connectDb()
+connectDB()
 
 export default async function ApiLogin(req, res) {
   switch(req.method) {
