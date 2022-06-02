@@ -32,7 +32,7 @@ const Header = ({ user, t }) => {
         { isVisible && ( // menu is visible or hidden(responsive)
           <> 
             {/* everyone - HOME */}
-            <Link href="/">
+            <Link href="/" passHref>
               <Menu.Item header active={isActive("/")}>
                 <Icon name="home"/>
                 {t.menu.schole}
@@ -43,7 +43,7 @@ const Header = ({ user, t }) => {
                 { (isUser || isAdminOrRoot) && /* user, root, admin - PACKS */
                   (
                     <>
-                      <Link href="/packs">
+                      <Link href="/packs" passHref>
                         <Menu.Item header active={isActive("/packs")}>
                         <Icon name="gift"/>
                         {t.menu.packs}
@@ -51,13 +51,13 @@ const Header = ({ user, t }) => {
                       </Link>
                       { isUser ? ( /* user - MY PACKS, CART */
                           <>
-                            <Link href="/my-packs">
+                            <Link href="/my-packs" passHref>
                               <Menu.Item header active={isActive("/my-packs")}>
                                 <Icon name="gift"/>
                                 {t.menu.myPacks}
                               </Menu.Item>
                             </Link> 
-                            <Link href="/cart">
+                            <Link href="/cart" passHref>
                               <Menu.Item header active={isActive("/cart")}>
                                 <Icon name="cart" />
                                 {t.menu.cart}
@@ -66,13 +66,13 @@ const Header = ({ user, t }) => {
                           </>
                         ):( /* admin, root - ARTICLES, VIDEOS */
                           <>
-                            <Link href="/articles">
+                            <Link href="/articles" passHref>
                               <Menu.Item header active={isActive("/articles")}>
                                 <Icon name="file alternate outline" />
                                 {t.menu.articles}
                               </Menu.Item>
                             </Link> 
-                            <Link href="/videos">
+                            <Link href="/videos" passHref>
                               <Menu.Item header active={isActive("/videos")}>
                                 <Icon name="camera" />
                                 {t.menu.videos}
@@ -85,7 +85,7 @@ const Header = ({ user, t }) => {
                   ) /* user, root, admin */
                 } 
                 {/* new, user, root, admin - ACCOUNT, LOGOUT */}
-                  <Link href="/account">
+                  <Link href="/account" passHref>
                     <Menu.Item header active={isActive("/account")}>
                       <Icon name="user" />
                       {t.menu.account}
@@ -98,13 +98,13 @@ const Header = ({ user, t }) => {
               </>
             ):( /* not logged users - LOGIN, SIGNUP */
               <>
-                <Link href="/login">
+                <Link href="/login" passHref>
                   <Menu.Item header active={isActive("/login")}>
                     <Icon name="sign in" />
                       {t.menu.login}
                   </Menu.Item>
                 </Link> 
-                <Link href="/signup">
+                <Link href="/signup" passHref>
                   <Menu.Item header active={isActive("/signup")}>
                     <Icon name="signup" />
                     {t.menu.signup}

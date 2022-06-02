@@ -7,7 +7,7 @@ import baseUrl from "../../utils/basseUrl"
 
 connectDB()
 
-export default async(req, res) => {
+export default async function ApiSignup(req, res){
   switch(req.method) {
     case "POST":
       await handlePostRequest(req, res)

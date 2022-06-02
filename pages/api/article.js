@@ -3,7 +3,7 @@ import Article from "../../models/Article"
 
 connectDB()
 
-export default async (req, res) => {
+export default async function ApiArticle(req, res) {
   switch(req.method) {
     case "POST":
       await handlePostRequest(req, res)

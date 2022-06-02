@@ -4,7 +4,7 @@ import connectDb from "../../utils/connectDb"
 
 connectDb()
 
-export default async (req, res) => {
+export default async function ApiAccount(req, res) {
   switch (req.method) {
     case "GET":
       await handleGetRequest(req, res)
@@ -16,7 +16,7 @@ export default async (req, res) => {
       res.status(405).send(`Method ${req.method} not allowed`) // todo localization + find others pls
       break;
   }
-};
+}
 
 const handleGetRequest = async (req, res) => {
   if (!("authorization" in req.headers)) {
