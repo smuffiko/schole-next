@@ -1,7 +1,7 @@
 import React from "react"
 import { Message, Icon, Form, Button, Segment, Container } from "semantic-ui-react"
 import Link from "next/link"
-import baseUrl from "../utils/basseUrl"
+import baseUrl from "../utils/baseUrl"
 
 const INITIAL_USER = {
   name: "",

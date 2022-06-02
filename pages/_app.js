@@ -1,19 +1,26 @@
 import App from "next/app"
 import React from "react"
-import Router from "next/router"
+import Router, { useRouter } from "next/router"
 import '../styles/globals.css'
 import Layout from '../components/_App/Layout'
 import { parseCookies, destroyCookie } from "nookies"
-import baseUrl from "../utils/basseUrl"
+import baseUrl from "../utils/baseUrl"
 import locales from "../data/locales.json"
 import { checkLocal } from "../utils/local"
 import { redirectUser } from "../utils/auth"
-import { Segment } from "semantic-ui-react"
 
 checkLocal()
 
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
+    if(ctx.req) {
+      // maybe once i will need to change it -> todo (url)
+      const host = ctx.req.headers.host
+      if(process.env.NODE_ENV === "production"
+        && host !== "schole-next.vercel.app"
+      ) redirectUser(ctx, "https://schole-next.vercel.app")
+    }
+
     const { token, local } = parseCookies(ctx)
 
     let pageProps = {}

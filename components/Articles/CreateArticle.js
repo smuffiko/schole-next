@@ -1,6 +1,6 @@
 import React from "react"
 import { Button, Container, Form, Header, Input, Message, Segment, Select, TextArea } from "semantic-ui-react"
-import baseUrl from "../../utils/basseUrl"
+import baseUrl from "../../utils/baseUrl"
 import cookies from "js-cookie"
 import { parseCookies } from "nookies"
 

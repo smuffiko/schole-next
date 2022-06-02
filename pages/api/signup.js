@@ -3,7 +3,7 @@ import isEmail from "validator/lib/isEmail"
 import isLength from "validator/lib/isLength"
 import bcrypt from "bcrypt"
 import User from "../../models/User"
-import baseUrl from "../../utils/basseUrl"
+import baseUrl from "../../utils/baseUrl"
 
 connectDB()
 

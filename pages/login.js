@@ -2,7 +2,7 @@ import React from "react"
 import Link from "next/link"
 import { Form, Message, Segment, Button, Icon, Container } from "semantic-ui-react"
 import { handleLogin } from "../utils/auth"
-import baseUrl from "../utils/basseUrl"
+import baseUrl from "../utils/baseUrl"
 
 const INITIAL_USER = {
   login: "",
