@@ -44,3 +44,9 @@ a {
 footer {
   padding: 100px 0 20px 0;
 }
+@media screen and (max-width: 767px) {
+  .ui.container {
+    margin-left: 5px !important;
+    margin-right: 5px !important;
+  }
+}
