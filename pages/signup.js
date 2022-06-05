@@ -1,7 +1,9 @@
 import React from "react"
+import Router, { useRouter } from "next/router"
 import { Message, Icon, Form, Button, Segment, Container } from "semantic-ui-react"
 import Link from "next/link"
 import baseUrl from "../utils/baseUrl"
+import { redirectUser } from "../utils/auth"
 
 const INITIAL_USER = {
   name: "",
@@ -13,10 +15,12 @@ const INITIAL_USER = {
 }
 
 const Signup = ({ t }) => {
+  const router = useRouter()
   const [user, setUser] = React.useState(INITIAL_USER)
   const [disabled, setDisabled] = React.useState(true)
+  const [success, setSuccess] = React.useState(false)
   const [loading, setLoading] = React.useState(false)
-  const [error, setError] = React.useState()
+  const [error, setError] = React.useState("")
 
   React.useEffect(() => {
     const isUser = Object.values(user).every(el => Boolean(el))
@@ -25,11 +29,13 @@ const Signup = ({ t }) => {
 
   const handleChange = (event, data) => {
     const { name, value } = event.target
-    if(name===undefined){
-      name = "agree"
-      value = data.checked
+    let n = name
+    let val = value
+    if(n===undefined){
+      n = "agree"
+      val = data.checked
     } 
-    setUser(prevState => ({ ...prevState, [name]: value }))
+    setUser(prevState => ({ ...prevState, [n]: val }))
   }
   
   const handleSubmit = async(event) => {
@@ -47,17 +53,17 @@ const Signup = ({ t }) => {
       body: JSON.stringify(payload)
     }).then(async response => {
       if(!response.ok) {
-        const er = await response.text()
-        throw new Error(er)
+        throw new Error(await response.text())
       }
       return response.json()
     })
     .then(data =>{
       // todo send email and confirm registration
+      setSuccess(true)
+      setTimeout(()=>{redirectUser(null, "/login")},5000)
     })
     .catch(error=>{
-      const e = error.message.substring(2, error.message.length-2).split('","')
-      setError(e)
+      setError(error.message)
     })
     .finally(()=>{
       setLoading(false)
@@ -75,18 +81,23 @@ const Signup = ({ t }) => {
           color="orange"
           style={{ width: "100%"}}
         />      
-        <Form error={Boolean(error)} loading={loading} onSubmit={handleSubmit}>
+        <Form error={Boolean(error)} loading={loading} success={success} onSubmit={handleSubmit}>
           <Message error>
-            <Message.Header content={t.signup.error.header} />
-            <Message.List>
-            {error && (Object.keys(error).map((key, index)=>
-              <Message.Item key={key}>
-                {error[key]}
-              </Message.Item>
-            ))}
-            </Message.List>
+            <Message.Content>
+              <Message.Header content={t.signup.error} />
+              {error.split(".").map(e => <div key={e}>{e}</div>)}
+            </Message.Content>
           </Message>
-          <Message success content={t.signup.success}/>
+          <Message success icon>
+            <Icon name="check" />
+            <Message.Content>
+              <Message.Header content={t.signup.success.header} />
+              {t.signup.success.content}{" "}
+              <Link href="/login">
+                <a>{t.signup.success.link}</a>
+              </Link>
+            </Message.Content>
+          </Message>
           <Segment>
             <Form.Input
               fluid

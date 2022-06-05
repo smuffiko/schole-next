@@ -1,6 +1,38 @@
 {
   "en": {
     "lang": "en",
+    "api": {
+      "method": "Method",
+      "notAllowed": "not allowed",
+      "account": {
+        "get": {
+          "noToken":"No authorization token",
+          "userNotFound": "User not found"
+        }
+      },
+      "login": {
+        "post": {
+          "notUserExists": "User with this login doesn't exists.",
+          "wrongPassword": "Password is wrong."
+        }
+      },
+      "signup": {
+        "post": {
+          "nameLength": "Name must be 4-30 characters long.",
+          "nameChars": "Name must contain letters and numbers.",
+          "loginLength": "Login must be 4-30 characters long.",
+          "loginChars": "Login must contain letters and numbers.",
+          "loginName": "Login and name must not be same.",
+          "email": "Email must be valid.",
+          "passwordSame": "Passwords must be same.",
+          "passwordLength": "Password must be at least 6 characters long.",
+          "agrreeCheck": "You must agree with terms and conditions.",
+          "nameExists": "This name already exists.",
+          "loginExists": "This login already exists.",
+          "emailExists": "This email already exists."
+        }
+      }
+    },
     "menu": {
       "schole": "Scholé",
       "packs": "Packs",
@@ -48,23 +80,11 @@
       "content": "Create new account",
       "exists": "Existing user?",
       "login": "Log in here.",
-      "error": {
-        "header": "Oops!",
-        "content": {
-          "nameLength": "Name must be 4-30 characters long.",
-          "nameChars": "Name must contain letters and numbers.",
-          "loginLength": "Login must be 4-30 characters long.",
-          "loginChars": "Login must contain letters and numbers.",
-          "loginName": "Login and name must not be same.",
-          "email": "Email must be valid.",
-          "passwordSame": "Passwords must be same.",
-          "passwordLength": "Password must be at least 6 characters long.",
-          "agrreeCheck": "You must agree with terms and conditions.",
-          "nameExists": "This name already exists.",
-          "loginExists": "This login already exists.",
-          "emailExists": "This email already exists."
-        },
-        "success": "Signing up successful!"
+      "error": "Oops!",
+      "success":{
+        "header": "Signing up successful!",
+        "content": "You will be redirected soon or you can log in",
+        "link": "here." 
       },
       "form": {
         "email": "E-mail",
@@ -87,11 +107,7 @@
       "newUser": "Are you first time here?",
       "signup": "Sign up here.",
       "error": {
-        "header": "Oops!",
-        "content": {
-          "notUserExists": "User with this login doesn't exists.",
-          "passwordsMatch": "Password is wrong."
-        }
+        "header": "Oops!"
       },
       "form": {
         "login": "Login",
@@ -105,12 +121,48 @@
         "header": "Create new article!",
         "title": "Title",
         "content": "Content",
-        "submit": "Create new article"
+        "submit": "Create new article",
+        "success": "Article added!",
+        "error": {
+          "header": "Oops!"
+        }
       }
     }
   },
   "cz": {
     "lang": "cz",
+    "api": {
+      "method": "Metoda",
+      "notAllowed": "není povolena",
+      "account": {
+        "get": {
+          "noToken":"Žádný autorizační token",
+          "userNotFound": "Uživatel nenalezen"
+        }
+      },
+      "login": {
+        "post": {
+          "notUserExists": "Uživatel s tímto loginem neexistuje.",
+          "wrongPassword": "Špatné heslo."
+        }
+      },
+      "signup": {
+        "post": {
+          "nameLength": "Zobrazované jméno musí mít 4-30 znaků.",
+          "nameChars": "Zobrazované jméno může obsahovat pouze písmena a čísla.",
+          "loginLength": "Přihlašovací jméno musí mít 4-30 znaků.",
+          "loginChars": "Přihlašovací jméno může obsahovat pouze písmena a čísla.",
+          "loginName": "Přihlašovací jméno a zobrazované jméno nesmí být stejné.",
+          "email": "Email musí být validní.",
+          "passwordSame": "Hesla musí být stejná.",
+          "passwordLength": "Heslo musí mít minimálně 6 znaků.",
+          "agrreeCheck": "Musíte souhlasit s podmínkami pro používání.",
+          "nameExists": "Zobrazované jméno už existuje.",
+          "loginExists": "Přihlašovací jméno už existuje.",
+          "emailExists": "Email už existuje."
+        }
+      }
+    },
     "menu": {
       "schole": "Scholé",
       "packs": "Balíčky",
@@ -154,23 +206,11 @@
       "content": "Vytvoření nového účtu",
       "exists": "Už máte účet?",
       "login": "Přihlašte se zde.",
-      "error": {
-        "header": "Ajaj!",
-        "content": {
-          "nameLength": "Zobrazované jméno musí mít 4-30 znaků.",
-          "nameChars": "Zobrazované jméno může obsahovat pouze písmena a čísla.",
-          "loginLength": "Přihlašovací jméno musí mít 4-30 znaků.",
-          "loginChars": "Přihlašovací jméno může obsahovat pouze písmena a čísla.",
-          "loginName": "Přihlašovací jméno a zobrazované jméno nesmí být stejné.",
-          "email": "Email musí být validní.",
-          "passwordSame": "Hesla musí být stejná.",
-          "passwordLength": "Heslo musí mít minimálně 6 znaků.",
-          "agrreeCheck": "Musíte souhlasit s podmínkami pro používání.",
-          "nameExists": "Zobrazované jméno už existuje.",
-          "loginExists": "Přihlašovací jméno už existuje.",
-          "emailExists": "Email už existuje."
-        },
-        "success": "Registrace úspěšná!"
+      "error": "Ajaj!",
+      "success":{
+        "header": "Registrace úspěšná!",
+        "content": "Brzy budete přesměrováni na přihlašovací stránku, nebo se můžete přihlásit",
+        "link": "zde."
       },
       "form": {
         "email": "E-mail",
@@ -193,11 +233,7 @@
       "newUser": "Jste zde poprvé?",
       "signup": "Zaregistrujte se zde.",
       "error": {
-        "header": "Ajaj!",
-        "content": {
-          "notUserExists": "Toto přihlašovací jméno neexistuje.",
-          "passwordsMatch": "Heslo není správné."
-        }
+        "header": "Ajaj!"
       },
       "form": {
         "login": "Přihlašovací jméno",
@@ -211,7 +247,11 @@
         "header": "Vytvoření nového článku.",
         "title": "Nadpis",
         "content": "Obsah",
-        "submit": "Vytvořit článek"
+        "submit": "Vytvořit článek",
+        "success": "Článek přidán!",
+        "error": {
+          "header": "Ajaj!"
+        }
       }
     }
   }

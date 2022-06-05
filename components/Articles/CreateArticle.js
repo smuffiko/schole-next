@@ -89,13 +89,14 @@ const CreateArticle = ({t}) => {
             success={success}
             onSubmit={handleSubmit}
           >
-            {/* todo local message error + success */}
-            <Message error header="Oops!" content={error} />
+            {/* needtest - error message */}
+            <Message error 
+              header={t.article.create.error.header}
+              content={error} />
             <Message
               success
               icon="check"
-              header="Success!"
-              content="Your product has been posted"
+              header={t.article.create.success}
             />
             <Form.Dropdown
               selection

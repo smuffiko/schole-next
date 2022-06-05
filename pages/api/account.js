@@ -1,26 +1,25 @@
 import User from "../../models/User"
 import jwt from "jsonwebtoken"
 import connectDB from "../../utils/connectDB"
+import locales from "../../data/locales.json"
 
 connectDB()
 
 export default async function ApiAccount(req, res) {
+  const t = locales[req.cookies.local] // setting local file
   switch (req.method) {
     case "GET":
-      await handleGetRequest(req, res)
-      break;
-    case "PUT":
-      await handlePutRequest(req, res)
+      await handleGetRequest(req, res, t)
       break;
     default:
-      res.status(405).send(`Method ${req.method} not allowed`) // todo localization + find others pls
+      res.status(405).send(`${t.api.method} ${req.method} ${t.api.notAllowed}`)
       break;
   }
 }
 
-const handleGetRequest = async (req, res) => {
+const handleGetRequest = async (req, res, t) => {
   if (!("authorization" in req.headers)) {
-    return res.status(401).send("No authorization token") // todo local
+    return res.status(401).send(t.api.account.get.noToken)
   }
   const { userId } = jwt.verify(
     req.headers.authorization,
@@ -30,12 +29,6 @@ const handleGetRequest = async (req, res) => {
   if (user) {
     res.status(200).json(user)
   } else {
-    res.status(404).send("User not found") // todo local
+    res.status(404).send(t.api.account.get.userNotFound)
   }
-}
-
-const handlePutRequest = async (req, res) => {
-  const { _id, role } = req.body
-  await User.findOneAndUpdate({ _id }, { role })
-  res.status(203).send("User updated") // todo local
 }

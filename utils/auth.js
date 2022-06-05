@@ -14,10 +14,9 @@ export const handleLogout = () => {
 
 
 export function redirectUser(ctx, location) {
-  if (ctx.req) {
-    ctx.res.writeHead(302, { Location: location })
-    ctx.res.end()
-  } else {
-    Router.push(location)
-  }
+  ctx ? (
+    ctx.req ?
+      ctx.res.writeHead(302, { Location: location }).end()
+      : Router.push(location)
+  ) : Router.push(location)
 }
