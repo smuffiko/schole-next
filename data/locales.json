@@ -115,6 +115,7 @@
     "article": {
       "create": {
         "language": "Language",
+        "selectLanguage": "Select language",
         "header": "Create new article!",
         "title": "Title",
         "content": "Content",
@@ -235,6 +236,7 @@
     "article": {
       "create": {
         "language": "Jazyk",
+        "selectLanguage": "Vyberte jazyk",
         "header": "Vytvoření nového článku.",
         "title": "Nadpis",
         "content": "Obsah",

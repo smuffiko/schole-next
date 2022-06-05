@@ -2,7 +2,7 @@ import "../styles/globals.css"
 import "../styles/nprogress.css"
 import App from "next/app"
 import React from "react"
-import Router, { useRouter } from "next/router"
+import Router from "next/router"
 import Layout from '../components/_App/Layout'
 import { parseCookies, destroyCookie } from "nookies"
 import baseUrl from "../utils/baseUrl"
@@ -26,15 +26,15 @@ class MyApp extends App {
 
     let pageProps = {}
 
+    if(Component.getInitialProps) {
+      pageProps = await Component.getInitialProps(ctx)
+    }
+
     let t = locales[local] === undefined
       ? locales["en"]
       : locales[local]
 
     pageProps.t = t
-
-    if(Component.getInitialProps) {
-      pageProps = await Component.getInitialProps(ctx)
-    }
 
     if(!token) {
       // not logged user  

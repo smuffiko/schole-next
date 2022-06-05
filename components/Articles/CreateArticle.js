@@ -77,27 +77,26 @@ const CreateArticle = ({t}) => {
     <>
       <Container>
         <Message
-          attached
           icon="pencil"
           header={t.article.create.header}
           color="orange"
         />
-        <Segment>
-          <Form
-            loading={loading}
-            error={Boolean(error)}
-            success={success}
-            onSubmit={handleSubmit}
-          >
-            {/* needtest - error message */}
-            <Message error 
-              header={t.error}
-              content={error} />
-            <Message
-              success
-              icon="check"
-              header={t.article.create.success}
-            />
+        <Form
+          loading={loading}
+          error={Boolean(error)}
+          success={success}
+          onSubmit={handleSubmit}
+        >
+          {/* needtest - error message */}
+          <Message error 
+            header={t.error}
+            content={error} />
+          <Message
+            success
+            icon="check"
+            header={t.article.create.success}
+          />
+          <Segment>
             <Form.Dropdown
               selection
               name="lang"
@@ -130,8 +129,8 @@ const CreateArticle = ({t}) => {
               type="submit"
               disabled={disabled || loading}
             />
-          </Form>
-        </Segment>
+          </Segment>
+        </Form>
       </Container>
     </>
   )
