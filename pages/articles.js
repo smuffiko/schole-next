@@ -18,7 +18,7 @@ const Articles = ({ articles, t }) => {
 
 export default Articles
 
-export const getStaticProps = async ctx => {
+export const getServerSideProps = async ctx => {
   const url = `${baseUrl}/api/articles`
 let articles = []
   await fetch(url,{
