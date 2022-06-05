@@ -35,7 +35,7 @@ const ArticlesList = ({ articles, t }) => {
   <>
     <Container style={{marginTop:"2em"}}>
       <Message
-        icon="pencil"
+        icon="file alternate outline"
         header={t.article.list.articlesList}
         color="orange"
       />
@@ -44,6 +44,7 @@ const ArticlesList = ({ articles, t }) => {
         itemsPerRow="4"
         doubling
         centered
+        style={{marginTop:"1em"}}
       >
         {mapArticlesToItems(articles)}
       </Card.Group>
