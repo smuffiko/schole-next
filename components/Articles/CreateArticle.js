@@ -91,7 +91,7 @@ const CreateArticle = ({t}) => {
           >
             {/* needtest - error message */}
             <Message error 
-              header={t.article.create.error.header}
+              header={t.error}
               content={error} />
             <Message
               success

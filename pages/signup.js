@@ -84,7 +84,7 @@ const Signup = ({ t }) => {
         <Form error={Boolean(error)} loading={loading} success={success} onSubmit={handleSubmit}>
           <Message error>
             <Message.Content>
-              <Message.Header content={t.signup.error} />
+              <Message.Header content={t.error} />
               {error.split(".").map(e => <div key={e}>{e}</div>)}
             </Message.Content>
           </Message>

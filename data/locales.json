@@ -1,6 +1,7 @@
 {
   "en": {
     "lang": "en",
+    "error": "Oops!",
     "api": {
       "method": "Method",
       "notAllowed": "not allowed",
@@ -80,7 +81,6 @@
       "content": "Create new account",
       "exists": "Existing user?",
       "login": "Log in here.",
-      "error": "Oops!",
       "success":{
         "header": "Signing up successful!",
         "content": "You will be redirected soon or you can log in",
@@ -106,9 +106,6 @@
       "content": "Log in with your login name and password.",
       "newUser": "Are you first time here?",
       "signup": "Sign up here.",
-      "error": {
-        "header": "Oops!"
-      },
       "form": {
         "login": "Login",
         "password": "Password",
@@ -122,15 +119,13 @@
         "title": "Title",
         "content": "Content",
         "submit": "Create new article",
-        "success": "Article added!",
-        "error": {
-          "header": "Oops!"
-        }
+        "success": "Article added!"
       }
     }
   },
   "cz": {
     "lang": "cz",
+    "error": "Ale ne!",
     "api": {
       "method": "Metoda",
       "notAllowed": "není povolena",
@@ -206,7 +201,6 @@
       "content": "Vytvoření nového účtu",
       "exists": "Už máte účet?",
       "login": "Přihlašte se zde.",
-      "error": "Ajaj!",
       "success":{
         "header": "Registrace úspěšná!",
         "content": "Brzy budete přesměrováni na přihlašovací stránku, nebo se můžete přihlásit",
@@ -232,9 +226,6 @@
       "content": "Pro přihlášení použijte Vaše přihlašovací jméno a heslo.",
       "newUser": "Jste zde poprvé?",
       "signup": "Zaregistrujte se zde.",
-      "error": {
-        "header": "Ajaj!"
-      },
       "form": {
         "login": "Přihlašovací jméno",
         "password": "Heslo",
@@ -248,10 +239,7 @@
         "title": "Nadpis",
         "content": "Obsah",
         "submit": "Vytvořit článek",
-        "success": "Článek přidán!",
-        "error": {
-          "header": "Ajaj!"
-        }
+        "success": "Článek přidán!"
       }
     }
   }

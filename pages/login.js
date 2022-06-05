@@ -65,7 +65,7 @@ const Login = ({ t }) => {
         color="orange"
       />
       <Form error={Boolean(error)} loading={loading} onSubmit={handleSubmit}>
-        <Message error header={t.login.error.header} content={error} />
+        <Message error header={t.error} content={error} />
         <Segment>
           <Form.Input 
             fluid
