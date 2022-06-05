@@ -1,8 +1,6 @@
 import React from "react"
 import { Button, Container, Form, Header, Input, Message, Segment, Select, TextArea } from "semantic-ui-react"
 import baseUrl from "../../utils/baseUrl"
-import cookies from "js-cookie"
-import { parseCookies } from "nookies"
 
 const INITIAL_ARTICLE = {
   title: "",
@@ -10,7 +8,7 @@ const INITIAL_ARTICLE = {
   lang: ""
 }
 
-const CreateArticle = ({t}) => {
+const CreateArticle = ({ refreshData, t }) => {
   const [article, setArticle] = React.useState(INITIAL_ARTICLE)
   const [disabled, setDisabled] = React.useState(true)
   const [success, setSuccess] = React.useState(false)
@@ -64,6 +62,7 @@ const CreateArticle = ({t}) => {
       return response.json()
     }).then(data => {
       setArticle(INITIAL_ARTICLE)
+      refreshData()
       setSuccess(true)
     }).catch(error=>{
       setError(error.message)

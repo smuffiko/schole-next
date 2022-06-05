@@ -26,10 +26,6 @@ class MyApp extends App {
 
     let pageProps = {}
 
-    if(Component.getInitialProps) {
-      pageProps = await Component.getInitialProps(ctx)
-    }
-
     let t = locales[local] === undefined
       ? locales["en"]
       : locales[local]

@@ -2,7 +2,7 @@ import { Card, Message, Container } from "semantic-ui-react"
 import { dateTime } from "../../utils/formatDate"
 import Router from "next/router"
 
-const ArticlesList = ({ articles }) => {
+const ArticlesList = ({ articles, t }) => {
   const mapArticlesToItems = articles => {
     return articles.map(article =>(
       <Card
@@ -36,7 +36,7 @@ const ArticlesList = ({ articles }) => {
     <Container style={{marginTop:"2em"}}>
       <Message
         icon="pencil"
-        header="Seznam článků"
+        header={t.article.list.articlesList}
         color="orange"
       />
       <Card.Group

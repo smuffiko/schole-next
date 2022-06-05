@@ -121,6 +121,9 @@
         "content": "Content",
         "submit": "Create new article",
         "success": "Article added!"
+      },
+      "list": {
+        "articlesList": "Articles list"
       }
     }
   },
@@ -242,6 +245,9 @@
         "content": "Obsah",
         "submit": "Vytvořit článek",
         "success": "Článek přidán!"
+      },
+      "list": {
+        "articlesList": "Seznam článků"
       }
     }
   }
