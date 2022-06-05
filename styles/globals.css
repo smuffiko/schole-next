@@ -3,7 +3,9 @@
   font-family: Comfortaa;
   src: url("../public/Comfortaa-Light.ttf");
 }
-
+:root {
+  --progressBar: #e26cff;
+}
 html,
 body {
   padding: 0;

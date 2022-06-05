@@ -1,7 +1,8 @@
+import "../styles/globals.css"
+import "../styles/nprogress.css"
 import App from "next/app"
 import React from "react"
 import Router, { useRouter } from "next/router"
-import '../styles/globals.css'
 import Layout from '../components/_App/Layout'
 import { parseCookies, destroyCookie } from "nookies"
 import baseUrl from "../utils/baseUrl"

@@ -1,9 +1,14 @@
 import React, { useEffect } from "react"
 import { Menu, Container, Icon} from "semantic-ui-react"
 import Link from "next/link"
-import { useRouter } from "next/router"
+import Router, { useRouter } from "next/router"
 import { handleLogout } from "../../utils/auth"
 import { isMobile } from "react-device-detect"
+import NProgress from "nprogress"
+
+Router.events.on("routeChangeStart", ()=> NProgress.start())
+Router.events.on("routeChangeComplete", ()=> NProgress.done())
+Router.events.on("routeChangeError", ()=> NProgress.done())
 
 const Header = ({ user, t }) => {
   const router = useRouter()

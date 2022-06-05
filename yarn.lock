@@ -1615,7 +1615,7 @@
     "set-blocking" "^2.0.0"
 
 "nprogress@^0.2.0":
-  "integrity" "sha1-y480xTIT2JVyP8urkH6UIq28r7E="
+  "integrity" "sha512-I19aIingLgR1fmhftnbWWO3dXc0hSxqHQHQb3H8m+K3TnEn/iSeTZZOyvKXWqQESMwuUVnatlCnZdLBZZt2VSA=="
   "resolved" "https://registry.npmjs.org/nprogress/-/nprogress-0.2.0.tgz"
   "version" "0.2.0"
 
