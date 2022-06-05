@@ -120,8 +120,8 @@ const Header = ({ user, t }) => {
           </>
         )} 
         { isMobile && ( // for mobile devices show menu button
-          <Menu.Item >
-            <Icon name="bars" link onClick={handleMenu} />
+          <Menu.Item link onClick={handleMenu} >
+            <Icon name="bars"/>
           </Menu.Item>
         )}
       </Container>
