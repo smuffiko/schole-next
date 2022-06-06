@@ -6,7 +6,7 @@ import ArticlesPagination from "../components/Articles/ArticlesPagination"
 import CreateArticle from "../components/Articles/CreateArticle"
 import baseUrl from "../utils/baseUrl"
 
-const Articles = ({ articles, t }) => {  
+const Articles = ({ articles, totalPages, t }) => {  
   const router = useRouter()
   const refreshData = () => {
     router.replace(router.asPath)
@@ -17,7 +17,7 @@ const Articles = ({ articles, t }) => {
       <Container>
         <CreateArticle t={t} refreshData={refreshData}/>
         <ArticlesList  articles={articles} t={t} />
-        <ArticlesPagination t={t} />
+        <ArticlesPagination totalPages={totalPages} />
       </Container>
     </>
   )
@@ -26,7 +26,10 @@ const Articles = ({ articles, t }) => {
 export default Articles
 
 export const getServerSideProps = async ctx => {
-  const url = `${baseUrl}/api/articles`
+  const page = ctx.query.page ? ctx.query.page : "1"
+  const size = 12
+  const url = `${baseUrl}/api/articles?size=${size}&page=${page}`
+  let totalPages = 1
   let articles = []
   await fetch(url,{
     method: "GET",
@@ -39,10 +42,11 @@ export const getServerSideProps = async ctx => {
     }
     return response.json()
   }).then(data => {
-    articles = data
+    articles = data.articles
+    totalPages = data.totalPages
   }).catch(error => {
     console.log("Error in articles.js") // todo maybe setError or something, idk
   })
 
-  return { props: articles }
+  return { props: { articles, totalPages } }
 }
