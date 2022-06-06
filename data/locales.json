@@ -2,6 +2,7 @@
   "en": {
     "lang": "en",
     "error": "Oops!",
+    "back": "Back to previous page",
     "api": {
       "method": "Method",
       "notAllowed": "not allowed",
@@ -130,6 +131,7 @@
   "cz": {
     "lang": "cz",
     "error": "Ale ne!",
+    "back": "Zpět na předchozí stránku",
     "api": {
       "method": "Metoda",
       "notAllowed": "není povolena",
