@@ -38,7 +38,9 @@ class MyApp extends App {
         || ctx.pathname === "/my-packs"
         || ctx.pathname === "/cart"
         || ctx.pathname === "/articles"
+        || ctx.pathname === "/article"
         || ctx.pathname === "/videos"
+        || ctx.pathname === "/video"
         || ctx.pathname === "/account"
       )
         redirectUser(ctx, "/")

@@ -16,8 +16,12 @@ const Articles = ({ articles, totalPages, t }) => {
     <>
       <Container>
         <CreateArticle t={t} refreshData={refreshData}/>
-        <ArticlesList  articles={articles} t={t} />
-        <ArticlesPagination totalPages={totalPages} />
+        {articles.length!==0 && (
+          <>
+            <ArticlesList articles={articles} t={t} />
+            <ArticlesPagination totalPages={totalPages} />
+          </>
+        )}
       </Container>
     </>
   )
