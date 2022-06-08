@@ -1,25 +1,33 @@
 import React from "react"
-import { useRouter } from "next/router"
 import { Container } from "semantic-ui-react"
 import ArticlesList from "../components/Articles/ArticlesList"
-import ArticlesPagination from "../components/Articles/ArticlesPagination"
 import CreateArticle from "../components/Articles/CreateArticle"
 import baseUrl from "../utils/baseUrl"
 
-const Articles = ({ articles, totalPages, t }) => {  
-  const router = useRouter()
-  const refreshData = () => {
-    router.replace(router.asPath)
-  }  
+const Articles = ({ articles, t }) => {  
+  const [newArticles, setNewArticles] = React.useState(articles)
+  
+  const [showArticles, setShowArticles] = React.useState(articles.slice(0,8))
+
+  React.useEffect(()=>{
+    setShowArticles(prevState => newArticles.slice(0,prevState.length))
+  },[newArticles])
 
   return (
     <>
       <Container>
-        <CreateArticle t={t} refreshData={refreshData}/>
+        <CreateArticle
+          t={t}
+          setNewArticles={setNewArticles}
+        />
         {articles.length!==0 && (
           <>
-            <ArticlesList articles={articles} t={t} />
-            <ArticlesPagination totalPages={totalPages} />
+            <ArticlesList
+              t={t}
+              articles={articles}
+              showArticles={showArticles}
+              setShowArticles={setShowArticles}
+            />
           </>
         )}
       </Container>
@@ -30,12 +38,8 @@ const Articles = ({ articles, totalPages, t }) => {
 export default Articles
 
 export const getServerSideProps = async ctx => {
-  const page = ctx.query.page ? ctx.query.page : "1"
-  const size = 12
-  const url = `${baseUrl}/api/articles?size=${size}&page=${page}`
-  let totalPages = 1
-  let articles = []
-  await fetch(url,{
+  const url = `${baseUrl}/api/articles`
+  const articles = await fetch(url,{
     method: "GET",
     headers: {
       "Content-Type": "application/json"
@@ -46,11 +50,9 @@ export const getServerSideProps = async ctx => {
     }
     return response.json()
   }).then(data => {
-    articles = data.articles
-    totalPages = data.totalPages
+    return data.articles
   }).catch(error => {
     console.log("Error in articles.js") // todo maybe setError or something, idk
   })
-
-  return { props: { articles, totalPages } }
+  return { props: { articles } }
 }

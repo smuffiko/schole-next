@@ -1,9 +1,10 @@
-import { Card, Message, Container } from "semantic-ui-react"
+import React from "react"
+import { Card, Message, Container, Transition, Button } from "semantic-ui-react"
 import { dateTime } from "../../utils/formatDate"
 import Router from "next/router"
 
-const ArticlesList = ({ articles, t }) => {
-  const mapArticlesToItems = articles => {
+const ArticlesList = ({ articles, showArticles, setShowArticles, t }) => {
+    const mapArticlesToItems = articles => {
     return articles.map(article =>(
       <Card
         fluid={true}
@@ -25,10 +26,16 @@ const ArticlesList = ({ articles, t }) => {
         <Card.Description
           style={{padding:"1em", textAlign:"justify"}}
         >
-          {article.content.substring(0,300)}
+          {article.content.replace(/<\/?[^>]+(>|$)/g, "").substring(0,300)}...
         </Card.Description>
       </Card>
     ))
+  }
+
+  const handleNext = () =>{
+    setShowArticles((prevState) => 
+      (articles.slice(0, prevState.length + 8))
+    )
   }
 
   return (
@@ -39,15 +46,30 @@ const ArticlesList = ({ articles, t }) => {
         header={t.article.list.articlesList}
         color="orange"
       />
-      <Card.Group
-        stackable
-        itemsPerRow="4"
-        doubling
-        centered
-        style={{marginTop:"1em"}}
+      <Transition.Group
+        as={Card.Group}
+          stackable
+          itemsPerRow="4"
+          doubling
+          centered
+          style={{marginTop:"1em"}}
+        >
+        {mapArticlesToItems(showArticles)}
+      </Transition.Group> 
+      <Container 
+        textAlign="center"
+        
       >
-        {mapArticlesToItems(articles)}
-      </Card.Group>
+      {!(articles.length === showArticles.length) && (<Button
+          className="button-load-next"
+          disabled={articles.length === showArticles.length}
+          icon='plus'
+          onClick={handleNext}
+          content="Načíst další"
+          fluid
+          color="orange"
+        />)}
+      </Container>
     </Container>
   </>
   )

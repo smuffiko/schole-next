@@ -1,6 +1,9 @@
 import React from "react"
-import { Button, Container, Form, Header, Input, Message, Segment, Select, TextArea } from "semantic-ui-react"
+import ReactDOM from "react-dom"
+import { Button, Container, Form, Input, Message, Segment, TextArea } from "semantic-ui-react"
 import baseUrl from "../../utils/baseUrl"
+
+import RichTextEditor from '../_App/RichTextEditor'
 
 const INITIAL_ARTICLE = {
   title: "",
@@ -8,12 +11,12 @@ const INITIAL_ARTICLE = {
   lang: ""
 }
 
-const CreateArticle = ({ refreshData, t }) => {
+const CreateArticle = ({ setNewArticles, t }) => {
   const [article, setArticle] = React.useState(INITIAL_ARTICLE)
   const [disabled, setDisabled] = React.useState(true)
   const [success, setSuccess] = React.useState(false)
   const [loading, setLoading] = React.useState(false)
-  const [error, setError] = React.useState("")
+  const [error, setError] = React.useState("") 
   const options = [
     {
       key: "cz",
@@ -28,6 +31,15 @@ const CreateArticle = ({ refreshData, t }) => {
       flag: "gb"
     }
   ]
+  const editorOptions = [
+    ["bold", "italic", "underline", "strike"],
+    ["h1", "h2", "h3", "h4", "h5", "h6"],
+    ["unorderedList", "orderedList"],
+    ["alignCenter", "alignLeft","alignRight"],
+    ["link", "blockquote"],
+    // ["link", "image", "video", "blockquote"], // TODO upload
+    ["clean"]
+  ]
 
   React.useEffect(()=>{
     const isArticle = Object.values(article).every(el => Boolean(el))
@@ -36,9 +48,13 @@ const CreateArticle = ({ refreshData, t }) => {
 
   const handleChange = (event, { value }) => {
     let name
-    if(event.target.name) name  = event.target.name
-    else name = "lang"
+    if(event.target.name) name = event.target.name  // if target is base input
+    else name = "lang"  // if target is select -> set lang
     setArticle(prevState => ({ ...prevState, [name]: value }))
+  } 
+
+  const handleChangeEditor = val => {
+    setArticle(prevState => ({ ...prevState, content: val.target.innerHTML }))
   }
 
   const handleSubmit = async event => {
@@ -61,8 +77,8 @@ const CreateArticle = ({ refreshData, t }) => {
       }
       return response.json()
     }).then(data => {
+      setNewArticles(prevState=> [data.newArticle, ...prevState])
       setArticle(INITIAL_ARTICLE)
-      refreshData()
       setSuccess(true)
     }).catch(error=>{
       setError(error.message)
@@ -101,6 +117,7 @@ const CreateArticle = ({ refreshData, t }) => {
               name="lang"
               label={t.article.create.selectLanguage}
               placeholder={t.article.create.language}
+              value={article.lang}
               options={options}
               onChange={handleChange}
             />
@@ -112,14 +129,15 @@ const CreateArticle = ({ refreshData, t }) => {
               onChange={handleChange}
               value={article.title}
             />
-            <Form.TextArea
-              control={TextArea}
-              name="content"
-              label={t.article.create.content}
-              placeholder={t.article.create.content}
-              onChange={handleChange}
-              value={article.content}
-            />
+            <Form.Field>
+              <label>{t.article.create.content}</label>
+              <RichTextEditor
+                radius="md"
+                value={article.content}
+                onBlur={handleChangeEditor}
+                controls={editorOptions}
+              />
+            </Form.Field>
             <Form.Field
               control={Button}
               color="orange"

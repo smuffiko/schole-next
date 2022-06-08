@@ -44,6 +44,23 @@ a {
 footer {
   padding: 100px 0 20px 0;
 }
+.ql-container.ql-snow {
+  height: auto;
+}
+.ql-editor {
+  word-wrap: break-word;
+  height: 300px;
+  overflow-y: scroll;
+}
+.ql-clipboard {
+  position: fixed !important;
+  opacity: 0 !important;
+  left: 50% !important;
+  top: 50% !important;
+}
+.button-load-next {
+  margin: 2rem 0 !important;
+}
 @media screen and (max-width: 767px) {
   .ui.container {
     margin-left: 5px !important;

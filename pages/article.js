@@ -1,20 +1,12 @@
-import { Container, Header, Segment } from "semantic-ui-react"
+import { Container } from "semantic-ui-react"
+import ArticleDetails from "../components/Article/ArticleDetails"
 import baseUrl from "../utils/baseUrl"
-import { dateTime } from "../utils/formatDate"
-import { useRouter } from "next/router"
 
 const Article = ({ article }) => {
-  const { title, createdAt, content, language } = article
   return (
     <>
     <Container>
-      <Segment>
-        <Header as="h2">
-          {title}
-        </Header>     
-        <div>{language.toUpperCase()} {dateTime(createdAt)}</div>
-        <div style={{whiteSpace:"pre-line"}}>{content}</div>   
-      </Segment>
+      <ArticleDetails article={article} />
     </Container>
     </>
   )
@@ -22,14 +14,7 @@ const Article = ({ article }) => {
  
 export default Article
 
-
 export const getServerSideProps = async ({query: {_id }}) => {
-  if(!_id) 
-    return {
-      redirect: {
-        destination: '/404',
-    }}
-
   const url = `${baseUrl}/api/article?_id=${_id}`
   const article = await fetch(url,{
     method: "GET",
@@ -45,5 +30,11 @@ export const getServerSideProps = async ({query: {_id }}) => {
   }).catch(error=>{
     // todo set error ?
   })  
-  return { props: { article } }
+  if(article)
+    return { props: { article } }
+  return { // /article without id or id which not exists -> 404 page
+    redirect: {
+      destination: '/404',
+    }
+  }
 }

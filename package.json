@@ -9,6 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@mantine/core": "^4.2.8",
+    "@mantine/hooks": "^4.2.8",
+    "@mantine/rte": "^4.2.8",
     "bcrypt": "^5.0.1",
     "dotenv": "^16.0.1",
     "fs": "^0.0.1-security",

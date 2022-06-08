@@ -27,12 +27,10 @@ yarn-error.log*
 
 # local env files
 .env*.local
+next.config.mjs
 
 # vercel
 .vercel
-
-#env
-next.config.mjs
 
 # custom
 poznamky.txt
