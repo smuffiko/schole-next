@@ -32,11 +32,13 @@ const ArticlesList = ({ articles, showArticles, setShowArticles, t }) => {
     ))
   }
 
-  const handleNext = () =>{
+  const handleNext = ()=> {
     setShowArticles((prevState) => 
       (articles.slice(0, prevState.length + 8))
     )
   }
+  const handleAll = ()=> 
+    setShowArticles(articles)
 
   return (
   <>
@@ -60,15 +62,26 @@ const ArticlesList = ({ articles, showArticles, setShowArticles, t }) => {
         textAlign="center"
         
       >
-      {!(articles.length === showArticles.length) && (<Button
-          className="button-load-next"
-          disabled={articles.length === showArticles.length}
-          icon='plus'
-          onClick={handleNext}
-          content="Načíst další"
-          fluid
-          color="orange"
-        />)}
+      {!(articles.length === showArticles.length) && (
+        <>
+          <Button
+            className="button-load-next"
+            icon='plus'
+            onClick={handleNext}
+            content={t.article.list.loadNext}
+            fluid
+            color="orange"
+          />
+          <Button
+            className="button-load-next"
+            icon='plus'
+            onClick={handleAll}
+            content={t.article.list.loadAll}
+            fluid
+            color="orange"
+          />
+        </>
+        )}
       </Container>
     </Container>
   </>

@@ -124,7 +124,9 @@
         "success": "Article added!"
       },
       "list": {
-        "articlesList": "Articles list"
+        "articlesList": "Articles list",
+        "loadNext": "Load next articles",
+        "loadAll": "Load all articles"
       }
     }
   },
@@ -249,7 +251,9 @@
         "success": "Článek přidán!"
       },
       "list": {
-        "articlesList": "Seznam článků"
+        "articlesList": "Seznam článků",
+        "loadNext": "Načíst další články",
+        "loadAll": "Načíst všechny články"
       }
     }
   }
