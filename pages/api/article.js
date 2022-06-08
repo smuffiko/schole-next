@@ -13,6 +13,9 @@ export default async function ApiArticle(req, res) {
     case "POST":
       await handlePostRequest(req, res)
       break
+    case "DELETE":
+      await handleDeleteRequest(req, res)
+      break
     default:
       res.status(405).send(`${t.api.method} ${req.method} ${t.api.notAllowed}`)
       break
@@ -33,4 +36,21 @@ const handlePostRequest = async (req, res) => {
     language: lang
   }).save()
   res.status(201).json({newArticle})
+}
+
+const handleDeleteRequest = async (req, res) => {
+  const { _id } = req.query
+  try {
+    await Article.findOneAndDelete({ _id }) // delete product by id
+    /* // delete recursive from packs and cart
+    await Cart.updateMany(
+      { "articles.article": _id },
+      { $pull: { articles: { article: _id } } }
+    )
+    */
+    res.status(204).json({})
+  } catch (error) {
+    console.error(error)
+    res.status(500).send("Error deleting product") // todo local
+  }
 }
