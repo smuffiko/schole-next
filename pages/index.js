@@ -11,9 +11,9 @@ const Home = ({ t }) => {
           <Segment inverted={inverted} style={{backgroundColor: inverted ? "#1D101F" : "#FCEDFF"}} key={seg} textAlign="center" vertical>
             <Container>
               <Header as="h1" inverted={inverted}>
-                {t.schole.content[seg].header}
+                <div dangerouslySetInnerHTML={{__html: t.schole.content[seg].header}}></div>
               </Header>
-              <p>{t.schole.content[seg].content}</p>
+              <div dangerouslySetInnerHTML={{__html: t.schole.content[seg].content}}></div>
             </Container>
           </Segment>
         )

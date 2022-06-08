@@ -60,7 +60,7 @@
       "content": [
         {
           "header": "Scholé!",
-          "content": "Some pretty content"
+          "content": "Watch news here - > <a href='https://github.com/smuffiko/schole-next/commits/master'>https://github.com/smuffiko/schole-next/commits/master</a>"
         },
         {
           "header": "Welcome!",
@@ -198,7 +198,7 @@
       "content": [
         {
           "header": "Scholé!",
-          "content": "Nějaké pěkné info o stránce"
+          "content": "Sleduj novinky zde - > <a href='https://github.com/smuffiko/schole-next/commits/master'>https://github.com/smuffiko/schole-next/commits/master</a>"
         },
         {
           "header": "Vítejte!",
