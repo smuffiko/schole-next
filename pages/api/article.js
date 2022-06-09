@@ -13,6 +13,9 @@ export default async function ApiArticle(req, res) {
     case "POST":
       await handlePostRequest(req, res)
       break
+    case "PUT":
+      await handlePutRequest(req, res)
+      break
     case "DELETE":
       await handleDeleteRequest(req, res)
       break
@@ -36,6 +39,12 @@ const handlePostRequest = async (req, res) => {
     language: lang
   }).save()
   res.status(201).json({newArticle})
+}
+
+const handlePutRequest = async (req, res) => {
+  const { _id, title, content } = req.body
+  const article = await Article.findOneAndUpdate({ _id }, { title, content }, { new: true })
+  res.status(203).json(article)
 }
 
 const handleDeleteRequest = async (req, res) => {

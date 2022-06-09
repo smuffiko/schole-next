@@ -134,6 +134,12 @@
       "delete": {
         "confirm": "Confirm delete",
         "content": "Are you sure you want to delete this article?"
+      },
+      "update": {
+        "header": "Update article",
+        "title": "Title",
+        "content": "Content",
+        "submit": "Save article"
       }
     }
   },
@@ -268,6 +274,12 @@
       "delete": {
         "confirm": "Potvrzení smazání",
         "content": "Jste si jisti, že chcete trvale smazat tento článek?"
+      },
+      "update": {
+        "header": "Úprava článku",
+        "title": "Název",
+        "content": "Obsah",
+        "submit": "Uložit úpravy"
       }
     }
   }
