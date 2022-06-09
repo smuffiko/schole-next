@@ -1,5 +1,4 @@
 import React from "react"
-import ReactDOM from "react-dom"
 import { Button, Container, Form, Input, Message, Segment, TextArea } from "semantic-ui-react"
 import baseUrl from "../../utils/baseUrl"
 
@@ -42,8 +41,12 @@ const CreateArticle = ({ setNewArticles, t }) => {
   ]
 
   React.useEffect(()=>{
-    const isArticle = Object.values(article).every(el => Boolean(el))
-    isArticle ? setDisabled(false) : setDisabled(true)
+    const delayDebounceFn = setTimeout(() => {
+      const isArticle = Object.values(article).every(el => Boolean(el)) && article.content !== "<p><br></p>"
+      isArticle ? setDisabled(false) : setDisabled(true)
+      console.log(article)
+    }, 500)
+    return () => clearTimeout(delayDebounceFn)
   },[article])
 
   const handleChange = (event, { value }) => {
@@ -54,7 +57,7 @@ const CreateArticle = ({ setNewArticles, t }) => {
   } 
 
   const handleChangeEditor = val => {
-    setArticle(prevState => ({ ...prevState, content: val.target.innerHTML }))
+    if(val) setArticle(prevState => ({ ...prevState, content: val }))
   }
 
   const handleSubmit = async event => {
@@ -134,7 +137,7 @@ const CreateArticle = ({ setNewArticles, t }) => {
               <RichTextEditor
                 radius="md"
                 value={article.content}
-                onBlur={handleChangeEditor}
+                onChange={(val) => handleChangeEditor(val)}
                 controls={editorOptions}
               />
             </Form.Field>
