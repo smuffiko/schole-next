@@ -69,18 +69,12 @@ const Header = ({ user, t }) => {
                               </Menu.Item>
                             </Link> 
                           </>
-                        ):( /* admin, root - ARTICLES, VIDEOS */
+                        ):( /* admin, root - ARTICLES */
                           <>
                             <Link href="/articles" passHref>
                               <Menu.Item header active={isActive("/articles")}>
                                 <Icon name="file alternate outline" />
                                 {t.menu.articles}
-                              </Menu.Item>
-                            </Link> 
-                            <Link href="/videos" passHref>
-                              <Menu.Item header active={isActive("/videos")}>
-                                <Icon name="camera" />
-                                {t.menu.videos}
                               </Menu.Item>
                             </Link> 
                           </>

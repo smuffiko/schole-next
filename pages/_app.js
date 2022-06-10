@@ -39,8 +39,6 @@ class MyApp extends App {
         || ctx.pathname === "/cart"
         || ctx.pathname === "/articles"
         || ctx.pathname === "/article"
-        || ctx.pathname === "/videos"
-        || ctx.pathname === "/video"
         || ctx.pathname === "/account"
       )
         redirectUser(ctx, "/")
@@ -78,13 +76,11 @@ class MyApp extends App {
           || ctx.pathname === "/my-packs"
           || ctx.pathname === "/cart"
           || ctx.pathname === "/articles"
-          || ctx.pathname === "/videos"
         ))
           redirectUser(ctx, "/")
         
         if(isUser && (  // protected route for user
           ctx.pathname === "/articles"
-          || ctx.pathname === "/videos"
         ))
           redirectUser(ctx, "/")
 
