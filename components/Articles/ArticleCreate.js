@@ -10,7 +10,7 @@ const INITIAL_ARTICLE = {
   lang: ""
 }
 
-const CreateArticle = ({ setNewArticles, t }) => {
+const ArticleCreate = ({ setNewArticles, t }) => {
   const [article, setArticle] = React.useState(INITIAL_ARTICLE)
   const [disabled, setDisabled] = React.useState(true)
   const [success, setSuccess] = React.useState(false)
@@ -44,7 +44,6 @@ const CreateArticle = ({ setNewArticles, t }) => {
     const delayDebounceFn = setTimeout(() => {
       const isArticle = Object.values(article).every(el => Boolean(el)) && article.content !== "<p><br></p>"
       isArticle ? setDisabled(false) : setDisabled(true)
-      console.log(article)
     }, 500)
     return () => clearTimeout(delayDebounceFn)
   },[article])
@@ -156,4 +155,4 @@ const CreateArticle = ({ setNewArticles, t }) => {
   )
 }
  
-export default CreateArticle
+export default ArticleCreate

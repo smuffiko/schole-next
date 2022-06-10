@@ -1,7 +1,7 @@
 import React from "react"
 import { Container } from "semantic-ui-react"
 import ArticlesList from "../components/Articles/ArticlesList"
-import CreateArticle from "../components/Articles/CreateArticle"
+import ArticleCreate from "../components/Articles/ArticleCreate"
 import baseUrl from "../utils/baseUrl"
 
 const Articles = ({ articles, t }) => {  
@@ -16,7 +16,7 @@ const Articles = ({ articles, t }) => {
   return (
     <>
       <Container>
-        <CreateArticle
+        <ArticleCreate
           t={t}
           setNewArticles={setNewArticles}
         />
