@@ -47,8 +47,7 @@
       "logout": "Logout",
       "login": "Log in",
       "signup": "Sign up",
-      "articles": "Articles",
-      "videos": "Videos"
+      "articles": "Articles"
     },
     "footer": {
       "contact": "Contact us",
@@ -185,8 +184,7 @@
       "logout": "Odhlásit se",
       "login": "Přihlásit se",
       "signup": "Registrace",
-      "articles": "Články",
-      "videos": "Videa"
+      "articles": "Články"
     },
     "footer": {
       "contact": "Kontakt",

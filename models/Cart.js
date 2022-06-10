@@ -1,33 +1,17 @@
 import mongoose from "mongoose"
 
-const { ObjectId, Number } = mongoose.Schema.Types
+const { ObjectId } = mongoose.Schema.Types
 
 const CartSchema = new mongoose.Schema({
   user: {
     type: ObjectId,
     ref: "User"
   },
-  articles: [
+  packs: [
     {
-      quantity: {
-        type: Number,
-        default: 1
-      },
-      product: {
+      pack: {
         type: ObjectId,
-        ref: "Article"
-      }
-    }
-  ],
-  videos: [
-    {
-      quantity: {
-        type: Number,
-        default: 1
-      },
-      product: {
-        type: ObjectId,
-        ref: "Video"
+        ref: "Pack"
       }
     }
   ]
