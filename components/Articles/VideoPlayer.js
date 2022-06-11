@@ -6,6 +6,7 @@ import { Player,
   TimeDivider,
   PlaybackRateMenuButton,
   VolumeMenuButton } from "video-react"
+import "video-react/dist/video-react.css"
 
 const VideoPlayer = ({url}) => {
   return (
