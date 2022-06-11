@@ -11,7 +11,7 @@ const ArticleDetails = ({ article }) => {
           {title}
         </Header>     
         <Label>{language.toUpperCase()} {dateTime(createdAt)}</Label>
-        {video && (<VideoPlayer url={url}/>)}
+        {video && (<VideoPlayer url={video}/>)}
         <div style={{whiteSpace:"pre-line", marginTop:"1em"}} dangerouslySetInnerHTML={{__html: content}}></div>   
       </Segment>
     </>
