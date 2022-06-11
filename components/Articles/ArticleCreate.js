@@ -101,7 +101,7 @@ const ArticleCreate = ({ setNewArticles, t }) => {
     }).catch(error=>{
       setError(error.message)
     })
-    if(result===null) throw new Error("Error video") //todo local
+    if(result===null) throw new Error("Error video") //todo local, need test
     return result
   }
 
@@ -133,6 +133,7 @@ const ArticleCreate = ({ setNewArticles, t }) => {
     }).then(data => {
       setNewArticles(prevState=> [data.newArticle, ...prevState])
       setArticle(INITIAL_ARTICLE)
+      setVideo(null)
       setSuccess(true)
     }).catch(error=>{
       setError(error.message)
@@ -239,7 +240,7 @@ const ArticleCreate = ({ setNewArticles, t }) => {
         <Modal open={videoLoading} dimmer="blurring" style={{textAlign:"center"}}>
             <Modal.Header>Wait please</Modal.Header> {/**todo local */}
             <Modal.Content>
-              <div className="spinner"></div>
+              <div className="custom-spinner"></div>
               <p>Video is uploading...</p>
             </Modal.Content>
           </Modal>
