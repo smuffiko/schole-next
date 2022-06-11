@@ -12,7 +12,7 @@ body {
   margin: 0;
   background-color: #1D101F;
 }
-html, body, .ui, #menu, h1, h2, h3, h4, h5, h6 {
+html, body, .ui, #menu, h1, h2, h3, h4, h5, h6, .ui.message .header {
   font-family: Comfortaa, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif !important;
 }
@@ -66,4 +66,34 @@ footer {
     margin-left: 5px !important;
     margin-right: 5px !important;
   }
+}
+@-webkit-keyframes spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.spinner {
+  margin: 50px auto;
+  width: 50px;
+  height: 50px;
+  box-sizing: border-box;
+
+  border: dotted 3px transparent;
+  border-top-color: rgb(121, 7, 121);
+  border-left-color: rgb(191, 20, 197);
+  border-radius: 50%;
+
+  -webkit-animation: spinner 1400ms linear infinite;
+  animation: spinner 1400ms linear infinite;
 }

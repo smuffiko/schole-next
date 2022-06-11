@@ -32,10 +32,12 @@ const handleGetRequest = async (req, res) => {
 }
 
 const handlePostRequest = async (req, res) => {
-  const { title, content, lang } = req.body
+  const { title, content, lang, videoURL } = req.body
+  const video = videoURL ? videoURL : null
   const newArticle = await new Article({
     title,
     content,
+    video,
     language: lang
   }).save()
   res.status(201).json({newArticle})

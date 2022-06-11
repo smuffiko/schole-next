@@ -16,6 +16,11 @@ const ArticleSchema = new mongoose.Schema(
       type: String,
       required: true,
       enum: ["cz", "en"]
+    },
+    video: {
+      type: String,
+      required: false,
+      default: null
     }
   },
   {

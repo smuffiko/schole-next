@@ -58,7 +58,6 @@ const Login = ({ t }) => {
   <>
     <Container style={{margin:"100px auto"}}>
       <Message
-        attached
         icon="privacy"
         header={t.login.header}
         content={t.login.content}
