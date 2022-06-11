@@ -82,12 +82,12 @@ const ArticleCreate = ({ setNewArticles, t }) => {
     let result = null
     const formData = new FormData()
     formData.append("file", article.video)
-    formData.append("upload_preset", process.env.cloudinary.UPLOAD_PRESET)
-    formData.append("cloud_name", process.env.cloudinary.CLOUD_NAME)
-    formData.append("api_key",process.env.cloudinary.API_KEY)
-    formData.append("api_secret", process.env.cloudinary.API_SECRET)
+    formData.append("upload_preset", process.env.UPLOAD_PRESET)
+    formData.append("cloud_name", process.env.CLOUD_NAME)
+    formData.append("api_key",process.env.API_KEY)
+    formData.append("api_secret", process.env.API_SECRET)
     
-    await fetch(process.env.cloudinary.URL,{
+    await fetch(process.env.URL,{
       method: "POST",
       body: formData
     }).then(async response=> {
