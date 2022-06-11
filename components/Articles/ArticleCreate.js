@@ -44,7 +44,6 @@ const ArticleCreate = ({ setNewArticles, t }) => {
   ]
 
   React.useEffect(()=>{
-    console.log(article)
     const delayDebounceFn = setTimeout(() => {
       const isArticle = Object.values(article).every(el => Boolean(el)) && article.content !== "<p><br></p>"
       isArticle ? setDisabled(false) : setDisabled(true)
@@ -86,7 +85,6 @@ const ArticleCreate = ({ setNewArticles, t }) => {
     formData.append("cloud_name", process.env.CLOUD_NAME)
     formData.append("api_key",process.env.API_KEY)
     formData.append("api_secret", process.env.API_SECRET)
-    
     await fetch(process.env.URL,{
       method: "POST",
       body: formData
@@ -101,7 +99,7 @@ const ArticleCreate = ({ setNewArticles, t }) => {
     }).catch(error=>{
       setError(error.message)
     })
-    if(result===null) throw new Error("Error video") //todo local, need test
+    if(result===null) console.log("Error video") //todo local, need test
     return result
   }
 
