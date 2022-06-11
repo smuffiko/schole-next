@@ -1,6 +1,6 @@
 import React from "react"
 import { InputFile } from 'semantic-ui-react-input-file'
-import { Button, Container, Form, Input, Message, Segment, Modal, Icon } from "semantic-ui-react"
+import { Button, Container, Form, Input, Message, Segment, Modal } from "semantic-ui-react"
 import baseUrl from "../../utils/baseUrl"
 import RichTextEditor from '../_App/RichTextEditor'
 import { convertBytes } from "../../utils/convertBytes"
@@ -8,7 +8,9 @@ import { convertBytes } from "../../utils/convertBytes"
 const INITIAL_ARTICLE = {
   title: "",
   content: "",
-  lang: ""
+  lang: "",
+  videoUrl: "",
+  video: null
 }
 
 const ArticleCreate = ({ setNewArticles, t }) => {
@@ -45,7 +47,7 @@ const ArticleCreate = ({ setNewArticles, t }) => {
 
   React.useEffect(()=>{
     const delayDebounceFn = setTimeout(() => {
-      const isArticle = Object.values(article).every(el => Boolean(el)) && article.content !== "<p><br></p>"
+      const isArticle = Boolean(article.title) && Boolean(article.content) && article.content !== "<p><br></p>" && Boolean(article.lang)
       isArticle ? setDisabled(false) : setDisabled(true)
     }, 500)
     return () => clearTimeout(delayDebounceFn)
@@ -54,7 +56,7 @@ const ArticleCreate = ({ setNewArticles, t }) => {
   const handleChange = (event, {value}) => {
     const { name } = event.target
     if(name !== undefined) {
-      setArticle(prevState => ({ ...prevState, [name]: value })) // target -> base input
+        setArticle(prevState => ({ ...prevState, [name]: value })) // target -> base input
     } else setArticle(prevState => ({ ...prevState, lang: value })) // if target is select -> set lang
   } 
 
@@ -68,7 +70,7 @@ const ArticleCreate = ({ setNewArticles, t }) => {
     setVideo(files[0])
   }
 
-  const handleRemoveVideo = async event => {
+  const handleRemoveVideo = event => {
     setArticle((prevState)=>{
       const { video, ...rest } = prevState
       return rest
@@ -99,22 +101,26 @@ const ArticleCreate = ({ setNewArticles, t }) => {
     }).catch(error=>{
       setError(error.message)
     })
-    if(result===null) console.log("Error video") //todo local, need test
+    if(result===null) console.log("Error uploading video, try use youtube link") //todo local, need test
     return result
   }
 
   const handleSubmit = async event => {
     event.preventDefault()
     setError("")
+
     const url = `${baseUrl}/api/article`
-    const { title, content, lang } = article
+    const { title, content, lang, videoUrl } = article
     let payload = { title, content, lang }
-    if(article.video) {
+
+    if(videoUrl!==null) payload.videoUrl = videoUrl
+    else if(article.video) {
       setVideoLoading(true)
       const videoData = await handleUpload(event)
       setVideoLoading(false)
-      payload.videoURL = videoData.url
+      payload.videoUrl = videoData.url
     }
+
     setLoading(true)
     await fetch(url,{
       method: "POST",
@@ -182,40 +188,51 @@ const ArticleCreate = ({ setNewArticles, t }) => {
               onChange={handleChange}
               value={article.title}
             />
-            <Form.Field
-            >
-            {video ? 
-            (<>
-              <Message
-                size="tiny"
-                content={`Vybráno video:  ${video.name} , velikost: ${convertBytes(video.size)}`}
+            <Form.Group>
+              <Form.Field
+                className="three wide"
+              >
+              {video ? 
+              (<>
+                <Message
+                  size="tiny"
+                  content={`Vybráno video:  ${video.name} , velikost: ${convertBytes(video.size)}`}
+                />
+                {/* todo media preview */}
+                <Button
+                  icon="trash"
+                  label={{ basic: true, color: 'red', pointing: 'left', content: t.article.create.deleteVideo }}
+                  color="red"
+                  type="button"
+                  onClick={handleRemoveVideo}
+                />
+              </>) : (
+                <>
+                  <InputFile
+                    button={{
+                      color:"orange",
+                      label: { basic: true, color: 'red', pointing: 'left', content: t.article.create.selectVideo },
+                      type: "button"
+                    }}
+                    input={{
+                      id: 'input-control-id',
+                      accept: "video/*",
+                      name: "video",
+                      onChange: handleChangeVideo
+                    }}
+                  />              
+                </>
+              )}
+              </Form.Field>
+              <Form.Field
+                control={Input}
+                name="videoUrl"
+                placeholder={t.article.create.videoUrl}
+                onChange={handleChange}
+                value={article.videoUrl}
+                className="thirteen wide"
               />
-               {/* todo media preview */}
-              <Button
-                icon="trash"
-                label={{ basic: true, color: 'red', pointing: 'left', content: 'Odstranit video' }}
-                color="red"
-                type="button"
-                onClick={handleRemoveVideo}
-              />
-            </>) : (
-              <>
-                <InputFile
-                  button={{
-                    color:"orange",
-                    label: { basic: true, color: 'red', pointing: 'left', content: 'Vybrat video' },
-                    type: "button"
-                  }}
-                  input={{
-                    id: 'input-control-id',
-                    accept: "video/*",
-                    name: "video",
-                    onChange: handleChangeVideo
-                  }}
-                />              
-              </>
-            )}
-            </Form.Field>
+            </Form.Group>
             <Form.Field>
               <label>{t.article.create.content}</label>
               <RichTextEditor
@@ -236,10 +253,10 @@ const ArticleCreate = ({ setNewArticles, t }) => {
           </Segment>
         </Form>
         <Modal open={videoLoading} dimmer="blurring" style={{textAlign:"center"}}>
-            <Modal.Header>Wait please</Modal.Header> {/**todo local */}
+            <Modal.Header>{t.article.create.waitPlease}</Modal.Header>
             <Modal.Content>
               <div className="custom-spinner"></div>
-              <p>Video is uploading...</p>
+              <p>{t.article.create.videoIsUploading}</p>
             </Modal.Content>
           </Modal>
       </Container>

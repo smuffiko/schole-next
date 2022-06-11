@@ -1,4 +1,5 @@
 import ReactPlayer from "react-player/lazy"
+import baseUrl from "../../utils/baseUrl"
 
 const VideoPlayer = ({url}) => {
   return (
@@ -10,6 +11,13 @@ const VideoPlayer = ({url}) => {
           width="100%"
           height="100%"
           controls
+          config={{
+            youtube: {
+              playerVars: {
+                origin: baseUrl
+              }
+            }
+          }}
         />
       </div>
     </>

@@ -32,8 +32,8 @@ const handleGetRequest = async (req, res) => {
 }
 
 const handlePostRequest = async (req, res) => {
-  const { title, content, lang, videoURL } = req.body
-  const video = videoURL ? videoURL : null
+  const { title, content, lang, videoUrl } = req.body
+  const video = videoUrl ? videoUrl : null
   const newArticle = await new Article({
     title,
     content,

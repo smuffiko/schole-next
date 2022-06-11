@@ -122,6 +122,11 @@
         "header": "Create new article!",
         "title": "Title",
         "content": "Content",
+        "deleteVideo": "Delete video",
+        "selectVideo": "Select video",
+        "videoUrl": "...or paste URL",
+        "waitPlease": "Wait please...",
+        "videoIsUploading": "Video is uploading...",
         "submit": "Create new article",
         "success": "Article added!"
       },
@@ -261,6 +266,11 @@
         "header": "Vytvoření nového článku.",
         "title": "Nadpis",
         "content": "Obsah",
+        "deleteVideo": "Odstranit video",
+        "selectVideo": "Vyberte video",
+        "videoUrl": "...nebo zadejte URL videa",
+        "waitPlease": "Počkejte prosím...",
+        "videoIsUploading": "Video se nahrává na server...",
         "submit": "Vytvořit článek",
         "success": "Článek přidán!"
       },
