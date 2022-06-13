@@ -6,10 +6,6 @@ import { handleLogout } from "../../utils/auth"
 import { isMobile } from "react-device-detect"
 import NProgress from "nprogress"
 
-Router.events.on("routeChangeStart", ()=> NProgress.start())
-Router.events.on("routeChangeComplete", ()=> NProgress.done())
-Router.events.on("routeChangeError", ()=> NProgress.done())
-
 const Header = ({ user, t }) => {
   const router = useRouter()
   const isNew = user && user.role === "new" 
@@ -20,6 +16,13 @@ const Header = ({ user, t }) => {
   const isLogged = isAdminOrRoot || isNew || isUser
   const [isVisible, setIsVisible] = React.useState()
 
+  Router.events.on("routeChangeStart", ()=> {
+    if(isMobile && isVisible) setIsVisible(false)
+    NProgress.start()
+  })
+  Router.events.on("routeChangeComplete", ()=> NProgress.done())
+  Router.events.on("routeChangeError", ()=> NProgress.done())
+  
   useEffect(()=>{
     if(isMobile) setIsVisible(false)
     else setIsVisible(true)
