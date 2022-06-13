@@ -1,11 +1,11 @@
 import React from "react"
-import { Card, Message, Container, Transition, Button } from "semantic-ui-react"
+import { Card, Message, Container, Transition, Button, Icon, Label } from "semantic-ui-react"
 import { dateTime } from "../../utils/formatDate"
 import Router from "next/router"
 
 const ArticlesList = ({ articles, showArticles, setShowArticles, t }) => {
     const mapArticlesToItems = articles => {
-    return articles.map(article =>(
+    return articles.map(article => 
       <Card
         fluid={true}
         key={article._id}
@@ -14,8 +14,19 @@ const ArticlesList = ({ articles, showArticles, setShowArticles, t }) => {
         <Card.Header
           as="h3"
           onClick={()=>{ Router.push(`/article?_id=${article._id}`)}}
-          style={{paddingTop:"0.5em",textAlign:"center"}}
+          style={{paddingTop:"1.6em",textAlign:"center"}}
         >
+          {article.video && (
+            <>
+              <Label ribbon color="orange" style={{
+                position: "absolute",
+                top: "-1px",
+                left: "-15px"
+              }}>
+                <Icon name="youtube play" size="large"/>
+              </Label>
+            </>
+          )}
           <a>{article.title}</a>
         </Card.Header>
         <Card.Meta
@@ -26,10 +37,10 @@ const ArticlesList = ({ articles, showArticles, setShowArticles, t }) => {
         <Card.Description
           style={{padding:"1em", textAlign:"justify"}}
         >
-          {article.content.replace(/<\/?[^>]+(>|$)/g, "").substring(0,300)}...
+          {article.content.replace(/<\/?[^>]+(>|$)/g, " ").replace("  "," ").substring(0,300)}...
         </Card.Description>
       </Card>
-    ))
+    )
   }
 
   const handleNext = ()=> {
