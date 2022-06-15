@@ -1,16 +1,17 @@
 import React from "react"
 import { InputFile } from 'semantic-ui-react-input-file'
-import { Button, Container, Form, Input, Message, Segment, Modal } from "semantic-ui-react"
+import { Button, Form, Input, Message, Segment, Modal } from "semantic-ui-react"
 import baseUrl from "../../utils/baseUrl"
 import RichTextEditor from '../_App/RichTextEditor'
 import { convertBytes } from "../../utils/convertBytes"
 
 const INITIAL_ARTICLE = {
   title: "",
-  content: "",
+  content: "<p><br></p>",
   lang: "",
   videoUrl: "",
-  video: null
+  video: null,
+  key: Math.random()
 }
 
 const ArticleCreate = ({ setNewArticles, t }) => {
@@ -142,6 +143,7 @@ const ArticleCreate = ({ setNewArticles, t }) => {
       return response.json()
     }).then(data => {
       setNewArticles(prevState=> [data.newArticle, ...prevState])
+      INITIAL_ARTICLE.key = Math.random()
       setArticle(INITIAL_ARTICLE)
       setVideo(null)
       setSuccess(true)
@@ -155,56 +157,55 @@ const ArticleCreate = ({ setNewArticles, t }) => {
 
   return (
     <>
-      <Container>
+      <Message
+        icon="pencil"
+        header={t.article.create.header}
+        color="orange"
+      />
+      <Form
+        loading={loading}
+        error={Boolean(error)}
+        success={success}
+        onSubmit={handleSubmit}
+      >
+        {/* needtest - error message */}
+        <Message error 
+          header={t.error}
+          content={error} />
         <Message
-          icon="pencil"
-          header={t.article.create.header}
-          color="orange"
+          success
+          icon="check"
+          header={t.article.create.success}
         />
-        <Form
-          loading={loading}
-          error={Boolean(error)}
-          success={success}
-          onSubmit={handleSubmit}
-        >
-          {/* needtest - error message */}
-          <Message error 
-            header={t.error}
-            content={error} />
-          <Message
-            success
-            icon="check"
-            header={t.article.create.success}
+        <Segment>
+          <Form.Dropdown
+            selection
+            name="lang"
+            label={t.article.create.selectLanguage}
+            placeholder={t.article.create.language}
+            value={article.lang}
+            options={options}
+            onChange={handleChange}
           />
-          <Segment>
-            <Form.Dropdown
-              selection
-              name="lang"
-              label={t.article.create.selectLanguage}
-              placeholder={t.article.create.language}
-              value={article.lang}
-              options={options}
-              onChange={handleChange}
-            />
+          <Form.Field
+            control={Input}
+            name="title"
+            label={t.article.create.title}
+            placeholder={t.article.create.title}
+            onChange={handleChange}
+            value={article.title}
+          />
+          <Form.Group>
             <Form.Field
-              control={Input}
-              name="title"
-              label={t.article.create.title}
-              placeholder={t.article.create.title}
-              onChange={handleChange}
-              value={article.title}
-            />
-            <Form.Group>
-              <Form.Field
-                className="three wide"
-              >
-              {video ? 
-              (<>
+              className="three wide"
+            >
+            {video ? (
+              <>
                 <Message
                   size="tiny"
                   content={`Vybráno video:  ${video.name} , velikost: ${convertBytes(video.size)}`}
                 />
-                {/* todo media preview */}
+                {/* todo media preview - local */}
                 <Button
                   icon="trash"
                   label={{ basic: true, color: 'red', pointing: 'left', content: t.article.create.deleteVideo }}
@@ -229,43 +230,43 @@ const ArticleCreate = ({ setNewArticles, t }) => {
                   />              
                 </>
               )}
-              </Form.Field>
-              <Form.Field
-                control={Input}
-                name="videoUrl"
-                placeholder={t.article.create.videoUrl}
-                onChange={handleChange}
-                value={article.videoUrl}
-                className="thirteen wide"
-              />
-            </Form.Group>
-            <Form.Field>
-              <label>{t.article.create.content}</label>
-              <RichTextEditor
-                radius="md"
-                value={article.content}
-                onChange={(val) => handleChangeEditor(val)}
-                controls={editorOptions}
-              />
             </Form.Field>
             <Form.Field
-              control={Button}
-              color="orange"
-              icon="pencil"
-              content={t.article.create.submit}
-              type="submit"
-              disabled={disabled || loading}
+              control={Input}
+              name="videoUrl"
+              placeholder={t.article.create.videoUrl}
+              onChange={handleChange}
+              value={article.videoUrl}
+              className="thirteen wide"
             />
-          </Segment>
-        </Form>
-        <Modal open={videoLoading} dimmer="blurring" style={{textAlign:"center"}}>
-            <Modal.Header>{t.article.create.waitPlease}</Modal.Header>
-            <Modal.Content>
-              <div className="custom-spinner"></div>
-              <p>{t.article.create.videoIsUploading}</p>
-            </Modal.Content>
-          </Modal>
-      </Container>
+          </Form.Group>
+          <Form.Field>
+            <label>{t.article.create.content}</label>
+            <RichTextEditor
+              radius="md"
+              value={article.content}
+              key={article.key}
+              onChange={(val) => handleChangeEditor(val)}
+              controls={editorOptions}
+            />
+          </Form.Field>
+          <Form.Field
+            control={Button}
+            color="orange"
+            icon="pencil"
+            content={t.article.create.submit}
+            type="submit"
+            disabled={disabled || loading}
+          />
+        </Segment>
+      </Form>
+      <Modal open={videoLoading} dimmer="blurring" style={{textAlign:"center"}}>
+        <Modal.Header>{t.article.create.waitPlease}</Modal.Header>
+        <Modal.Content>
+          <div className="custom-spinner"></div>
+          <p>{t.article.create.videoIsUploading}</p>
+        </Modal.Content>
+      </Modal>
     </>
   )
 }

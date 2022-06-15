@@ -24,7 +24,7 @@ const Articles = ({ articles, t }) => {
           <>
             <ArticlesList
               t={t}
-              articles={articles}
+              articles={newArticles}
               showArticles={showArticles}
               setShowArticles={setShowArticles}
             />
