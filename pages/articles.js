@@ -6,7 +6,6 @@ import baseUrl from "../utils/baseUrl"
 
 const Articles = ({ articles, t }) => {  
   const [newArticles, setNewArticles] = React.useState(articles)
-  
   const [showArticles, setShowArticles] = React.useState(articles.slice(0,8))
 
   React.useEffect(()=>{

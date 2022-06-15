@@ -145,6 +145,17 @@
         "content": "Content",
         "submit": "Save article"
       }
+    },
+    "pack": {
+      "create": {
+        "language": "Language",
+        "selectLanguage": "Select language",
+        "header": "Add new pack.",
+        "title": "Title",
+        "content": "Content",
+        "submit": "Add new pack",
+        "success": "Pack added!"
+      }
     }
   },
   "cz": {
@@ -288,6 +299,17 @@
         "title": "Název",
         "content": "Obsah",
         "submit": "Uložit úpravy"
+      }
+    },
+    "pack": {
+      "create": {
+        "language": "Jazyk",
+        "selectLanguage": "Vyberte jazyk",
+        "header": "Vytvoření nového balíčku.",
+        "title": "Název",
+        "content": "Obsah",
+        "submit": "Vytvořit balíček",
+        "success": "Balíček vytvořen!"
       }
     }
   }

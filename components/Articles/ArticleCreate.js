@@ -22,7 +22,7 @@ const ArticleCreate = ({ setNewArticles, t }) => {
   const [loading, setLoading] = React.useState(false)
   const [videoLoading, setVideoLoading] = React.useState(false)
   const [error, setError] = React.useState("") 
-  const options = [
+  const langOptions = [
     {
       key: "cz",
       value: "cz",
@@ -112,7 +112,7 @@ const ArticleCreate = ({ setNewArticles, t }) => {
 
     const url = `${baseUrl}/api/article`
     const { title, content, lang, videoUrl } = article
-    let payload = { title, content, lang }
+    const payload = { title, content, lang }
 
     if(videoUrl!==null) payload.videoUrl = videoUrl
     else if(article.video) {
@@ -184,7 +184,7 @@ const ArticleCreate = ({ setNewArticles, t }) => {
             label={t.article.create.selectLanguage}
             placeholder={t.article.create.language}
             value={article.lang}
-            options={options}
+            options={langOptions}
             onChange={handleChange}
           />
           <Form.Field
