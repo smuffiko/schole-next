@@ -120,6 +120,12 @@ const ArticleCreate = ({ setNewArticles, t }) => {
       setVideoLoading(false)
       payload.videoUrl = videoData.url
     }
+    if(payload.videoUrl!==null) { // if it is youtue link, then chceck or update url
+      if(payload.videoUrl.includes("youtube.com")) {
+        const list = payload.videoUrl.indexOf("&list")
+        if(list) payload.videoUrl=payload.videoUrl.substring(0,list)
+      }
+    }
 
     setLoading(true)
     await fetch(url,{
