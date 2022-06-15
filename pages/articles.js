@@ -9,7 +9,11 @@ const Articles = ({ articles, t }) => {
   const [showArticles, setShowArticles] = React.useState(articles.slice(0,8))
 
   React.useEffect(()=>{
-    setShowArticles(prevState => newArticles.slice(0,prevState.length))
+    setShowArticles(prevState => {
+      let length = prevState.length
+      if(prevState.length<8) length++
+      return newArticles.slice(0,length)
+    })
   },[newArticles])
 
   return (

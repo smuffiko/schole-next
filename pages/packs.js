@@ -9,12 +9,16 @@ const Packs = ({ packs, user, t }) => {
   const [showPacks, setShowPacks] = React.useState(packs.slice(0,8))
 
   React.useEffect(()=>{
-    setShowPacks(prevState => newPacks.slice(0,prevState.length))
+    setShowPacks(prevState => {
+      let length = prevState.length
+      if(prevState.length<8) length++
+      return newPacks.slice(0,length)
+    })
   },[newPacks])
 
   return (
     <>
-      <Container style={{color:"white"}}> {/* todo remove style */}
+      <Container> 
         {(user.role==="admin" || user.role==="root") && (
           <>
             <PackCreate
@@ -27,6 +31,7 @@ const Packs = ({ packs, user, t }) => {
           <>
             <PacksList
               t={t}
+              packs={newPacks}
               showPacks={showPacks}
               setShowPacks={setShowPacks}
             />

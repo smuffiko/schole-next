@@ -196,9 +196,7 @@ const ArticleCreate = ({ setNewArticles, t }) => {
             value={article.title}
           />
           <Form.Group>
-            <Form.Field
-              className="three wide"
-            >
+            <Form.Field className="three wide" >
             {video ? (
               <>
                 <Message

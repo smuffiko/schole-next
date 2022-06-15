@@ -139,6 +139,7 @@ const PackCreate = ({ setNewPacks, t }) => {
             <RichTextEditor
               radius="md"
               value={pack.content}
+              key={pack.key}
               onChange={(val) => handleChangeEditor(val)}
               controls={editorOptions}
             />
