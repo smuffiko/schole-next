@@ -5,5 +5,5 @@ export default dynamic(() => import('@mantine/rte'), {
   ssr: false,
 
   // Render anything as fallback on server, e.g. loader or html content without editor
-  loading: () => null,
+  loading: () => <div className='custom-spinner'></div>,
 })
