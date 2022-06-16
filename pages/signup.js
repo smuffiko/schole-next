@@ -1,5 +1,4 @@
 import React from "react"
-import Router, { useRouter } from "next/router"
 import { Message, Icon, Form, Button, Segment, Container } from "semantic-ui-react"
 import Link from "next/link"
 import baseUrl from "../utils/baseUrl"
@@ -15,7 +14,6 @@ const INITIAL_USER = {
 }
 
 const Signup = ({ t }) => {
-  const router = useRouter()
   const [user, setUser] = React.useState(INITIAL_USER)
   const [disabled, setDisabled] = React.useState(true)
   const [success, setSuccess] = React.useState(false)

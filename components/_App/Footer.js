@@ -1,16 +1,14 @@
-import { useRouter } from "next/router"
+import Router from "next/router"
 import { Container, Icon, List, Flag } from "semantic-ui-react"
 import Link from "next/link"
 import { changeLang } from "../../utils/local"
 import locales from "../../data/locales.json"
 
 const Footer = ({ t }) => {
-  const router = useRouter()
-
   const changeLangClick = (newLang) => {
     changeLang(newLang)
     t = locales[newLang]
-    router.push(router.pathname)
+    Router.push(Router.pathname)
   }
   return (
     <>

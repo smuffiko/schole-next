@@ -1,13 +1,12 @@
 import React, { useEffect } from "react"
 import { Menu, Container, Icon} from "semantic-ui-react"
 import Link from "next/link"
-import Router, { useRouter } from "next/router"
+import Router from "next/router"
 import { handleLogout } from "../../utils/auth"
 import { isMobile } from "react-device-detect"
 import NProgress from "nprogress"
 
 const Header = ({ user, t }) => {
-  const router = useRouter()
   const isNew = user && user.role === "new" 
   const isUser = user && user.role === "user" 
   const isRoot = user && user.role === "root"
@@ -32,7 +31,7 @@ const Header = ({ user, t }) => {
     setIsVisible(!isVisible)
   }
 
-  const isActive = route => route === router.pathname
+  const isActive = route => route === Router.pathname
 
   return ( 
     <Menu inverted stackable fluid id="menu" style={isMobile ? {fontSize: "1rem"} : null}>
