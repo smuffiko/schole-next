@@ -90,7 +90,7 @@ const handlePostRequest = async (req, res, t) => {
 
   // create cart for new user
   
-  res.status(201).json({newUser})
+  res.status(201).json(newUser)
 
   // send back email and link todo
   /*const { _id, createdAt } = await User.findOne({ email })

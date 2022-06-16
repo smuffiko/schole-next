@@ -18,5 +18,5 @@ export default async function ApiArticles(req, res) {
 
 const handleGetRequest = async (req, res) => {
   const articles = await Article.find().sort({createdAt: -1})
-  res.status(200).json({ articles })
+  res.status(200).json(articles)
 }

@@ -53,7 +53,7 @@ export const getServerSideProps = async ctx => {
     }
     return response.json()
   }).then(data => {
-    return data.articles
+    return data
   }).catch(error => {
     console.log("Error in articles.js") // todo maybe setError or something, idk
   })

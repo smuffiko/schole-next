@@ -40,7 +40,7 @@ const handlePostRequest = async (req, res) => {
     video,
     language: lang
   }).save()
-  res.status(201).json({newArticle})
+  res.status(201).json(newArticle)
 }
 
 const handlePutRequest = async (req, res) => {

@@ -143,7 +143,7 @@ const ArticleCreate = ({ setNewArticles, t }) => {
       }
       return response.json()
     }).then(data => {
-      setNewArticles(prevState=> [data.newArticle, ...prevState])
+      setNewArticles(prevState=> [data, ...prevState])
       INITIAL_ARTICLE.key = Math.random()
       setArticle(INITIAL_ARTICLE)
       setVideo(null)

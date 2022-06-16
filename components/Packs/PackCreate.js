@@ -83,7 +83,7 @@ const PackCreate = ({ setNewPacks, t }) => {
       }
       return response.json()
     }).then(data => {
-      setNewPacks(prevState=> [data.newPack, ...prevState])
+      setNewPacks(prevState=> [data, ...prevState])
       INITIAL_PACK.key = Math.random()
       setPack(INITIAL_PACK)
       setSuccess(true)

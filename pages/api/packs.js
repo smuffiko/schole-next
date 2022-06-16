@@ -18,5 +18,5 @@ export default async function ApiPacks(req, res) {
 
 const handleGetRequest = async (req, res) => {
   const packs = await Pack.find().sort({createdAt: -1})
-  res.status(200).json({ packs })
+  res.status(200).json(packs)
 }

@@ -38,7 +38,7 @@ const handlePostRequest = async (req, res) => {
     content,
     language: lang
   }).save()
-  res.status(201).json({newPack})
+  res.status(201).json(newPack)
 }
 
 const handlePutRequest = async (req, res) => {
