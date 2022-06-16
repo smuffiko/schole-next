@@ -1,15 +1,16 @@
 import React from "react"
-import { Form, Button, Segment, Input, Message } from "semantic-ui-react"
+import { Form, Button, Segment, Input, Message, Modal } from "semantic-ui-react"
 import RichTextEditor from "../_App/RichTextEditor"
 import baseUrl from "../../utils/baseUrl"
 
 
 
-const PackUpdate = ({ pack, setShowPack, t }) => {
+const PackUpdate = ({ pack, setShowPack, setUpdate, t }) => {
   const [ updatedPack, setUpdatedPack ] = React.useState({
     title: pack.title,
     content: pack.content
   })
+  const [ modal, setModal ] = React.useState(false)
   const [disabled, setDisabled] = React.useState(true)
   const [loading, setLoading] = React.useState(false)
   const [error, setError] = React.useState("") 
@@ -100,15 +101,41 @@ const PackUpdate = ({ pack, setShowPack, t }) => {
               controls={editorOptions}
             />
           </Form.Field>
-          <Form.Field
-            control={Button}
-            color="orange"
-            icon="pencil"
-            content={t.pack.update.submit}
-            type="submit"
-            disabled={disabled || loading}
-          />
+          <Form.Group>
+            <Form.Field
+              control={Button}
+              color="orange"
+              icon="pencil"
+              content={t.pack.update.submit}
+              type="submit"
+              disabled={disabled || loading}
+            />
+            <Form.Field
+              control={Button}
+              icon="x"
+              content={t.discard}
+              type="button"
+              disabled={disabled || loading}
+              onClick={() => setModal(true)}
+            />
+          </Form.Group>
         </Form>
+        <Modal open={modal} dimmer="blurring">
+          <Modal.Header>{t.discardHeader}</Modal.Header>
+          <Modal.Content>
+            <p>{t.discardContent}</p>
+          </Modal.Content>
+          <Modal.Actions>
+            <Button onClick={() => setModal(false)} content={t.cancel} />
+            <Button
+              negative
+              icon="trash"
+              labelPosition="right"
+              content={t.discard}
+              onClick={() => setUpdate(false)}
+            />
+          </Modal.Actions>
+        </Modal>
       </Segment>
     </>
   )

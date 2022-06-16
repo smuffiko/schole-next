@@ -6,6 +6,9 @@
     "update": "Update",
     "delete": "Delete",
     "cancel": "Cancel",
+    "discard": "Discard changes",        
+    "discardHeader": "Discard changes",
+    "discardContent": "Are you sure? This can't be reverted!",
     "api": {
       "method": "Method",
       "notAllowed": "not allowed",
@@ -179,7 +182,10 @@
     "back": "Zpět na předchozí stránku",
     "update": "Upravit",
     "delete": "Smazat",
-    "cancel": "Zrušit",
+    "cancel": "Zrušit",   
+    "discard": "Zahodit úpravy",
+    "discardHeader": "Zahodit úpravy",
+    "discardContent": "Jste si jisti, že chcete zahodit úpravy? Tato akce je nevratná!",
     "api": {
       "method": "Metoda",
       "notAllowed": "není povolena",

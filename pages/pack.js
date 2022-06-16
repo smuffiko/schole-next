@@ -74,7 +74,7 @@ const Pack = ({ pack, user, t }) => {
         <PackDetails pack={showPack} />
         </>
       ) : (user.role === "admin" || user.role === "root") && (
-          <PackUpdate pack={showPack} t={t} setShowPack={setShowPack} />
+          <PackUpdate pack={showPack} t={t} setShowPack={setShowPack} setUpdate={setUpdate} />
       )}
     </Container>
     </>

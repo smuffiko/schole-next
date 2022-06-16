@@ -74,7 +74,7 @@ const Article = ({ article, user, t }) => {
         <ArticleDetails article={showArticle} />
         </>
       ) : (user.role === "admin" || user.role === "root") && (
-          <ArticleUpdate article={showArticle} t={t} setShowArticle={setShowArticle} />
+          <ArticleUpdate article={showArticle} t={t} setShowArticle={setShowArticle} setUpdate={setUpdate} />
       )}
     </Container>
     </>
