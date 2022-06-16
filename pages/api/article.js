@@ -52,8 +52,9 @@ const handlePutRequest = async (req, res) => {
 const handleDeleteRequest = async (req, res) => {
   const { _id } = req.query
   try {
-    await Article.findOneAndDelete({ _id }) // delete product by id
+    await Article.findOneAndDelete({ _id }) // delete article by id
     /* // delete recursive from packs and cart
+    TODO
     await Cart.updateMany(
       { "articles.article": _id },
       { $pull: { articles: { article: _id } } }
@@ -62,6 +63,6 @@ const handleDeleteRequest = async (req, res) => {
     res.status(204).json({})
   } catch (error) {
     console.error(error)
-    res.status(500).send("Error deleting product") // todo local
+    res.status(500).send("Error deleting article") // todo local
   }
 }
