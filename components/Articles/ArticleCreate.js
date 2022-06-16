@@ -47,6 +47,7 @@ const ArticleCreate = ({ setNewArticles, t }) => {
   ]
 
   React.useEffect(()=>{
+    console.log(article)
     const delayDebounceFn = setTimeout(() => {
       const isArticle = Boolean(article.title) && Boolean(article.content) && article.content !== "<p><br></p>" && Boolean(article.lang)
       isArticle ? setDisabled(false) : setDisabled(true)
@@ -113,7 +114,6 @@ const ArticleCreate = ({ setNewArticles, t }) => {
     const url = `${baseUrl}/api/article`
     const { title, content, lang, videoUrl } = article
     const payload = { title, content, lang }
-
     if(videoUrl!==null) payload.videoUrl = videoUrl
     else if(article.video) {
       setVideoLoading(true)
@@ -121,10 +121,11 @@ const ArticleCreate = ({ setNewArticles, t }) => {
       setVideoLoading(false)
       payload.videoUrl = videoData.url
     }
+    
     if(payload.videoUrl!==null) { // if it is youtue link, then chceck or update url
       if(payload.videoUrl.includes("youtube.com")) {
         const list = payload.videoUrl.indexOf("&list")
-        if(list) payload.videoUrl=payload.videoUrl.substring(0,list)
+        if(list!==-1) payload.videoUrl=payload.videoUrl.substring(0,list)
       }
     }
 
