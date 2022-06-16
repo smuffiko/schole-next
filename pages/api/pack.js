@@ -26,7 +26,9 @@ export default async function ApiPack(req, res) {
 }
 
 const handleGetRequest = async (req, res) => {
-  // todo
+  const { _id } = req.query
+  const pack = await Pack.findOne({ _id })
+  res.status(200).json(pack)
 }
 
 const handlePostRequest = async (req, res) => {
@@ -40,9 +42,24 @@ const handlePostRequest = async (req, res) => {
 }
 
 const handlePutRequest = async (req, res) => {
-  // todo
+  const { _id, title, content } = req.body
+  const pack = await Pack.findOneAndUpdate({ _id }, { title, content }, { new: true })
+  res.status(203).json(pack)
 }
 
 const handleDeleteRequest = async (req, res) => {
-  // todo
+  const { _id } = req.query
+  try {
+    await Pack.findOneAndDelete({ _id }) // delete pack by id
+    /* // delete recursive from packs and cart
+    TODO
+    await Cart.updateMany(
+      { "articles.article": _id },
+      { $pull: { articles: { article: _id } } }
+    )
+    */
+    res.status(204).json({})
+  } catch (error) {
+    res.status(500).send("Error deleting pack") // todo local
+  }
 }

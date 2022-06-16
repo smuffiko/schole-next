@@ -13,7 +13,7 @@ const PacksList = ({ packs, showPacks, setShowPacks, t }) => {
       >
         <Card.Header
           as="h3"
-          onClick={()=>{ Router.push(`pack?_id=${pack._id}`)}}
+          onClick={()=>{ Router.push(`/pack?_id=${pack._id}`) }}
           style={{paddingTop:"1.6em",textAlign:"center"}}
         >
           <a>{pack.title}</a>

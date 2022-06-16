@@ -3,10 +3,12 @@ import { Form, Button, Segment, Input, Message } from "semantic-ui-react"
 import RichTextEditor from "../_App/RichTextEditor"
 import baseUrl from "../../utils/baseUrl"
 
-const ArticleUpdate = ({ article, setShowArticle, t }) => {
-  const [updatedArticle, setUpdatedArticle] = React.useState({
-    title: article.title,
-    content: article.content
+
+
+const PackUpdate = ({ pack, setShowPack, t }) => {
+  const [ updatedPack, setUpdatedPack ] = React.useState({
+    title: pack.title,
+    content: pack.content
   })
   const [disabled, setDisabled] = React.useState(true)
   const [loading, setLoading] = React.useState(false)
@@ -22,25 +24,25 @@ const ArticleUpdate = ({ article, setShowArticle, t }) => {
   ]
 
   React.useEffect(()=>{
-    const isArticle = Object.values(updatedArticle).every(el => Boolean(el))
-    isArticle ? setDisabled(false) : setDisabled(true)
-  },[updatedArticle])
-
+    const isPack = Object.values(updatedPack).every(el => Boolean(el))
+    isPack ? setDisabled(false) : setDisabled(true)
+  },[updatedPack])
+  
   const handleChange = (event, { value }) => {
-    const name = event.target.name 
-    setUpdatedArticle(prevState => ({ ...prevState, [name]: value }))
-  } 
+    const name = event.target.name
+    setUpdatedPack(prevState => ({ ...prevState, [name]: value }))
+  }
   const handleChangeEditor = val => {
-    setUpdatedArticle(prevState => ({ ...prevState, content: val.target.innerHTML }))
+    setUpdatedPack(prevState => ({ ...prevState, content: val.target.innerHTML }))
   }
 
   const handleSubmit = async event => {
     event.preventDefault()
     setLoading(true)
     setError("")
-    const url = `${baseUrl}/api/article`
-    const { _id } = article
-    const { title, content } = updatedArticle
+    const url = `${baseUrl}/api/pack`
+    const { _id } = pack
+    const { title, content } = updatedPack
     const payload = { title, content, _id }
     await fetch(url,{
       method: "PUT",
@@ -55,7 +57,7 @@ const ArticleUpdate = ({ article, setShowArticle, t }) => {
       }
       return response.json()
     }).then(data => {
-      setShowArticle(data)
+      setShowPack(data)
     }).catch(error=>{
       setError(error.message)
     })
@@ -63,12 +65,12 @@ const ArticleUpdate = ({ article, setShowArticle, t }) => {
       setLoading(false)
     })
   }
-  
+
   return (
     <>
       <Message
         icon="pencil"
-        header={t.article.update.header}
+        header={t.pack.update.header}
         color="orange"
       />
       <Segment>
@@ -79,20 +81,21 @@ const ArticleUpdate = ({ article, setShowArticle, t }) => {
         >
           <Message error 
             header={t.error}
-            content={error} />
+            content={error}
+          />
           <Form.Field
             control={Input}
             name="title"
-            label={t.article.update.title}
-            placeholder={t.article.update.title}
+            label={t.pack.update.title}
+            placeholder={t.pack.update.title}
             onChange={handleChange}
-            value={updatedArticle.title}
+            value={updatedPack.title}
           />
           <Form.Field>
-            <label>{t.article.update.content}</label>
+            <label>{t.pack.update.content}</label>
             <RichTextEditor
               radius="md"
-              value={updatedArticle.content}
+              value={updatedPack.content}
               onBlur={handleChangeEditor}
               controls={editorOptions}
             />
@@ -101,7 +104,7 @@ const ArticleUpdate = ({ article, setShowArticle, t }) => {
             control={Button}
             color="orange"
             icon="pencil"
-            content={t.article.update.submit}
+            content={t.pack.update.submit}
             type="submit"
             disabled={disabled || loading}
           />
@@ -111,4 +114,4 @@ const ArticleUpdate = ({ article, setShowArticle, t }) => {
   )
 }
  
-export default ArticleUpdate
+export default PackUpdate

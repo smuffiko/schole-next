@@ -160,6 +160,16 @@
         "packsList": "Packs list",
         "loadNext": "Load next packs",
         "loadAll": "Load all packs"
+      },
+      "delete": {
+        "confirm": "Confirm delete",
+        "content": "Are you sure you want to delete this pack?"
+      },
+      "update": {
+        "header": "Update pack",
+        "title": "Title",
+        "content": "Content",
+        "submit": "Save pack"
       }
     }
   },
@@ -320,6 +330,16 @@
         "packsList": "Seznam balíčků",
         "loadNext": "Načíst další balíčky",
         "loadAll": "Načíst všechny balíčky"
+      },
+      "delete": {
+        "confirm": "Potvrzení smazání",
+        "content": "Jste si jisti, že chcete trvale smazat tento balíček?"
+      },
+      "update": {
+        "header": "Úprava balíčku",
+        "title": "Název",
+        "content": "Obsah",
+        "submit": "Uložit úpravy"
       }
     }
   }
