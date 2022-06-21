@@ -13,7 +13,7 @@ const Article = ({ article, user, t }) => {
   const isBought = true // todo DB check
 
   React.useEffect(()=>{
-    if(!isBought || user.role!== "admin" || user.role!==!"root") Router.push("/404")  // unauthorized -> redirect
+    if(!isBought || user.role!== "admin" && user.role!=="root") Router.push("/404")  // unauthorized -> redirect
   },[])
 
   React.useEffect(()=>{

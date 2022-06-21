@@ -6,9 +6,10 @@ import baseUrl from "../../utils/baseUrl"
 const ArticleUpdate = ({ article, setShowArticle, setUpdate, t }) => {
   const [updatedArticle, setUpdatedArticle] = React.useState({
     title: article.title,
+    description: article.description,
     content: article.content
   })
-  const [ modal, setModal ] = React.useState(false)
+  const [modal, setModal] = React.useState(false)
   const [disabled, setDisabled] = React.useState(true)
   const [loading, setLoading] = React.useState(false)
   const [error, setError] = React.useState("") 
@@ -41,8 +42,8 @@ const ArticleUpdate = ({ article, setShowArticle, setUpdate, t }) => {
     setError("")
     const url = `${baseUrl}/api/article`
     const { _id } = article
-    const { title, content } = updatedArticle
-    const payload = { title, content, _id }
+    const { title, content, description } = updatedArticle
+    const payload = { title, content, description, _id }
     await fetch(url,{
       method: "PUT",
       headers: {
@@ -88,6 +89,14 @@ const ArticleUpdate = ({ article, setShowArticle, setUpdate, t }) => {
             placeholder={t.article.update.title}
             onChange={handleChange}
             value={updatedArticle.title}
+          />
+          <Form.Field
+            control={Input}
+            name="description"
+            label={t.article.update.description}
+            placeholder={t.article.update.description}
+            onChange={handleChange}
+            value={updatedArticle.description}
           />
           <Form.Field>
             <label>{t.article.update.content}</label>

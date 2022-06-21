@@ -33,7 +33,7 @@ const ArticlesList = ({ articles, showArticles, setShowArticles, t }) => {
           {`${article.language.toUpperCase()} ${dateTime(article.createdAt)}`}
         </Card.Meta>
         <Card.Description style={{padding:"1em", textAlign:"justify"}} >
-          {article.content.replace(/<\/?[^>]+(>|$)/g, " ").replace("  "," ").substring(0,300)}...
+          {article.description}
         </Card.Description>
       </Card>
     )

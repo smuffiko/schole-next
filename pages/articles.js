@@ -23,7 +23,7 @@ const Articles = ({ articles, t }) => {
           t={t}
           setNewArticles={setNewArticles}
         />
-        {articles.length!==0 && (
+        {newArticles.length!==0 && (
           <>
             <ArticlesList
               t={t}

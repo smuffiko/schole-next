@@ -27,7 +27,7 @@ const Packs = ({ packs, user, t }) => {
             />
           </>
         )}
-        {packs.length!==0 && (
+        {newPacks.length!==0 && (
           <>
             <PacksList
               t={t}

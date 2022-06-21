@@ -18,7 +18,6 @@ const PacksArticlesList = ({ pack, update, t }) => {
         }
         return response.json()
       })
-      console.log(data)
       setArticles(data)
     } else { // normal page -> pack.articles
       setArticles(pack.articles)
@@ -31,7 +30,8 @@ const PacksArticlesList = ({ pack, update, t }) => {
     const items = articles.map(article =>({
       key: article._id,
       header: <Card.Header> {article.video ? <Icon name="play" /> : ""} {article.title} </Card.Header>,
-      meta: dateTime(article.createdAt)
+      meta: dateTime(article.createdAt),
+      description: article.description
     }))
     return items
   }

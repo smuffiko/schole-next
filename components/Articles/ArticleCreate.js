@@ -7,6 +7,7 @@ import { convertBytes } from "../../utils/convertBytes"
 
 const INITIAL_ARTICLE = {
   title: "",
+  description: "",
   content: "<p><br></p>",
   lang: "",
   videoUrl: "",
@@ -47,9 +48,12 @@ const ArticleCreate = ({ setNewArticles, t }) => {
   ]
 
   React.useEffect(()=>{
-    console.log(article)
     const delayDebounceFn = setTimeout(() => {
-      const isArticle = Boolean(article.title) && Boolean(article.content) && article.content !== "<p><br></p>" && Boolean(article.lang)
+      const isArticle = Boolean(article.title)
+        && Boolean(article.description)
+        && Boolean(article.content)
+        && article.content !== "<p><br></p>"
+        && Boolean(article.lang)
       isArticle ? setDisabled(false) : setDisabled(true)
     }, 500)
     return () => clearTimeout(delayDebounceFn)
@@ -112,8 +116,8 @@ const ArticleCreate = ({ setNewArticles, t }) => {
     setError("")
 
     const url = `${baseUrl}/api/article`
-    const { title, content, lang, videoUrl } = article
-    const payload = { title, content, lang }
+    const { title, content, lang, videoUrl, description } = article
+    const payload = { title, content, lang, description }
     if(videoUrl!==null) payload.videoUrl = videoUrl
     else if(article.video) {
       setVideoLoading(true)
@@ -238,7 +242,15 @@ const ArticleCreate = ({ setNewArticles, t }) => {
               value={article.videoUrl}
               className="thirteen wide"
             />
-          </Form.Group>
+          </Form.Group>          
+          <Form.Field
+            control={Input}
+            name="description"
+            label={t.article.create.description}
+            placeholder={t.article.create.description}
+            onChange={handleChange}
+            value={article.description}
+          />
           <Form.Field>
             <label>{t.article.create.content}</label>
             <RichTextEditor

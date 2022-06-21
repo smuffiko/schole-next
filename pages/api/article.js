@@ -32,20 +32,22 @@ const handleGetRequest = async (req, res) => {
 }
 
 const handlePostRequest = async (req, res) => {
-  const { title, content, lang, videoUrl } = req.body
+  const { title, content, lang, videoUrl, description } = req.body
   const video = videoUrl ? videoUrl : null
   const newArticle = await new Article({
     title,
+    description,
     content,
     video,
     language: lang
   }).save()
+  console.log(newArticle)
   res.status(201).json(newArticle)
 }
 
 const handlePutRequest = async (req, res) => {
-  const { _id, title, content } = req.body
-  const article = await Article.findOneAndUpdate({ _id }, { title, content }, { new: true })
+  const { _id, title, description, content } = req.body
+  const article = await Article.findOneAndUpdate({ _id }, { title, description, content }, { new: true })
   res.status(203).json(article)
 }
 
