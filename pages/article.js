@@ -10,6 +10,11 @@ const Article = ({ article, user, t }) => {
   const [modal, setModal] = React.useState(false)
   const [update, setUpdate] = React.useState(false)
   const [showArticle, setShowArticle] = React.useState(article)
+  const isBought = true // todo DB check
+
+  React.useEffect(()=>{
+    if(!isBought || user.role!== "admin" || user.role!==!"root") Router.push("/404")  // unauthorized -> redirect
+  },[])
 
   React.useEffect(()=>{
     setUpdate(false)
@@ -71,10 +76,10 @@ const Article = ({ article, user, t }) => {
             </Modal>
           </>
         )}
-        <ArticleDetails article={showArticle} />
+          <ArticleDetails article={showArticle} />
         </>
       ) : (user.role === "admin" || user.role === "root") && (
-          <ArticleUpdate article={showArticle} t={t} setShowArticle={setShowArticle} setUpdate={setUpdate} />
+        <ArticleUpdate article={showArticle} t={t} setShowArticle={setShowArticle} setUpdate={setUpdate} />
       )}
     </Container>
     </>

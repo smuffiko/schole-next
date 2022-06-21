@@ -35,6 +35,7 @@ class MyApp extends App {
     if(!token) {
       // not logged user  
       if(ctx.pathname === "/packs"
+        || ctx.pathname === "/pack"
         || ctx.pathname === "/my-packs"
         || ctx.pathname === "/cart"
         || ctx.pathname === "/articles"

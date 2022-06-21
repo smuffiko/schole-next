@@ -5,6 +5,7 @@ import PackDetails from "../components/Packs/PackDetails"
 import baseUrl from "../utils/baseUrl"
 import Back from "../components/_App/Back"
 import PackUpdate from "../components/Packs/PackUpdate"
+import PacksArticlesList from "../components/Packs/PacksArticlesList"
 
 const Pack = ({ pack, user, t }) => {
   const [modal, setModal] = React.useState(false)
@@ -71,11 +72,14 @@ const Pack = ({ pack, user, t }) => {
             </Modal>
           </>
         )}
-        <PackDetails pack={showPack} />
+          <PackDetails pack={showPack} />
         </>
       ) : (user.role === "admin" || user.role === "root") && (
+        <>
           <PackUpdate pack={showPack} t={t} setShowPack={setShowPack} setUpdate={setUpdate} />
+        </>
       )}
+      <PacksArticlesList pack={pack} t={t} update={update} />
     </Container>
     </>
   )
