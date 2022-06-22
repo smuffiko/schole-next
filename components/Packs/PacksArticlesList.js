@@ -1,5 +1,5 @@
 import React from "react"
-import { Card, Icon, Item, List, Segment } from "semantic-ui-react"
+import { Button, Card, Checkbox, Icon, Item, List, Segment } from "semantic-ui-react"
 import baseUrl from "../../utils/baseUrl"
 import { dateTime } from "../../utils/formatDate"
 
@@ -26,23 +26,30 @@ const PacksArticlesList = ({ pack, update, t }) => {
 
   const mapArticlesToItems = () => { 
     if(articles.length==0) 
-      return [{ header: "No article yet"}] // todo local
-    const items = articles.map(article =>({
-      key: article._id,
-      header: <Card.Header> {article.video ? <Icon name="play" /> : ""} {article.title} </Card.Header>,
-      meta: dateTime(article.createdAt),
-      description: article.description
-    }))
+      return <Item.Content>No article yet</Item.Content> // todo local
+    const items = articles.map(article =>(
+      <Item key={article._id} style={{position:"relative"}}>
+        <div style={{position:"relative"}}>
+          <Checkbox
+            slider
+          />
+        </div>
+      <Item.Content style={{marginLeft:"1em"}}>
+        <Item.Header>{article.title}</Item.Header>
+        <Item.Meta>{article.language.toUpperCase()} {dateTime(article.createdAt)}</Item.Meta>
+        <Item.Description>{article.description}</Item.Description>
+      </Item.Content>
+      </Item>
+    ))
     return items
   }
 
   return (
     <>
       <Segment>
-        <Item.Group
-          divided
-          items={mapArticlesToItems()}
-        />
+        <Item.Group divided unstackable>
+          {mapArticlesToItems()}
+        </Item.Group>
       </Segment>
     </>
   )
