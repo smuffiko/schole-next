@@ -8,7 +8,8 @@ const PacksArticlesList = ({ pack, update, t }) => {
 
   React.useEffect(async ()=>{
     if(update) { // update page -> all articles
-      const url = `${baseUrl}/api/articles`
+      const language = pack.language
+      const url = `${baseUrl}/api/articles?language=${language}`
       const data = await fetch(url,{
         method: "GET"
       }).then(async response=> {
@@ -24,34 +25,39 @@ const PacksArticlesList = ({ pack, update, t }) => {
     }
   },[update])
 
-  const mapArticlesToItems = () => { 
-    if(articles.length==0) 
-      return <Item.Content>No article yet</Item.Content> // todo local
-    const items = articles.map(article =>(
-      <Item key={article._id} style={{position:"relative"}}>
-        <div style={{position:"relative"}}>
-          <Checkbox
-            slider
-          />
-        </div>
-      <Item.Content style={{marginLeft:"1em"}}>
-        <Item.Header>{article.title}</Item.Header>
-        <Item.Meta>{article.language.toUpperCase()} {dateTime(article.createdAt)}</Item.Meta>
-        <Item.Description>{article.description}</Item.Description>
-      </Item.Content>
-      </Item>
-    ))
-    return items
-  }
-
   return (
     <>
+    {articles.length!==0 && (
       <Segment>
-        <Item.Group divided unstackable>
-          {mapArticlesToItems()}
-        </Item.Group>
+          <Item.Group divided unstackable>
+            {articles.map(article =>
+              <ArticleToItem key={article._id} article={article} pack={pack} />
+            )}
+          </Item.Group>
       </Segment>
+    )}
     </>
+  )
+}
+
+const ArticleToItem = ({ article, pack }) => {
+
+  const isInPack = pack.articles.find(a => a._id === article._id)
+  
+  return (
+    <Item style={{position:"relative"}}>
+      <div style={{position:"relative"}}>
+        <Checkbox
+          checked={isInPack}
+          slider
+        />
+      </div>
+    <Item.Content style={{marginLeft:"1em"}}>
+      <Item.Header>{article.title}</Item.Header>
+      <Item.Meta>{article.language.toUpperCase()} {dateTime(article.createdAt)}</Item.Meta>
+      <Item.Description>{article.description}</Item.Description>
+    </Item.Content>
+    </Item>
   )
 }
  

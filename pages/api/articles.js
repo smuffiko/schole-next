@@ -17,6 +17,10 @@ export default async function ApiArticles(req, res) {
 }
 
 const handleGetRequest = async (req, res) => {
-  const articles = await Article.find().sort({createdAt: -1})
+  const { language } = req.query
+  
+  const articles = language===undefined ? 
+    await Article.find().sort({createdAt: -1})
+    : await Article.find({language}).sort({createdAt: -1})
   res.status(200).json(articles)
 }
