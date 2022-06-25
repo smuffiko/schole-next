@@ -1,4 +1,9 @@
 import mongoose from "mongoose"
+require("../models/Article")
+require("../models/Cart")
+require("../models/Pack")
+require("../models/User")
+
 const connection = {}
 
 async function connectDB() {

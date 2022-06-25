@@ -59,12 +59,16 @@ const PackUpdate = ({ pack, setShowPack, setUpdate, t }) => {
       return response.json()
     }).then(data => {
       setShowPack(data)
+      setUpdate(false)
     }).catch(error=>{
       setError(error.message)
-    })
-    .finally(()=>{
       setLoading(false)
     })
+  }
+
+  const handleDiscard = () => {
+    setShowPack(pack)
+    setUpdate(false)
   }
 
   return (
@@ -132,7 +136,7 @@ const PackUpdate = ({ pack, setShowPack, setUpdate, t }) => {
               icon="trash"
               labelPosition="right"
               content={t.discard}
-              onClick={() => setUpdate(false)}
+              onClick={handleDiscard}
             />
           </Modal.Actions>
         </Modal>

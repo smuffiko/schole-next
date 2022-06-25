@@ -163,7 +163,8 @@
       "list": {
         "packsList": "Packs list",
         "loadNext": "Load next packs",
-        "loadAll": "Load all packs"
+        "loadAll": "Load all packs",
+        "articlesList": "Articles list"
       },
       "delete": {
         "confirm": "Confirm delete",
@@ -337,7 +338,8 @@
       "list": {
         "packsList": "Seznam balíčků",
         "loadNext": "Načíst další balíčky",
-        "loadAll": "Načíst všechny balíčky"
+        "loadAll": "Načíst všechny balíčky",
+        "articlesList": "Seznam článků"
       },
       "delete": {
         "confirm": "Potvrzení smazání",

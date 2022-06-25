@@ -41,7 +41,6 @@ const handlePostRequest = async (req, res) => {
     video,
     language: lang
   }).save()
-  console.log(newArticle)
   res.status(201).json(newArticle)
 }
 
