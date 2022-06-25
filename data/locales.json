@@ -155,6 +155,7 @@
         "language": "Language",
         "selectLanguage": "Select language",
         "header": "Add new pack.",
+        "description": "Description",
         "title": "Title",
         "content": "Content",
         "submit": "Add new pack",
@@ -173,6 +174,7 @@
       "update": {
         "header": "Update pack",
         "title": "Title",
+        "description": "Description",
         "content": "Content",
         "submit": "Save pack"
       }
@@ -330,6 +332,7 @@
         "language": "Jazyk",
         "selectLanguage": "Vyberte jazyk",
         "header": "Vytvoření nového balíčku.",
+        "description": "Krátký popis",
         "title": "Název",
         "content": "Obsah",
         "submit": "Vytvořit balíček",
@@ -349,6 +352,7 @@
         "header": "Úprava balíčku",
         "title": "Název",
         "content": "Obsah",
+        "description": "Krátký popis",
         "submit": "Uložit úpravy"
       }
     }

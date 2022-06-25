@@ -5,6 +5,7 @@ import RichTextEditor from "../_App/RichTextEditor"
 
 const INITIAL_PACK = {
   title: "",
+  description: "",
   content: "<p><br></p>",
   lang: "",
   key: Math.random()
@@ -44,7 +45,7 @@ const PackCreate = ({ setNewPacks, t }) => {
 
   React.useEffect(()=>{
     const delayDebounceFn = setTimeout(() => {
-      const isPack = Boolean(pack.title) && Boolean(pack.content) && pack.content !== "<p><br></p>" && Boolean(pack.lang)
+      const isPack = Boolean(pack.title) && Boolean(pack.content) && pack.content !== "<p><br></p>" && Boolean(pack.lang) && Boolean(pack.description)
       isPack ? setDisabled(false) : setDisabled(true)
     }, 500)
     return () => clearTimeout(delayDebounceFn)
@@ -66,8 +67,8 @@ const PackCreate = ({ setNewPacks, t }) => {
     setError("")
 
     const url = `${baseUrl}/api/pack`
-    const { title, content, lang } = pack
-    const payload = { title, content, lang }
+    const { title, content, description, lang } = pack
+    const payload = { title, content, description, lang }
 
     setLoading(true)
     await fetch(url, {
@@ -133,6 +134,14 @@ const PackCreate = ({ setNewPacks, t }) => {
             placeholder={t.pack.create.title}
             onChange={handleChange}
             value={pack.title}
+          />
+          <Form.Field
+            control={Input}
+            name="description"
+            label={t.pack.create.description}
+            placeholder={t.pack.create.description}
+            onChange={handleChange}
+            value={pack.description}
           />
           <Form.Field>
             <label>{t.pack.create.content}</label>

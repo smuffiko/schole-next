@@ -8,6 +8,7 @@ import baseUrl from "../../utils/baseUrl"
 const PackUpdate = ({ pack, setShowPack, setUpdate, t }) => {
   const [ updatedPack, setUpdatedPack ] = React.useState({
     title: pack.title,
+    description: pack.description,
     content: pack.content
   })
   const [ modal, setModal ] = React.useState(false)
@@ -25,7 +26,7 @@ const PackUpdate = ({ pack, setShowPack, setUpdate, t }) => {
   ]
 
   React.useEffect(()=>{
-    const isPack = Object.values(updatedPack).every(el => Boolean(el))
+    const isPack = Boolean(pack.title) && Boolean(pack.content) && pack.content !== "<p><br></p>"  && Boolean(pack.description)
     isPack ? setDisabled(false) : setDisabled(true)
   },[updatedPack])
   
@@ -43,8 +44,8 @@ const PackUpdate = ({ pack, setShowPack, setUpdate, t }) => {
     setError("")
     const url = `${baseUrl}/api/pack`
     const { _id } = pack
-    const { title, content } = updatedPack
-    const payload = { title, content, _id }
+    const { title, content, description } = updatedPack
+    const payload = { title, content, description, _id }
     await fetch(url,{
       method: "PUT",
       headers: {
@@ -95,6 +96,14 @@ const PackUpdate = ({ pack, setShowPack, setUpdate, t }) => {
             placeholder={t.pack.update.title}
             onChange={handleChange}
             value={updatedPack.title}
+          />
+          <Form.Field
+            control={Input}
+            name="description"
+            label={t.pack.update.description}
+            placeholder={t.pack.update.description}
+            onChange={handleChange}
+            value={updatedPack.description}
           />
           <Form.Field>
             <label>{t.pack.update.content}</label>

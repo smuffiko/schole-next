@@ -22,7 +22,7 @@ const PacksList = ({ packs, showPacks, setShowPacks, t }) => {
           {`${pack.language.toUpperCase()} ${dateTime(pack.createdAt)}`}
         </Card.Meta>
         <Card.Description style={{padding:"1em", textAlign:"justify"}} >
-          {pack.content.replace(/<\/?[^>]+(>|$)/g, " ").replace("  "," ").substring(0,300)}...
+          {pack.description}
         </Card.Description>
       </Card>
     )

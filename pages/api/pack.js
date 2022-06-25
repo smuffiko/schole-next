@@ -35,9 +35,10 @@ const handleGetRequest = async (req, res) => {
 }
 
 const handlePostRequest = async (req, res) => {
-  const { title, content, lang } = req.body
+  const { title, content, description, lang } = req.body
   const newPack = await new Pack({
     title,
+    description,
     content,
     language: lang
   }).save()
@@ -45,9 +46,9 @@ const handlePostRequest = async (req, res) => {
 }
 
 const handlePutRequest = async (req, res) => {
-  const { _id, title, content, article, isInPack } = req.body
+  const { _id, title, content, description, article, isInPack } = req.body
   if(article === undefined) { // updating pack details
-    const pack = await Pack.findOneAndUpdate({ _id }, { title, content }, { new: true }).populate({ path: "articles.article", model: "Article" })
+    const pack = await Pack.findOneAndUpdate({ _id }, { title, content, description }, { new: true }).populate({ path: "articles.article", model: "Article" })
     res.status(203).json(pack)
   } else { // updating articles
     if(isInPack) { // set article to pack
