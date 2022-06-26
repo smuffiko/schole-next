@@ -32,7 +32,15 @@ const PacksArticlesList = ({ pack, update, allArticles, setShowPack, t }) => {
               {articles.map(a => {
                 const article = a.article ? a.article : a
                 return (
-                  <ArticleToItem key={article._id} article={article} pack={pack} setShowPack={setShowPack} update={update} loading={loading} setLoading={setLoading} />
+                  <ArticleToItem
+                    key={article._id}
+                    article={article}
+                    pack={pack}
+                    setShowPack={setShowPack}
+                    update={update}
+                    loading={loading}
+                    setLoading={setLoading}
+                  />
                 )
               })}
             </Item.Group>

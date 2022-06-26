@@ -3,6 +3,7 @@ import isEmail from "validator/lib/isEmail"
 import isLength from "validator/lib/isLength"
 import bcrypt from "bcrypt"
 import User from "../../models/User"
+import Cart from "../../models/Cart"
 import locales from "../../data/locales.json"
 
 connectDB()
@@ -89,6 +90,7 @@ const handlePostRequest = async (req, res, t) => {
   }).save()
 
   // create cart for new user
+  await new Cart({ user: newUser._id}).save()
   
   res.status(201).json(newUser)
 

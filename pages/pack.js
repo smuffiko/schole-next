@@ -7,7 +7,7 @@ import Back from "../components/_App/Back"
 import PackUpdate from "../components/Packs/PackUpdate"
 import PacksArticlesList from "../components/Packs/PacksArticlesList"
 
-const Pack = ({ pack, articles, user, t }) => {
+const Pack = ({ pack, articles, user, cart, t }) => {
   const [modal, setModal] = React.useState(false)
   const [update, setUpdate] = React.useState(false)
   const [showPack, setShowPack] = React.useState(pack)
@@ -68,7 +68,7 @@ const Pack = ({ pack, articles, user, t }) => {
             </Modal>
           </>
         )}
-          <PackDetails pack={showPack} />
+          <PackDetails pack={showPack} user={user} cart={cart} />
         </>
       ) : (user.role === "admin" || user.role === "root") && (
         <>

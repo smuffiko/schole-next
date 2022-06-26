@@ -58,7 +58,7 @@ class MyApp extends App {
           throw new Error(er)
         }
         return await response.json()
-      }).then(user => {
+      }).then(async user => {
         // set user to page props
         pageProps.user = user
 
@@ -90,6 +90,27 @@ class MyApp extends App {
           || ctx.pathname === "/cart"
         ))
           redirectUser("/")
+        
+        if(isUser) { // for user get cart
+          const url = `${baseUrl}/api/cart`
+          await fetch(url,{
+            method: "GET",
+            headers: {
+              "Content-type": "application/json",
+              "authorization": token
+            }
+          }).then(async response => {
+            if(!response.ok) {
+              const er = await response.text()
+              throw new Error(er)
+            }
+            return await response.json()
+          }).then(cart => {
+            pageProps.cart = cart
+          }).catch(error => {
+            console.log("error getting cart") // todo local or smt
+          })
+        } 
       }).catch(error => { // todo send error message
         // 1) Throw out invalid token
         destroyCookie(null, "token")
