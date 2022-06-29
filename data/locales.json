@@ -12,9 +12,10 @@
     "api": {
       "method": "Method",
       "notAllowed": "not allowed",
+      "noToken": "No authorization token",
+      "loginAgain": "Please login again",
       "account": {
         "get": {
-          "noToken":"No authorization token",
           "userNotFound": "User not found"
         }
       },
@@ -151,6 +152,8 @@
       }
     },
     "pack": {
+      "isBought": "Pack is already bought",
+      "inInCart": "Pack is in cart",
       "create": {
         "language": "Language",
         "selectLanguage": "Select language",
@@ -179,6 +182,12 @@
         "content": "Content",
         "submit": "Save pack"
       }
+    },
+    "cart": {
+      "noPacks": "No packs in your cart. Add some!",
+      "viewPacks": "View packs",
+      "addToCart": "Add to cart",
+      "price": "Price"
     }
   },
   "cz": {

@@ -12,13 +12,13 @@ export default async function ApiCart(req, res) {
   const t = locales[req.cookies.local] // setting local file
   switch(req.method) {
     case "GET":
-      await handleGetRequest(req, res)
+      await handleGetRequest(req, res, t)
       break
     case "PUT":
-      await handlePutRequest(req, res)
+      await handlePutRequest(req, res, t)
       break
     case "DELETE":
-      await handleDeleteRequest(req, res)
+      await handleDeleteRequest(req, res, t)
       break
     default:
       res.status(405).send(`${t.api.method} ${req.method} ${t.api.notAllowed}`)
@@ -26,9 +26,9 @@ export default async function ApiCart(req, res) {
   }
 }
 
-const handleGetRequest = async(req, res) => {
+const handleGetRequest = async(req, res, t) => {
   if (!("authorization" in req.headers)) {
-    return res.status(401).send("No authorization token") // todo local
+    return res.status(401).send(t.api.noToken)
   }
   try {
     const { userId } = jwt.verify(
@@ -42,14 +42,14 @@ const handleGetRequest = async(req, res) => {
     res.status(200).json(cart.packs)
   } catch (error) {
     console.error(error)
-    res.status(403).send("Please login again") // todo local
+    res.status(403).send(t.api.loginAgain)
   }
 }
 
-const handlePutRequest = async(req, res) => {
+const handlePutRequest = async(req, res, t) => {
   const { pack } = req.body
   if (!("authorization" in req.headers)) {
-    return res.status(401).send("No authorization token") // todo local
+    return res.status(401).send(t.api.noToken)
   }
   try {
     const { userId } = jwt.verify(
@@ -73,14 +73,14 @@ const handlePutRequest = async(req, res) => {
     } else res.status(200).json(cart)
   } catch (error) {
     console.error(error);
-    res.status(403).send("Please login again") // todo local
+    res.status(403).send(t.api.loginAgain)
   }
 }
 
-const handleDeleteRequest = async(req, res) => {
+const handleDeleteRequest = async(req, res, t) => {
   const { pack } = req.query
   if (!("authorization" in req.headers)) {
-    return res.status(401).send("No authorization token") // todo local
+    return res.status(401).send(t.api.noToken)
   }
   try {
     const { userId } = jwt.verify(
@@ -98,6 +98,6 @@ const handleDeleteRequest = async(req, res) => {
     res.status(200).json(cart.packs)
   } catch (error) {
     console.error(error);
-    res.status(403).send("Please login again") // todo local
+    res.status(403).send(t.api.loginAgain)
   }
 }

@@ -52,7 +52,7 @@ const handlePostRequest = async (req, res, t) => {
     message.push(t.api.signup.post.loginName)
 
     
-  // does email exists? todo
+  // does email exists?
   if(await User.findOne({ email }))
     message.push(t.api.signup.post.emailExists)
   else {

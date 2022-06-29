@@ -19,7 +19,7 @@ export default async function ApiAccount(req, res) {
 
 const handleGetRequest = async (req, res, t) => {
   if (!("authorization" in req.headers)) {
-    return res.status(401).send(t.api.account.get.noToken)
+    return res.status(401).send(t.api.noToken)
   }
   const { userId } = jwt.verify(
     req.headers.authorization,

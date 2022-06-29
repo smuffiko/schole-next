@@ -3,7 +3,7 @@ import { Button} from "semantic-ui-react"
 import baseUrl from "../../utils/baseUrl"
 import cookie from "js-cookie"
 
-const AddPackToCart = ({ pack, setIsInCart }) => {
+const AddPackToCart = ({ pack, setIsInCart, t }) => {
   const [loading, setLoading] = React.useState(false) 
 
   const handleAddPackToCart = async()=> {
@@ -37,10 +37,10 @@ const AddPackToCart = ({ pack, setIsInCart }) => {
   <>
     <Button
       type="button"
-      content="Add to cart" //todo local
+      content={t.cart.addToCart}
       icon="plus cart"
       color="purple"
-      label={`Cena: ${pack.price},- Kč`} // todo local
+      label={`${t.cart.price}: ${pack.price},- Kč`}
       floated="right"
       loading={loading}
       disabled={loading}

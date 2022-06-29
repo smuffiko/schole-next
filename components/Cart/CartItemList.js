@@ -2,7 +2,7 @@ import Router from "next/router"
 import { Item, Header, Button, Icon, Container } from "semantic-ui-react"
 
 
-const CartItemList = ({ cartPacks, handleRemoveFromCart }) => {
+const CartItemList = ({ cartPacks, handleRemoveFromCart, t }) => {
   const router = Router.useRouter()
 
   const mapPacksToListItems = () => (
@@ -31,11 +31,13 @@ const CartItemList = ({ cartPacks, handleRemoveFromCart }) => {
         <Container fluid textAlign="center">
           <Header icon>
             <Icon name="shopping basket" />
-            No products in your cart. Add some! TODO LOCAL
+            {t.cart.noPacks}
           </Header>
-          <Button color="orange" onClick={() => router.push("/packs")}>
-            View Products
-          </Button>
+          <div>
+            <Button color="purple" onClick={() => router.push("/packs")}>
+              {t.cart.viewPacks}
+            </Button>
+          </div>
         </Container>
       ) : (
         <Item.Group divided>

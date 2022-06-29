@@ -6,7 +6,7 @@ import CartItemList from "../components/Cart/CartItemList"
 import CartSummary from "../components/Cart/CartSummary"
 import cookie from "js-cookie"
 
-const Cart = ({ packs, user }) => {
+const Cart = ({ packs, t }) => {
   const [cartPacks, setCartPacks] = React.useState(packs)
   
   const handleRemoveFromCart = async pack => {
@@ -40,6 +40,7 @@ const Cart = ({ packs, user }) => {
           cartPacks={cartPacks}
           setCartPacks={setCartPacks}
           handleRemoveFromCart={handleRemoveFromCart}
+          t={t}
         />
         <CartSummary />
       </Segment>

@@ -68,7 +68,7 @@ const Pack = ({ pack, articles, user, cart, t }) => {
             </Modal>
           </>
         )}
-          <PackDetails pack={showPack} user={user} cart={cart} />
+          <PackDetails pack={showPack} user={user} cart={cart} t={t} />
         </>
       ) : (user.role === "admin" || user.role === "root") && (
         <>
