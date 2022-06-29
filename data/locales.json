@@ -153,7 +153,7 @@
     },
     "pack": {
       "isBought": "Pack is already bought",
-      "inInCart": "Pack is in cart",
+      "isInCart": "Pack is in cart",
       "create": {
         "language": "Language",
         "selectLanguage": "Select language",
@@ -203,9 +203,10 @@
     "api": {
       "method": "Metoda",
       "notAllowed": "není povolena",
+      "noToken":"Žádný autorizační token",
+      "loginAgain": "Prosím, přihlašte se znovu",
       "account": {
         "get": {
-          "noToken":"Žádný autorizační token",
           "userNotFound": "Uživatel nenalezen"
         }
       },
@@ -338,6 +339,8 @@
       }
     },
     "pack": {
+      "isBought": "Balíček je už zakoupen",
+      "isInCart": "Balíček je v košíku",
       "create": {
         "language": "Jazyk",
         "selectLanguage": "Vyberte jazyk",
@@ -366,6 +369,12 @@
         "description": "Krátký popis",
         "submit": "Uložit úpravy"
       }
+    },
+    "cart": {
+      "noPacks": "Nebyl nalezen žádný balíček v košíku.",
+      "viewPacks": "Zobrazit balíčky",
+      "addToCart": "Přidat do košíku",
+      "price": "Cena"
     }
   }
 }

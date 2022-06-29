@@ -3,11 +3,13 @@ import { Button} from "semantic-ui-react"
 import baseUrl from "../../utils/baseUrl"
 import cookie from "js-cookie"
 
-const AddPackToCart = ({ pack, setIsInCart, t }) => {
-  const [loading, setLoading] = React.useState(false) 
+const AddPackToCart = ({ pack, setIsInCart, setError, t }) => {
+  const [loading, setLoading] = React.useState(false)
 
   const handleAddPackToCart = async()=> {
     setLoading(true)
+    setError("")
+
     const url = `${baseUrl}/api/cart`
     const token = cookie.get("token")
     const payload = { pack: pack._id } 
@@ -25,10 +27,9 @@ const AddPackToCart = ({ pack, setIsInCart, t }) => {
       }
       return response.json()
     }).then(cart => {
-      console.log("data cart?", cart) // todo 
       setIsInCart(true)
     }).catch(error=>{
-      console.log(error.message) // todo 
+      setError(error.message)
       setLoading(false)
     })
   }

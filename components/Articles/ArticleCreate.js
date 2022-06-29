@@ -84,7 +84,7 @@ const ArticleCreate = ({ setNewArticles, t }) => {
     setVideo(null)
   }
 
-  const handleUpload = async(event) => {
+  const handleUpload = async(event) => { // todo at live server, bcs vercel have limit
     event.preventDefault()
     let result = null
     const formData = new FormData()

@@ -22,8 +22,6 @@ const Pack = ({ pack, articles, user, cart, t }) => {
         throw new Error(er)
       }
       Router.back()
-    }).catch(error=>{
-      console.error(error) // todo set error or smt
     })
   }
 
@@ -97,10 +95,7 @@ export const getServerSideProps = async ({query: {_id }}) => {
       throw new Error(er)
     }
     return response.json()
-  }).then(data => data).catch(error=>{
-    console.log(error)
-    // todo set error ?
-  })  
+  })
   const urlArticles = `${baseUrl}/api/articles?language=${data.pack.language}`
   data.articles = await fetch(urlArticles,{
     method: "GET",
@@ -113,10 +108,7 @@ export const getServerSideProps = async ({query: {_id }}) => {
       throw new Error(er)
     }
     return response.json()
-  }).catch(error=>{
-    console.log(error)
-    // todo set error ?
-  })   
+  })
 
   if(data)
     return { props: { pack: data.pack, articles: data.articles } }

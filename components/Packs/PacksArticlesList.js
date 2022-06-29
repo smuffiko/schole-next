@@ -6,6 +6,7 @@ import { dateTime } from "../../utils/formatDate"
 const PacksArticlesList = ({ pack, update, allArticles, setShowPack, t }) => {
   const [articles, setArticles] = React.useState([])
   const [loading, setLoading] = React.useState(false)
+  const [error, setError] = React.useState("")
 
   React.useEffect(()=>{
     setLoading(true)
@@ -19,6 +20,11 @@ const PacksArticlesList = ({ pack, update, allArticles, setShowPack, t }) => {
 
   return (
     <>
+    <Message error
+      header={t.error}
+      content={error}
+      hidden={!Boolean(error)}
+    />
     {articles.length!==0 && (
       <>
         <Message
@@ -40,6 +46,7 @@ const PacksArticlesList = ({ pack, update, allArticles, setShowPack, t }) => {
                     update={update}
                     loading={loading}
                     setLoading={setLoading}
+                    setError={setError}
                   />
                 )
               })}
@@ -51,7 +58,7 @@ const PacksArticlesList = ({ pack, update, allArticles, setShowPack, t }) => {
   )
 }
 
-const ArticleToItem = ({ article, pack, setShowPack, update, loading, setLoading }) => {
+const ArticleToItem = ({ article, pack, setShowPack, update, loading, setLoading, setError }) => {
   const [isInPack, setIsInPack] = React.useState(Boolean(pack.articles.find(a => a.article._id == article._id)))
   const isFirstRun = React.useRef(true)
 
@@ -70,6 +77,7 @@ const ArticleToItem = ({ article, pack, setShowPack, update, loading, setLoading
   const updatePack = async () => {
     // fetch and update pack - set or delete
     setLoading(true)
+    setError("")
     const url = `${baseUrl}/api/pack`
     const payload = { _id: pack._id, article: article._id, isInPack }
     await fetch(url,{
@@ -87,7 +95,7 @@ const ArticleToItem = ({ article, pack, setShowPack, update, loading, setLoading
     }).then(data => {
       setShowPack(data)
     }).catch(error=>{
-      console.log(error.message) // todo error messages
+      setError(error.message)
     }).finally(()=>{
       setLoading(false)
     })

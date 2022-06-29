@@ -1,6 +1,6 @@
 import React from "react"
 import Router from "next/router"
-import { Button, Container, Modal } from "semantic-ui-react"
+import { Button, Container, Modal, Message } from "semantic-ui-react"
 import ArticleDetails from "../components/Articles/ArticleDetails"
 import baseUrl from "../utils/baseUrl"
 import Back from "../components/_App/Back"
@@ -10,6 +10,7 @@ const Article = ({ article, user, t }) => {
   const [modal, setModal] = React.useState(false)
   const [update, setUpdate] = React.useState(false)
   const [showArticle, setShowArticle] = React.useState(article)
+  const [error, setError] = React.useState("")
   const isBought = false // todo DB check
   const isAuthorized = user.role==="admin" || user.role==="root" || isBought
 
@@ -22,6 +23,7 @@ const Article = ({ article, user, t }) => {
   },[showArticle])
 
   const handleDelete = async () => {
+    setError("")
     const url = `${baseUrl}/api/article?_id=${article._id}`
     await fetch(url,{
       method: "DELETE"
@@ -32,13 +34,18 @@ const Article = ({ article, user, t }) => {
       }
       Router.back()
     }).catch(error=>{
-      console.error(error) // todo set error or smt
+      setError(error.message)
     })
   }
 
   return (
     <>
     <Container>
+      <Message error
+        header={t.error}
+        content={error}
+        hidden={!Boolean(error)}
+      />
       {!update ? (
         <>
           <Back t={t}/>
@@ -102,9 +109,7 @@ export const getServerSideProps = async ({query: {_id }}) => {
       throw new Error(er)
     }
     return response.json()
-  }).catch(error=>{
-    // todo set error ?
-  })  
+  })
   if(article)
     return { props: { article } }
   return { // /article without id or id which not exists -> 404 page

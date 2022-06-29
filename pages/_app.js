@@ -15,7 +15,6 @@ checkLocal()
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
     if(ctx.req) {
-      // maybe once i will need to change it -> todo (url)
       const host = ctx.req.headers.host
       if(process.env.NODE_ENV === "production"
         && host !== "schole-next.vercel.app"
@@ -107,8 +106,6 @@ class MyApp extends App {
             return await response.json()
           }).then(cart => {
             pageProps.cart = cart
-          }).catch(error => {
-            console.log("error getting cart") // todo local or smt
           })
         } else pageProps.cart = []
       }).catch(error => { // todo send error message

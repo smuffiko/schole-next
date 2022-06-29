@@ -1,5 +1,5 @@
 import React from "react"
-import { Header, Label, Segment, Button } from "semantic-ui-react"
+import { Header, Label, Segment, Button, Message } from "semantic-ui-react"
 import { dateTime } from "../../utils/formatDate"
 import AddPackToCart from "./AddPackToCart"
 
@@ -7,9 +7,16 @@ const PackDetails = ({ pack, user, cart, t }) => {
   const { title, content, language, createdAt, price } = pack
   const isBought = false // todo
   const [isInCart, setIsInCart] = React.useState(cart.some(doc => pack._id === doc.pack._id ))
+  const [error, setError] = React.useState("")
+  console.log("boolean err", Boolean(error))
 
   return (
     <>
+      <Message error
+        header={t.error}
+        content={error}
+        hidden={!Boolean(error)}
+      />
       <Segment>       
         { user.role==="user" && (<>
           { isBought || isInCart ? (
@@ -22,7 +29,7 @@ const PackDetails = ({ pack, user, cart, t }) => {
                 left: "-15px"
               }}
               content={isBought ? t.pack.isBought : isInCart && t.pack.isInCart } />)
-          : <AddPackToCart pack={pack} setIsInCart={setIsInCart} t={t} /> }
+          : <AddPackToCart pack={pack} setIsInCart={setIsInCart} t={t} setError={setError} /> }
         </>)}
         <Header as="h2">
           {title}
