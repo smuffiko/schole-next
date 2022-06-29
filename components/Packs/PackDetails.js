@@ -8,7 +8,6 @@ const PackDetails = ({ pack, user, cart, t }) => {
   const isBought = false // todo
   const [isInCart, setIsInCart] = React.useState(cart.some(doc => pack._id === doc.pack._id ))
   const [error, setError] = React.useState("")
-  console.log("boolean err", Boolean(error))
 
   return (
     <>

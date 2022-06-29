@@ -9,7 +9,9 @@ import cookie from "js-cookie"
 const Cart = ({ packs, t }) => {
   const [cartPacks, setCartPacks] = React.useState(packs)
   const [error, setError] = React.useState("")
-  
+  const [loading, setLoading] = React.useState(false)
+  const [success, setSuccess] = React.useState(false)
+
   const handleRemoveFromCart = async pack => {
     setError("")
     const url = `${baseUrl}/api/cart?pack=${pack._id}`
@@ -34,6 +36,34 @@ const Cart = ({ packs, t }) => {
     })
   }
 
+  const handleCheckout = async paymentData => { // todo change data (url) at real server
+    setLoading(true)
+    const url = `${baseUrl}/api/checkout`
+    const token = cookie.get("token")
+    const payload = { paymentData }
+    await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+        "Authorization": token
+      },
+      body: JSON.stringify(payload)
+    }).then(async response=> {
+      if(!response.ok) {
+        const er = await response.text()
+        throw new Error(er)
+      }
+      return response.text()
+    }).then(() => {
+      setCartPacks([])
+      setSuccess(true)
+    }).catch(error=>{
+      setError(error.message)
+    }).finally(()=>{
+      setLoading(false)
+    })
+  }
+
   return (
     <>
     <Container>
@@ -42,14 +72,19 @@ const Cart = ({ packs, t }) => {
         content={error}
         hidden={!Boolean(error)}
       />
-      <Segment>
+      <Segment loading={loading}>
         <CartItemList 
           cartPacks={cartPacks}
           setCartPacks={setCartPacks}
           handleRemoveFromCart={handleRemoveFromCart}
           t={t}
         />
-        <CartSummary />
+        <CartSummary
+          cartPacks={cartPacks}
+          handleCheckout={handleCheckout}
+          success={success}
+          t={t}
+        />
       </Segment>
     </Container>
     </>
