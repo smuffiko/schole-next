@@ -1,6 +1,7 @@
 import mongoose from "mongoose"
 require("../models/Article")
 require("../models/Cart")
+require("../models/Order")
 require("../models/Pack")
 require("../models/User")
 

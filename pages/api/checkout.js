@@ -1,6 +1,7 @@
 import mongoose from "mongoose"
 import jwt from "jsonwebtoken"
 import Cart from "../../models/Cart"
+import Order from "../../models/Order"
 import connectDb from "../../utils/connectDB"
 import locales from "../../data/locales.json"
 import Stripe from "stripe"
@@ -69,14 +70,14 @@ const handlePostRequest = async (req, res, t) => {
         description: `Checkout | ${paymentData.email} | ${paymentData.id}`
       }
     )
-    /*
+    
     // add order data to database
     await new Order({
       user: userId,
       email: paymentData.email,
       total: cartTotal,
-      packs: cart.packs.map(p=>p.pack)
-    }).save()*/
+      packs: cart.packs
+    }).save()
 
     // delete cart
     await Cart.findOneAndUpdate({ _id: cart._id }, { $set: { packs: [] } })

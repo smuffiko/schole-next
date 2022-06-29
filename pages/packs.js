@@ -4,7 +4,7 @@ import PackCreate from "../components/Packs/PackCreate"
 import PacksList from "../components/Packs/PacksList"
 import baseUrl from "../utils/baseUrl"
 
-const Packs = ({ packs, user, t }) => {
+const Packs = ({ packs, boughtPacks, user, t }) => {
   const [newPacks, setNewPacks] = React.useState(packs)
   const [showPacks, setShowPacks] = React.useState(packs.slice(0,8))
 

@@ -108,6 +108,26 @@ class MyApp extends App {
             pageProps.cart = cart
           })
         } else pageProps.cart = []
+
+        // set bought packs
+        const url = `${baseUrl}/api/order`
+        await fetch(url,{
+          method: "GET",
+          headers: {
+            "Content-type": "application/json",
+            "authorization": token
+          }
+        }).then(async response => {
+          if(!response.ok) {
+            const er = await response.text()
+            throw new Error(er)
+          }
+          return await response.json()
+        }).then(data => {
+          pageProps.boughtPacks = data.boughtPacks
+          pageProps.boughtArticles = data.boughtArticles 
+        })
+
       }).catch(error => { // todo send error message
         // 1) Throw out invalid token
         destroyCookie(null, "token")

@@ -38,6 +38,7 @@ const Cart = ({ packs, t }) => {
 
   const handleCheckout = async paymentData => { // todo change data (url) at real server
     setLoading(true)
+    setError("")
     const url = `${baseUrl}/api/checkout`
     const token = cookie.get("token")
     const payload = { paymentData }
