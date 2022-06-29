@@ -1,6 +1,6 @@
 import mongoose from "mongoose"
 
-const { ObjectId, String } = mongoose.Schema.Types
+const { ObjectId, String, Number } = mongoose.Schema.Types
 
 const PackSchema = new mongoose.Schema(
   {
@@ -20,6 +20,10 @@ const PackSchema = new mongoose.Schema(
       type: String,
       required: true,
       enum: ["cz", "en"]
+    },
+    price: {
+      type: Number,
+      required: true
     },
     articles: [
       {

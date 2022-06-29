@@ -8,6 +8,7 @@ const INITIAL_PACK = {
   description: "",
   content: "<p><br></p>",
   lang: "",
+  price: 0,
   key: Math.random()
 }
 
@@ -45,7 +46,13 @@ const PackCreate = ({ setNewPacks, t }) => {
 
   React.useEffect(()=>{
     const delayDebounceFn = setTimeout(() => {
-      const isPack = Boolean(pack.title) && Boolean(pack.content) && pack.content !== "<p><br></p>" && Boolean(pack.lang) && Boolean(pack.description)
+      const isPack =
+        Boolean(pack.title)
+        && Boolean(pack.content)
+        && pack.content !== "<p><br></p>"
+        && Boolean(pack.lang)
+        && Boolean(pack.description)
+        && (pack.price > 0)
       isPack ? setDisabled(false) : setDisabled(true)
     }, 500)
     return () => clearTimeout(delayDebounceFn)
@@ -67,8 +74,8 @@ const PackCreate = ({ setNewPacks, t }) => {
     setError("")
 
     const url = `${baseUrl}/api/pack`
-    const { title, content, description, lang } = pack
-    const payload = { title, content, description, lang }
+    const { title, content, description, lang, price } = pack
+    const payload = { title, content, description, lang, price }
 
     setLoading(true)
     await fetch(url, {
@@ -125,6 +132,17 @@ const PackCreate = ({ setNewPacks, t }) => {
             placeholder={t.pack.create.language}
             value={pack.lang}
             options={langOptions}
+            onChange={handleChange}
+          />
+          <Form.Field
+            control={Input}
+            name="price"
+            label={t.pack.create.price}
+            placeholder={t.pack.create.price}
+            min="0"
+            step="1"
+            type="number"
+            value={pack.price}
             onChange={handleChange}
           />
           <Form.Field

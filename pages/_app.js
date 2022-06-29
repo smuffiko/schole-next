@@ -110,7 +110,7 @@ class MyApp extends App {
           }).catch(error => {
             console.log("error getting cart") // todo local or smt
           })
-        } 
+        } else pageProps.cart = []
       }).catch(error => { // todo send error message
         // 1) Throw out invalid token
         destroyCookie(null, "token")

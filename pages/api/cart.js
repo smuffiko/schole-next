@@ -78,5 +78,26 @@ const handlePutRequest = async(req, res) => {
 }
 
 const handleDeleteRequest = async(req, res) => {
-  
+  const { pack } = req.query
+  if (!("authorization" in req.headers)) {
+    return res.status(401).send("No authorization token") // todo local
+  }
+  try {
+    const { userId } = jwt.verify(
+      req.headers.authorization,
+      process.env.JWT_SECRET
+    )
+    const cart = await Cart.findOneAndUpdate(
+      { user: userId },
+      { $pull: { packs: { pack: pack } } },
+      { new: true }
+    ).populate({
+      path: "packs.pack",
+      model: "Pack"
+    })
+    res.status(200).json(cart.packs)
+  } catch (error) {
+    console.error(error);
+    res.status(403).send("Please login again") // todo local
+  }
 }

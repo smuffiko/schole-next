@@ -117,6 +117,7 @@ export const getServerSideProps = async ({query: {_id }}) => {
     console.log(error)
     // todo set error ?
   })   
+
   if(data)
     return { props: { pack: data.pack, articles: data.articles } }
   return { // /pack without id or id which not exists -> 404 page

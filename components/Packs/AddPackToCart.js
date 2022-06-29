@@ -34,16 +34,19 @@ const AddPackToCart = ({ pack, setIsInCart }) => {
   }
 
   return (
+  <>
     <Button
       type="button"
       content="Add to cart" //todo local
       icon="plus cart"
       color="purple"
+      label={`Cena: ${pack.price},- Kč`} // todo local
       floated="right"
       loading={loading}
       disabled={loading}
       onClick={handleAddPackToCart}
     />
+  </>
   )
 }
  

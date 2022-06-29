@@ -35,11 +35,12 @@ const handleGetRequest = async (req, res) => {
 }
 
 const handlePostRequest = async (req, res) => {
-  const { title, content, description, lang } = req.body
+  const { title, content, description, lang, price } = req.body
   const newPack = await new Pack({
     title,
     description,
     content,
+    price,
     language: lang
   }).save()
   res.status(201).json(newPack)

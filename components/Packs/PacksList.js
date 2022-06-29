@@ -19,7 +19,7 @@ const PacksList = ({ packs, showPacks, setShowPacks, t }) => {
           <a>{pack.title}</a>
         </Card.Header>
         <Card.Meta style={{textAlign:"center"}} >
-          {`${pack.language.toUpperCase()} ${dateTime(pack.createdAt)}`}
+          {`${pack.language.toUpperCase()} ${dateTime(pack.createdAt)}, ${pack.price},- Kč`}
         </Card.Meta>
         <Card.Description style={{padding:"1em", textAlign:"justify"}} >
           {pack.description}

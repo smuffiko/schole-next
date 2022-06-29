@@ -56,8 +56,6 @@ export const getServerSideProps = async ctx => {
       throw new Error(await response.text())
     }
     return response.json()
-  }).then(data => {
-    return data
   }).catch(error => {
     console.log("Error in packs.js") // todo local or show error
   })

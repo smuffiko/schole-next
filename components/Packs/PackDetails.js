@@ -4,7 +4,7 @@ import { dateTime } from "../../utils/formatDate"
 import AddPackToCart from "./AddPackToCart"
 
 const PackDetails = ({ pack, user, cart }) => {
-  const { title, content, language, createdAt } = pack
+  const { title, content, language, createdAt, price } = pack
   const isBought = false // todo
   const [isInCart, setIsInCart] = React.useState(cart.some(doc => pack._id === doc.pack._id ))
 
@@ -21,7 +21,7 @@ const PackDetails = ({ pack, user, cart }) => {
                 top: "-1px",
                 left: "-15px"
               }}
-              content={isBought ? "is bought" : isInCart && "is in cart"} />)
+              content={isBought ? "is bought" : isInCart && "is in cart"} />) // todo local
           : <AddPackToCart pack={pack} setIsInCart={setIsInCart} /> }
         </>)}
         <Header as="h2">
