@@ -9,6 +9,7 @@
     "discard": "Discard changes",        
     "discardHeader": "Discard changes",
     "discardContent": "Are you sure? This can't be reverted!",
+    "err404": "Error 404, page not found",
     "api": {
       "method": "Method",
       "notAllowed": "not allowed",
@@ -58,7 +59,6 @@
       "terms": "Terms and conditions",
       "privacy": "Privacy policy"
     },
-    "err404": "Error 404, page not found",
     "schole": {
       "content": [
         {
@@ -66,20 +66,28 @@
           "content": "Watch news here - > <a href='https://github.com/smuffiko/schole-next/commits/master'>https://github.com/smuffiko/schole-next/commits/master</a>"
         },
         {
-          "header": "Welcome!",
-          "content": "Some text"
+          "header": "Test login and passwords",
+          "content": "<table class='ui celled collapsing very basic table'><thead><tr><th>Login</th><th>Password</th></tr></thead><tbody><tr><td>admin</td><td>AdminAdmin</td></tr><tr><td>user</td><td>UserUser</td></tr><tr><td>newuser</td><td>NewNew</td></tr></tbody></table>"
         },
         {
-          "header": "Welcome!",
-          "content": "Some text"
+          "header": "Not logged user",
+          "content": "<div>Scholé - main page, Login, Sign up</div><div>No rules</div>"
         },
         {
-          "header": "Welcome!",
-          "content": "Some text"
+          "header": "Role: New user",
+          "content": "<div>Scholé - main page, Account, Logout</div><div>New user needs to confinrm email (todo)</div>"
         },
         {
-          "header": "Welcome!",
-          "content": "Some text"
+          "header": "Role: User",
+          "content": "<div>Scholé - main page, Packs, Bought packs, Cart, Account, Logout</div><div>User can browse packs and article description</div><div>He can add and buy packs</div><div>He can see full articles from his bought packs (todo)</div>"
+        },
+        {
+          "header": "Role: Admin",
+          "content": "<div>Scholé - main page, Packs management, Articles management, Account, Logout</div><div>CRUD packs</div><div>CRUD articles</div><div>He can add or delete article from pack</div>"
+        },
+        {
+          "header": "Role: Root",
+          "content": "<div>Root have all admin's rules</div><div>Can manage admins</div>"
         }
       ]
     },
@@ -200,6 +208,7 @@
     "discard": "Zahodit úpravy",
     "discardHeader": "Zahodit úpravy",
     "discardContent": "Jste si jisti, že chcete zahodit úpravy? Tato akce je nevratná!",
+    "err404": "Chyba 404, stránka nenalezena",
     "api": {
       "method": "Metoda",
       "notAllowed": "není povolena",
@@ -249,7 +258,6 @@
       "terms": "Podmínky pro používání",
       "privacy": "Zásady ochrany osobních údajů"
     },
-    "err404": "Chyba 404, stránka nenalezena",
     "schole": {
       "content": [
         {
@@ -257,16 +265,28 @@
           "content": "Sleduj novinky zde - > <a href='https://github.com/smuffiko/schole-next/commits/master'>https://github.com/smuffiko/schole-next/commits/master</a>"
         },
         {
-          "header": "Vítejte!",
-          "content": "Nějaké počteníčko"
+          "header": "Testovací přihlašovací údaje",
+          "content": "<table class='ui celled collapsing very basic table'><thead><tr><th>Přihlašovací jméno</th><th>Heslo</th></tr></thead><tbody><tr><td>admin</td><td>AdminAdmin</td></tr><tr><td>user</td><td>UserUser</td></tr><tr><td>newuser</td><td>NewNew</td></tr></tbody></table>"
         },
         {
-          "header": "Vítejte!",
-          "content": "Nějaké počteníčko"
+          "header": "Nepřihlášený uživatel",
+          "content": "<div>Scholé - hlavní stránka, Přihlášení, Registrace</div><div>Bez nějakých dalších práv</div>"
         },
         {
-          "header": "Vítejte!",
-          "content": "Nějaké počteníčko"
+          "header": "Role: New user",
+          "content": "<div>Scholé - hlavní stránka, Účet, Odhlášení</div><div>Musí potvrdit e-mail (todo)</div>"
+        },
+        {
+          "header": "Role: User",
+          "content": "<div>Scholé - hlavní stránka, Seznam balíčků, Koupené balíčky, Košík, Účet, Odhlášení</div><div>Může si prohlížet balíčky a jejich stručný obsah (Article description)</div><div>Může si přidat balíček do košíku a následně zaplatit</div><div>Vidí obsah zakoupených balíčků (todo)</div>"
+        },
+        {
+          "header": "Role: Admin",
+          "content": "<div>Scholé - hlavní stránka, Správa balíčků, Správa článků, Účet, Odhlášení</div><div>Může přidat, upravit a odebrat balíček</div><div>Může přidat, upravit a odebrat článek</div><div>Může přidat a odebrat článek z balíčku</div>"
+        },
+        {
+          "header": "Role: Root",
+          "content": "<div>Může vše co admin</div><div>Může přidat a odebrat admin práva</div>"
         }
       ]
     },
