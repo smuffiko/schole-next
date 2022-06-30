@@ -66,12 +66,12 @@
           "content": "Watch news here - > <a href='https://github.com/smuffiko/schole-next/commits/master'>https://github.com/smuffiko/schole-next/commits/master</a>"
         },
         {
-          "header": "Payment test data",
-          "content": "<div>Card number: 4242 4242 4242 4242</div><div>Expire: 4/24</div><div>CVC: 424</div>"
-        },
-        {
           "header": "Test login and passwords",
           "content": "<table class='ui celled collapsing very basic table'><thead><tr><th>Login</th><th>Password</th></tr></thead><tbody><tr><td>admin</td><td>AdminAdmin</td></tr><tr><td>user</td><td>UserUser</td></tr><tr><td>newuser</td><td>NewNew</td></tr></tbody></table>"
+        },
+        {
+          "header": "Payment test data",
+          "content": "<div>Card number: 4242 4242 4242 4242</div><div>Expire: 4/24</div><div>CVC: 424</div>"
         },
         {
           "header": "Not logged user",
@@ -269,12 +269,12 @@
           "content": "Sleduj novinky zde - > <a href='https://github.com/smuffiko/schole-next/commits/master'>https://github.com/smuffiko/schole-next/commits/master</a>"
         },
         {
-          "header": "Testovací platba",
-          "content": "<div>Číslo karty: 4242 4242 4242 4242</div><div>Expirace: 4/24</div><div>CVC: 424</div>"
-        },
-        {
           "header": "Testovací přihlašovací údaje",
           "content": "<table class='ui celled collapsing very basic table'><thead><tr><th>Přihlašovací jméno</th><th>Heslo</th></tr></thead><tbody><tr><td>admin</td><td>AdminAdmin</td></tr><tr><td>user</td><td>UserUser</td></tr><tr><td>newuser</td><td>NewNew</td></tr></tbody></table>"
+        },
+        {
+          "header": "Testovací platba",
+          "content": "<div>Číslo karty: 4242 4242 4242 4242</div><div>Expirace: 4/24</div><div>CVC: 424</div>"
         },
         {
           "header": "Nepřihlášený uživatel",
