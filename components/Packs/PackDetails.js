@@ -3,9 +3,8 @@ import { Header, Label, Segment, Button, Message } from "semantic-ui-react"
 import { dateTime } from "../../utils/formatDate"
 import AddPackToCart from "./AddPackToCart"
 
-const PackDetails = ({ pack, user, cart, t }) => {
+const PackDetails = ({ isBought, pack, user, cart, t }) => {
   const { title, content, language, createdAt, price } = pack
-  const isBought = false // todo
   const [isInCart, setIsInCart] = React.useState(cart.some(doc => pack._id === doc.pack._id ))
   const [error, setError] = React.useState("")
 

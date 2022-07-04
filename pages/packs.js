@@ -1,12 +1,15 @@
 import React from "react"
-import { Container } from "semantic-ui-react"
+import { Container, Message, Segment } from "semantic-ui-react"
 import PackCreate from "../components/Packs/PackCreate"
 import PacksList from "../components/Packs/PacksList"
 import baseUrl from "../utils/baseUrl"
 
 const Packs = ({ packs, boughtPacks, user, t }) => {
-  const [newPacks, setNewPacks] = React.useState(packs)
-  const [showPacks, setShowPacks] = React.useState(packs.slice(0,8))
+  const [newPacks, setNewPacks] = React.useState(packs.filter(p=> !boughtPacks.some(b=> b._id === p._id)))
+  const [showPacks, setShowPacks] = React.useState(newPacks.slice(0,8))
+  const [loading, setLoading] = React.useState(true)
+
+  React.useEffect(()=> setLoading(false),[])
 
   React.useEffect(()=>{
     setShowPacks(prevState => {
@@ -27,16 +30,26 @@ const Packs = ({ packs, boughtPacks, user, t }) => {
             />
           </>
         )}
-        {newPacks.length!==0 && (
+        {newPacks.length === 0 ? (
+          <Message
+            warning
+            icon="settings"
+            content={t.pack.noPack}
+          />
+        ) :
           <>
-            <PacksList
-              t={t}
-              packs={newPacks}
-              showPacks={showPacks}
-              setShowPacks={setShowPacks}
-            />
+           {!loading && (
+            <>
+              <PacksList
+                t={t}
+                packs={newPacks}
+                showPacks={showPacks}
+                setShowPacks={setShowPacks}
+              />
+            </>
+            )}
           </>
-        )}
+        }
       </Container>
     </>
   )

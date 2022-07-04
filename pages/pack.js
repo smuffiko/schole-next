@@ -7,10 +7,11 @@ import Back from "../components/_App/Back"
 import PackUpdate from "../components/Packs/PackUpdate"
 import PacksArticlesList from "../components/Packs/PacksArticlesList"
 
-const Pack = ({ pack, articles, user, cart, t }) => {
+const Pack = ({ boughtPacks, pack, articles, user, cart, t }) => {
   const [modal, setModal] = React.useState(false)
   const [update, setUpdate] = React.useState(false)
   const [showPack, setShowPack] = React.useState(pack)
+  const isBought = boughtPacks.some(doc => pack._id === doc._id)
 
   const handleDelete = async () => {
     const url = `${baseUrl}/api/pack?_id=${pack._id}`
@@ -66,14 +67,14 @@ const Pack = ({ pack, articles, user, cart, t }) => {
             </Modal>
           </>
         )}
-          <PackDetails pack={showPack} user={user} cart={cart} t={t} />
+          <PackDetails pack={showPack} user={user} cart={cart} t={t} boughtPacks={boughtPacks} isBought={isBought} />
         </>
       ) : (user.role === "admin" || user.role === "root") && (
         <>
           <PackUpdate pack={showPack} t={t} setShowPack={setShowPack} setUpdate={setUpdate} />
         </>
       )}
-      <PacksArticlesList pack={showPack} t={t} update={update} setShowPack={setShowPack} allArticles={articles} />
+      <PacksArticlesList pack={showPack} t={t} update={update} setShowPack={setShowPack} allArticles={articles} user={user} isBought={isBought} />
     </Container>
     </>
   )

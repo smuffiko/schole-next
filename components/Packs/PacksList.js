@@ -27,7 +27,7 @@ const PacksList = ({ packs, showPacks, setShowPacks, t }) => {
       </Card>
     )
   }
-
+  
   const handleNext = ()=> {
     setShowPacks((prevState) => 
       (packs.slice(0, prevState.length + 8))
@@ -43,8 +43,7 @@ const PacksList = ({ packs, showPacks, setShowPacks, t }) => {
           icon="file alternate outline"
           header={t.pack.list.packsList}
           color="orange"
-        />
-        
+        />        
         <Transition.Group
             as={Card.Group}
             stackable

@@ -110,6 +110,8 @@ class MyApp extends App {
         } else pageProps.cart = []
 
         // set bought packs
+        pageProps.boughtPacks = []
+        pageProps.boughtArticles = []
         const url = `${baseUrl}/api/order`
         await fetch(url,{
           method: "GET",
@@ -127,6 +129,7 @@ class MyApp extends App {
           pageProps.boughtPacks = data.boughtPacks
           pageProps.boughtArticles = data.boughtArticles 
         })
+
 
       }).catch(error => { // todo send error message
         // 1) Throw out invalid token

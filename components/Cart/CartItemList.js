@@ -3,7 +3,6 @@ import { Item, Header, Button, Icon, Container } from "semantic-ui-react"
 
 
 const CartItemList = ({ cartPacks, handleRemoveFromCart, t }) => {
-  const router = Router.useRouter()
 
   const mapPacksToListItems = () => (
     cartPacks.map(pack => (
@@ -17,7 +16,7 @@ const CartItemList = ({ cartPacks, handleRemoveFromCart, t }) => {
               onClick={() => handleRemoveFromCart(pack)}
             />
           </Item.Extra>
-          <Item.Header as="a" onClick={()=> router.push(`/pack?_id=${pack._id}`)} >{pack.title}</Item.Header>
+          <Item.Header as="a" onClick={()=> Router.push(`/pack?_id=${pack._id}`)} >{pack.title}</Item.Header>
           <Item.Meta>{pack.price},- Kč</Item.Meta>
           <Item.Description>{pack.description}</Item.Description>
         </Item.Content>

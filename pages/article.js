@@ -6,12 +6,12 @@ import baseUrl from "../utils/baseUrl"
 import Back from "../components/_App/Back"
 import ArticleUpdate from "../components/Articles/ArticleUpdate"
 
-const Article = ({ article, user, t }) => {
+const Article = ({ boughtArticles, article, user, t }) => {
   const [modal, setModal] = React.useState(false)
   const [update, setUpdate] = React.useState(false)
   const [showArticle, setShowArticle] = React.useState(article)
   const [error, setError] = React.useState("")
-  const isBought = false // todo DB check
+  const isBought = boughtArticles.some(doc => article._id === doc._id)
   const isAuthorized = user.role==="admin" || user.role==="root" || isBought
 
   React.useEffect(()=>{

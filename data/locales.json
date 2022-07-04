@@ -166,6 +166,7 @@
     "pack": {
       "isBought": "Pack is already bought",
       "isInCart": "Pack is in cart",
+      "noPack": "No pack found.",
       "create": {
         "language": "Language",
         "selectLanguage": "Select language",
@@ -200,6 +201,11 @@
       "viewPacks": "View packs",
       "addToCart": "Add to cart",
       "price": "Price"
+    },
+    "myPacks": {
+      "noPacks": "No packs bought yet. Add some!",
+      "viewPacks":"View packs",
+      "listHeader": "My packs"
     }
   },
   "cz": {
@@ -369,6 +375,7 @@
     "pack": {
       "isBought": "Balíček je už zakoupen",
       "isInCart": "Balíček je v košíku",
+      "noPack": "Nebyl nalezen žádný balíček.",
       "create": {
         "language": "Jazyk",
         "selectLanguage": "Vyberte jazyk",
@@ -403,6 +410,11 @@
       "viewPacks": "Zobrazit balíčky",
       "addToCart": "Přidat do košíku",
       "price": "Cena"
+    },
+    "myPacks": {
+      "noPacks": "Ještě nevlastníte žádný balíček.",
+      "viewPacks":"Zobrazit balíčky",
+      "listHeader": "Zakoupené balíčky"
     }
   }
 }

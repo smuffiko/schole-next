@@ -1,9 +1,10 @@
 import React from "react"
-import { Checkbox, Item, Loader, Message, Segment } from "semantic-ui-react"
+import Router from "next/router"
+import { Checkbox, Icon, Item, Loader, Message, Segment } from "semantic-ui-react"
 import baseUrl from "../../utils/baseUrl"
 import { dateTime } from "../../utils/formatDate"
 
-const PacksArticlesList = ({ pack, update, allArticles, setShowPack, t }) => {
+const PacksArticlesList = ({ pack, update, allArticles, setShowPack, isBought, t }) => {
   const [articles, setArticles] = React.useState([])
   const [loading, setLoading] = React.useState(false)
   const [error, setError] = React.useState("")
@@ -47,6 +48,7 @@ const PacksArticlesList = ({ pack, update, allArticles, setShowPack, t }) => {
                     loading={loading}
                     setLoading={setLoading}
                     setError={setError}
+                    isBought={isBought}
                   />
                 )
               })}
@@ -58,7 +60,7 @@ const PacksArticlesList = ({ pack, update, allArticles, setShowPack, t }) => {
   )
 }
 
-const ArticleToItem = ({ article, pack, setShowPack, update, loading, setLoading, setError }) => {
+const ArticleToItem = ({ article, pack, setShowPack, update, loading, setLoading, setError, isBought }) => {
   const [isInPack, setIsInPack] = React.useState(Boolean(pack.articles.find(a => a.article._id == article._id)))
   const isFirstRun = React.useRef(true)
 
@@ -116,7 +118,16 @@ const ArticleToItem = ({ article, pack, setShowPack, update, loading, setLoading
         </div>
       )}
       <Item.Content style={{marginLeft:"1em"}}>
-        <Item.Header>{article.title}</Item.Header>
+        <Item.Header>
+          {article.video && <Icon name="play" />}
+          {isBought ? (
+          <>
+            <a onClick={()=>Router.push(`/article?_id=${article._id}`)}>{article.title}</a>
+          </>
+          ) : (
+          <>{article.title}</>
+          )}
+        </Item.Header>
         <Item.Meta>{article.language.toUpperCase()} {dateTime(article.createdAt)}</Item.Meta>
         <Item.Description>{article.description}</Item.Description>
       </Item.Content>

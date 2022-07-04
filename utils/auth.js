@@ -13,7 +13,7 @@ export const handleLogout = () => {
 }
 
 
-export function redirectUser(ctx, location) {
+export const redirectUser = (ctx, location) => {
   ctx ? (
     ctx.req ?
       ctx.res.writeHead(302, { Location: location }).end()
