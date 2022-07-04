@@ -2190,6 +2190,11 @@
   "resolved" "https://registry.npmjs.org/node-releases/-/node-releases-2.0.5.tgz"
   "version" "2.0.5"
 
+"nodemailer@^6.7.6":
+  "integrity" "sha512-/6KF/umU7r7X21Y648/yiRLrgkfz0dmpyuo4BfgYWIpnT/jCbkPTvegMfxCsDAu+O810p2L1BGXieMTPp3nJVA=="
+  "resolved" "https://registry.npmjs.org/nodemailer/-/nodemailer-6.7.6.tgz"
+  "version" "6.7.6"
+
 "nookies@^2.5.2":
   "integrity" "sha512-x0TRSaosAEonNKyCrShoUaJ5rrT5KHRNZ5DwPCuizjgrnkpE5DRf3VL7AyyQin4htict92X1EQ7ejDbaHDVdYA=="
   "resolved" "https://registry.npmjs.org/nookies/-/nookies-2.5.2.tgz"

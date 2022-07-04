@@ -1,8 +1,19 @@
+import React from "react"
+import { Container, Form, Segment } from "semantic-ui-react"
+import baseUrl from "../utils/baseUrl"
+
 const Contact = () => {
+
   return (
-  <>
-    Contact
-  </>
+    <>
+      <Container>
+        <Segment> 
+          <Form>
+
+          </Form>
+        </Segment>
+      </Container>
+    </>
   )
 }
  
