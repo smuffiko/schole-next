@@ -6,8 +6,6 @@ import locales from "../../data/locales.json"
 
 connectDb()
 
-const { ObjectId } = mongoose.Types
-
 export default async function ApiCart(req, res) {
   const t = locales[req.cookies.local] // setting local file
   switch(req.method) {
@@ -35,7 +33,7 @@ const handleGetRequest = async (req, res, t) => {
       path: "articles.article",
       model: "Article"
     }
-  })
+  }).sort({createdAt: -1})
   
   // ... idk, just some mapping etc (todo maybe do it prettier)
   let boughtPacks = orders.map(o=>o.packs.map(p=>p.pack)).flat()
@@ -43,5 +41,5 @@ const handleGetRequest = async (req, res, t) => {
   let boughtArticles = boughtPacks.map(p=>p.articles).flat().map(a=>a.article)
   boughtArticles = Array.from(new Set(boughtArticles.map(a => a._id))).map(id => boughtArticles.find(a => a._id === id))
 
-  res.status(200).json({ boughtPacks, boughtArticles })
+  res.status(200).json({ boughtPacks, boughtArticles, orders })
 }

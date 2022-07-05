@@ -236,7 +236,11 @@
       "password": "Password",
       "password2": "Password again",
       "save": "Save changes",
-      "success": "Changes saved"
+      "success": "Changes saved",
+      "orderHistory": "Order history",
+      "noPastOrders": "No past orders",
+      "viewPacks": "View packs",
+      "total": "Total"
     }
   },
   "cz": {
@@ -476,7 +480,11 @@
       "password": "Heslo",
       "password2": "Heslo znovu",
       "save": "Uložit změny",
-      "success": "Údaje změneny"
+      "success": "Údaje změneny",
+      "orderHistory": "Historie objednávek",
+      "noPastOrders": "Žádné předešlé objednávky",
+      "viewPacks": "Zobrazit balíčky",
+      "total": "Celkem"
     }
   }
 }

@@ -126,6 +126,7 @@ class MyApp extends App {
           }
           return await response.json()
         }).then(data => {
+          pageProps.orders = data.orders ? data.orders : []
           pageProps.boughtPacks = data.boughtPacks
           pageProps.boughtArticles = data.boughtArticles 
         })
