@@ -41,6 +41,10 @@
           "loginExists": "This login already exists.",
           "emailExists": "This email already exists."
         }
+      },
+      "email": {
+        "success": "Email successfully sent",
+        "error": "Error sending email"
       }
     },
     "menu": {
@@ -206,6 +210,14 @@
       "noPacks": "No packs bought yet. Add some!",
       "viewPacks":"View packs",
       "listHeader": "My packs"
+    },
+    "contact": {
+      "header": "Contact us!",
+      "from": "Your email",
+      "title": "Title",
+      "content": "Message",
+      "submit": "Send message",
+      "success": "Email successfully sent"
     }
   },
   "cz": {
@@ -250,6 +262,10 @@
           "loginExists": "Přihlašovací jméno už existuje.",
           "emailExists": "Email už existuje."
         }
+      },
+      "email": {
+        "success": "Email úspěšně odeslán",
+        "error": "Chyba při odesílání emailu"
       }
     },
     "menu": {
@@ -415,6 +431,14 @@
       "noPacks": "Ještě nevlastníte žádný balíček.",
       "viewPacks":"Zobrazit balíčky",
       "listHeader": "Zakoupené balíčky"
+    },
+    "contact": {
+      "header": "Kontaktujte nás!",
+      "from": "Váš email",
+      "title": "Nadpis",
+      "content": "Zpráva",
+      "submit": "Odeslat zprávu",
+      "success": "Email úspěšně odeslán"
     }
   }
 }

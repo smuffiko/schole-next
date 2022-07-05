@@ -13,28 +13,29 @@ export default async function ApiEmail(req, res) {
   }
 }
 
-const handlePostRequest = async (req, res) => {
-  const { fromName, fromEmail, to, subject, html} = req.body
+const handlePostRequest = async (req, res, t) => {
+  const { replyTo, to, subject, html, text } = req.body
+  try {
+    const transporter = nodemailer.createTransport({
+      host: process.env.EMAIL_HOST,
+      port: process.env.EMAIL_PORT,
+      secure: process.env.EMAIL_SECURE, // true for 465, false for other ports
+      auth: {
+        user: process.env.EMAIL_USERNAME, 
+        pass: process.env.EMAIL_PASSWORD, 
+      },
+      tls: {
+        rejectUnauthorized: false
+      }
+    })
 
-  const transporter = nodemailer.createTransport({
-    host: process.env.EMAIL_HOST,
-    port: process.env.EMAIL_PORT,
-    secure: process.env.EMAIL_SECURE, // true for 465, false for other ports
-    auth: {
-      user: process.env.EMAIL_USERNAME, 
-      pass: process.env.EMAIL_PASSWORD, 
-    },
-    tls: {
-      rejectUnauthorized: false
-    }
-  })
+    const info = await transporter.sendMail({
+      from: `"${process.env.EMAIL_NAME}" <${process.env.EMAIL_USERNAME}>`,
+      to, replyTo, subject, html, text
+    })
 
-  const info = await transporter.sendMail({
-    from: `"${fromName}" <${fromEmail}>`,
-    to: to, 
-    subject: subject,
-    html: html
-  })
-
-  res.status(200).send("Email sent successfully.") // todo local
+    res.status(200).send(t.api.email.success)
+  } catch(e) {
+    res.status(500).send(t.api.email.error)
+  }
 }
