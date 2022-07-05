@@ -55,8 +55,8 @@ const Signup = ({ t }) => {
       }
       return response.json()
     })
-    .then(data =>{
-      // todo send email and confirm registration
+    .then(async data =>{
+      await sendEmail(data)
       setSuccess(true)
       setTimeout(()=>{redirectUser(null, "/login")},5000)
     })
@@ -65,6 +65,27 @@ const Signup = ({ t }) => {
     })
     .finally(()=>{
       setLoading(false)
+    })
+  }
+
+  const sendEmail = async data =>{
+    const { name, email, _id } = data.newUser
+    console.log("new User",data.newUser)
+    const { emailHash } = data
+    const a = `${baseUrl}/login?_id=${_id}&confirm=${encodeURIComponent(emailHash)}`
+    const url = `${baseUrl}/api/email`
+    const html = `${t.signup.email.hello} ${name}! <br/> ${t.signup.email.message} <br/> <a href="${a}">${a}</a>`
+    const payload = {
+      to: email,
+      subject: t.signup.email.subject,
+      html
+    }
+    await fetch(url,{
+      method: "POST",
+      headers: {
+        "Content-type": "application/json"
+      },
+      body: JSON.stringify(payload)
     })
   }
 

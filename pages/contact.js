@@ -53,13 +53,13 @@ const Contact = ({ user, t }) => {
       }
       return await response.text()
     }).then(data=>{
-      console.log(data)
       setContactForm(user ? { ...INITIAL_CONTACT_FORM, from: user.email} : INITIAL_CONTACT_FORM)
       setSuccess(true)
     }).catch(error=>{
       setError(error.message)
     }).finally(()=>{
       setLoading(false)
+      setDisabledForm(true)
     })
   }
 

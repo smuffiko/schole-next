@@ -12,6 +12,9 @@ export default async function ApiLogin(req, res) {
     case "POST":
       await handlePostRequest(req, res, t)
       break
+    case "PUT":
+      await handlePutRequest(req, res, t)
+      break
     default:
       res.status(405).send(`${t.api.method} ${req.method} ${t.api.notAllowed}`)
       break
@@ -35,4 +38,20 @@ const handlePostRequest = async (req, res, t) => {
   } else {
     return res.status(401).send(t.api.login.post.wrongPassword)
   }
+}
+
+const handlePutRequest = async (req, res, t) => {
+  const { confirm, _id } = req.body
+  const user = await User.findOne({ _id }).select("+password")
+  const match = await bcrypt.compare(user.email+user.updatedAt, confirm)
+  if(match) {
+    await User.findOneAndUpdate({ _id }, { $set: { role: "user" } })  // update user new -> user
+    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { // login
+      expiresIn: "7d"
+    })
+    return res.status(200).json(token)
+  } else {
+    return res.status(401).send(t.api.login.put.wrongUrl)
+  }
+
 }

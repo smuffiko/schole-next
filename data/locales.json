@@ -24,6 +24,9 @@
         "post": {
           "notUserExists": "User with this login doesn't exists.",
           "wrongPassword": "Password is wrong."
+        },
+        "put": {
+          "wrongUrl": "Wrong URL data"
         }
       },
       "signup": {
@@ -245,6 +248,9 @@
         "post": {
           "notUserExists": "Uživatel s tímto loginem neexistuje.",
           "wrongPassword": "Špatné heslo."
+        },
+        "put": {
+          "wrongUrl": "Chybná URL"
         }
       },
       "signup": {

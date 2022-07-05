@@ -92,7 +92,10 @@ const handlePostRequest = async (req, res, t) => {
   // create cart for new user
   await new Cart({ user: newUser._id}).save()
   
-  res.status(201).json(newUser)
+  // hash for confirm email
+  const emailHash = await bcrypt.hash(newUser.email+newUser.updatedAt, 6)
+
+  res.status(201).json({ newUser, emailHash })
 
   // send back email and link todo
   /*const { _id, createdAt } = await User.findOne({ email })
