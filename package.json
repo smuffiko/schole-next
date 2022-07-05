@@ -11,7 +11,7 @@
   "dependencies": {
     "@mantine/core": "^4.2.8",
     "@mantine/hooks": "^4.2.8",
-    "@mantine/rte": "^4.2.8",
+    "@mantine/rte": "^3.4.3",
     "bcrypt": "^5.0.1",
     "dotenv": "^16.0.1",
     "fs": "^0.0.1-security",
@@ -38,6 +38,7 @@
     "xhr2": "^0.2.1"
   },
   "devDependencies": {
+    "@types/validator": "^13.7.4",
     "eslint": "8.14.0",
     "eslint-config-next": "12.1.5"
   }

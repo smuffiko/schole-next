@@ -18,6 +18,15 @@
       "account": {
         "get": {
           "userNotFound": "User not found"
+        },
+        "put": {
+          "nameLength": "Name must be 4-30 characters long.",
+          "nameChars": "Name must contain letters and numbers.",
+          "loginName": "Login and name must not be same.",
+          "email": "Email must be valid.",
+          "passwordSame": "Passwords must be same.",
+          "passwordLength": "Password must be at least 6 characters long.",
+          "emailExists": "This email already exists."
         }
       },
       "login": {
@@ -40,7 +49,6 @@
           "passwordSame": "Passwords must be same.",
           "passwordLength": "Password must be at least 6 characters long.",
           "agrreeCheck": "You must agree with terms and conditions.",
-          "nameExists": "This name already exists.",
           "loginExists": "This login already exists.",
           "emailExists": "This email already exists."
         }
@@ -221,6 +229,14 @@
       "content": "Message",
       "submit": "Send message",
       "success": "Email successfully sent"
+    },
+    "account": {
+      "email": "E-mail",
+      "name": "Name",
+      "password": "Password",
+      "password2": "Password again",
+      "save": "Save changes",
+      "success": "Changes saved"
     }
   },
   "cz": {
@@ -242,6 +258,15 @@
       "account": {
         "get": {
           "userNotFound": "Uživatel nenalezen"
+        },
+        "put": {
+          "nameLength": "Zobrazované jméno musí mít 4-30 znaků.",
+          "nameChars": "Zobrazované jméno může obsahovat pouze písmena a čísla.",
+          "loginName": "Přihlašovací jméno a zobrazované jméno nesmí být stejné.",
+          "email": "Email musí být validní.",
+          "passwordSame": "Hesla musí být stejná.",
+          "passwordLength": "Heslo musí mít minimálně 6 znaků.",
+          "emailExists": "Email už existuje."
         }
       },
       "login": {
@@ -264,7 +289,6 @@
           "passwordSame": "Hesla musí být stejná.",
           "passwordLength": "Heslo musí mít minimálně 6 znaků.",
           "agrreeCheck": "Musíte souhlasit s podmínkami pro používání.",
-          "nameExists": "Zobrazované jméno už existuje.",
           "loginExists": "Přihlašovací jméno už existuje.",
           "emailExists": "Email už existuje."
         }
@@ -445,6 +469,14 @@
       "content": "Zpráva",
       "submit": "Odeslat zprávu",
       "success": "Email úspěšně odeslán"
+    },
+    "account": {
+      "email": "E-mail",
+      "name": "Zobrazované jméno",
+      "password": "Heslo",
+      "password2": "Heslo znovu",
+      "save": "Uložit změny",
+      "success": "Údaje změneny"
     }
   }
 }

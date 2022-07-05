@@ -22,19 +22,13 @@ export default async function ApiSignup(req, res){
 
 const handlePostRequest = async (req, res, t) => {
   const { name, login, email, password, password2, agree} = req.body
-  let message = new Array()
-  const regExLetterNumber = /^[0-9a-zA-Z]+$/
+  let message = new Array() 
   
-  // does name exists?
-  if(await User.findOne({ name }))
-    message.push(t.api.signup.post.nameExists)
-  else {
-    // validate name
-    if(!isLength(name, { min: 4, max: 30 }))
-      message.push(t.api.signup.post.nameLength)
-    if(!name.match(regExLetterNumber))
-      message.push(t.api.signup.post.nameChars)
-  }
+  // validate name
+  if(!isLength(name, { min: 4, max: 30 }))
+    message.push(t.api.signup.post.nameLength)
+  if(!name.match(/^\w+$/))
+    message.push(t.api.signup.post.nameChars)
   
   // does login exists? 
   if(await User.findOne({ login }))
@@ -43,7 +37,7 @@ const handlePostRequest = async (req, res, t) => {
     // validate login
     if(!isLength(login, { min: 4, max:30 }))
       message.push(t.api.signup.post.loginLength)
-    if(!login.match(regExLetterNumber))
+    if(!login.match(/^[0-9a-zA-Z]+$/ ))
       message.push(t.api.signup.post.loginChars)
   }
 
@@ -77,7 +71,6 @@ const handlePostRequest = async (req, res, t) => {
   if(message.length !== 0) 
     return res.status(422).send(message.join(" "))
     
-  // registration ok -> todo
   // hash password
   const hash = await bcrypt.hash(password, 9)
 
@@ -96,9 +89,4 @@ const handlePostRequest = async (req, res, t) => {
   const emailHash = await bcrypt.hash(newUser.email+newUser.updatedAt, 6)
 
   res.status(201).json({ newUser, emailHash })
-
-  // send back email and link todo
-  /*const { _id, createdAt } = await User.findOne({ email })
-  const link = `${baseUrl}/login?new=${await bcrypt.hash(_id + createdAt, 9)}`
-  res.status(201).json({ link, name })*/
 }
