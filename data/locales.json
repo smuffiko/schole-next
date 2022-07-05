@@ -74,7 +74,7 @@
         },
         {
           "header": "Test login and passwords",
-          "content": "<table class='ui celled collapsing very basic table'><thead><tr><th>Login</th><th>Password</th></tr></thead><tbody><tr><td>admin</td><td>AdminAdmin</td></tr><tr><td>user</td><td>UserUser</td></tr><tr><td>newuser</td><td>NewNew</td></tr></tbody></table>"
+          "content": "<table class='ui celled unstackable collapsing very basic table'><thead><tr><th>Login</th><th>Password</th></tr></thead><tbody><tr><td>admin</td><td>AdminAdmin</td></tr><tr><td>user</td><td>UserUser</td></tr><tr><td>newuser</td><td>NewNew</td></tr></tbody></table>"
         },
         {
           "header": "Payment test data",
@@ -298,7 +298,7 @@
         },
         {
           "header": "Testovací přihlašovací údaje",
-          "content": "<table class='ui celled collapsing very basic table'><thead><tr><th>Přihlašovací jméno</th><th>Heslo</th></tr></thead><tbody><tr><td>admin</td><td>AdminAdmin</td></tr><tr><td>user</td><td>UserUser</td></tr><tr><td>newuser</td><td>NewNew</td></tr></tbody></table>"
+          "content": "<table class='ui celled unstackable collapsing very basic table'><thead><tr><th>Přihlašovací jméno</th><th>Heslo</th></tr></thead><tbody><tr><td>admin</td><td>AdminAdmin</td></tr><tr><td>user</td><td>UserUser</td></tr><tr><td>newuser</td><td>NewNew</td></tr></tbody></table>"
         },
         {
           "header": "Testovací platba",
