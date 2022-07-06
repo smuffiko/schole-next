@@ -195,7 +195,7 @@ const MenuBar = ({ editor }) => {
   )
 }
 
-export default ({ value, handleChangeEditor, limit = 10000 }) => {
+const RichTextEditor = ({ value, handleChangeEditor, limit = 10000 }) => {
   const editor = useEditor({
     extensions: [
       StarterKit.configure({
@@ -228,11 +228,15 @@ export default ({ value, handleChangeEditor, limit = 10000 }) => {
 
   return (
     <div className="richTextEditor">
-      <MenuBar editor={editor} />
-      <EditorContent editor={editor} />
-      <div className="character-count">
-        {editor && (<>{editor.storage.characterCount.characters()}/{limit}</>)}
-      </div>
+      {editor && (<>
+        <MenuBar editor={editor} />
+        <EditorContent editor={editor} />
+        <div className="character-count">
+          <>{editor.storage.characterCount.characters()}/{limit}</>
+        </div>
+      </>)}
     </div>
   )
 }
+
+export default RichTextEditor
