@@ -35,10 +35,12 @@ const AccountOrders = ({ orders, t }) => {
                       {p.pack.description}
                       <List>
                         {p.pack.articles.map(a => (
-                          <List.Content>
-                            <List.Header>{a.article.title}</List.Header>
-                            <List.Description>{a.article.description}</List.Description>
-                          </List.Content>
+                          <List.Item key={a.article_id}>
+                            <List.Content>
+                              <List.Header>{a.article.title}</List.Header>
+                              <List.Description>{a.article.description}</List.Description>
+                            </List.Content>
+                           </List.Item>
                         ))}
                       </List>
                     </List.Description>

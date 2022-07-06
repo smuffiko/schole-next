@@ -21,12 +21,13 @@ import ColorPicker from "./ColorPicker"
 
 
 const MenuBar = ({ editor }) => {
-  if (!editor) {
-    return null
-  }
-
   const [textColor, setTextColor] = React.useState("#ff0000")
   const [backgroundColor, setBackgroundColor] = React.useState("#ff0000")
+
+  React.useEffect(()=>{
+    if(!editor)
+      return null
+  },[editor])
 
   const setLink = React.useCallback(() => {
     const previousUrl = editor.getAttributes('link').href
