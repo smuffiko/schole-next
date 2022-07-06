@@ -3,8 +3,6 @@ import { Form, Button, Segment, Input, Message, Modal } from "semantic-ui-react"
 import RichTextEditor from "../_App/RichTextEditor"
 import baseUrl from "../../utils/baseUrl"
 
-
-
 const PackUpdate = ({ pack, setShowPack, setUpdate, t }) => {
   const [ updatedPack, setUpdatedPack ] = React.useState({
     title: pack.title,
@@ -15,18 +13,9 @@ const PackUpdate = ({ pack, setShowPack, setUpdate, t }) => {
   const [disabled, setDisabled] = React.useState(true)
   const [loading, setLoading] = React.useState(false)
   const [error, setError] = React.useState("") 
-  const editorOptions = [
-    ["bold", "italic", "underline", "strike"],
-    ["h1", "h2", "h3", "h4", "h5", "h6"],
-    ["unorderedList", "orderedList"],
-    ["alignCenter", "alignLeft","alignRight"],
-    ["link", "blockquote"],
-    // ["link", "image", "video", "blockquote"], // TODO upload
-    ["clean"]
-  ]
 
   React.useEffect(()=>{
-    const isPack = Boolean(pack.title) && Boolean(pack.content) && pack.content !== "<p><br></p>"  && Boolean(pack.description)
+    const isPack = Boolean(pack.title) && Boolean(pack.content) && pack.content !== "<p></p>"  && Boolean(pack.description)
     isPack ? setDisabled(false) : setDisabled(true)
   },[updatedPack])
   
@@ -34,8 +23,9 @@ const PackUpdate = ({ pack, setShowPack, setUpdate, t }) => {
     const name = event.target.name
     setUpdatedPack(prevState => ({ ...prevState, [name]: value }))
   }
-  const handleChangeEditor = val => {
-    setUpdatedPack(prevState => ({ ...prevState, content: val.target.innerHTML }))
+  const handleChangeEditor = e => {
+    const value = e.editor.getHTML()
+    setUpdatedPack(prevState => ({ ...prevState, content: value }))
   }
 
   const handleSubmit = async event => {
@@ -108,10 +98,8 @@ const PackUpdate = ({ pack, setShowPack, setUpdate, t }) => {
           <Form.Field>
             <label>{t.pack.update.content}</label>
             <RichTextEditor
-              radius="md"
-              value={updatedPack.content}
-              onBlur={handleChangeEditor}
-              controls={editorOptions}
+              value={pack.content}
+              handleChangeEditor={handleChangeEditor}  
             />
           </Form.Field>
           <Form.Group>

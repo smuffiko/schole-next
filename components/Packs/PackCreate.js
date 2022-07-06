@@ -6,7 +6,7 @@ import RichTextEditor from "../_App/RichTextEditor"
 const INITIAL_PACK = {
   title: "",
   description: "",
-  content: "<p><br></p>",
+  content: "",
   lang: "",
   price: 0,
   key: Math.random()
@@ -34,22 +34,12 @@ const PackCreate = ({ setNewPacks, t }) => {
     }
   ]
 
-  const editorOptions = [
-    ["bold", "italic", "underline", "strike"],
-    ["h1", "h2", "h3", "h4", "h5", "h6"],
-    ["unorderedList", "orderedList"],
-    ["alignCenter", "alignLeft","alignRight"],
-    ["link", "blockquote"],
-    // ["link", "image", "video", "blockquote"], // TODO upload
-    ["clean"]
-  ]
-
   React.useEffect(()=>{
     const delayDebounceFn = setTimeout(() => {
       const isPack =
         Boolean(pack.title)
         && Boolean(pack.content)
-        && pack.content !== "<p><br></p>"
+        && pack.content!== "<p></p>"
         && Boolean(pack.lang)
         && Boolean(pack.description)
         && (pack.price > 0)
@@ -65,8 +55,9 @@ const PackCreate = ({ setNewPacks, t }) => {
     } else setPack(prevState => ({ ...prevState, lang: value })) // if target is select -> set lang  
   }
 
-  const handleChangeEditor = val => {
-    if(val) setPack(prevState => ({ ...prevState, content: val }))
+  const handleChangeEditor = e => {
+    const value = e.editor.getHTML()
+    setPack(prevState => ({ ...prevState, content: value }))
   }
 
   const handleSubmit = async event => {
@@ -164,11 +155,9 @@ const PackCreate = ({ setNewPacks, t }) => {
           <Form.Field>
             <label>{t.pack.create.content}</label>
             <RichTextEditor
-              radius="md"
-              value={pack.content}
               key={pack.key}
-              onChange={(val) => handleChangeEditor(val)}
-              controls={editorOptions}
+              value={pack.content}
+              handleChangeEditor={handleChangeEditor}  
             />
           </Form.Field>
           <Form.Field

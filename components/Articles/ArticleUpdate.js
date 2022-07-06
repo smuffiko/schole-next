@@ -13,18 +13,9 @@ const ArticleUpdate = ({ article, setShowArticle, setUpdate, t }) => {
   const [disabled, setDisabled] = React.useState(true)
   const [loading, setLoading] = React.useState(false)
   const [error, setError] = React.useState("") 
-  const editorOptions = [
-    ["bold", "italic", "underline", "strike"],
-    ["h1", "h2", "h3", "h4", "h5", "h6"],
-    ["unorderedList", "orderedList"],
-    ["alignCenter", "alignLeft","alignRight"],
-    ["link", "blockquote"],
-    // ["link", "image", "video", "blockquote"], // TODO upload
-    ["clean"]
-  ]
 
   React.useEffect(()=>{
-    const isArticle = Object.values(updatedArticle).every(el => Boolean(el))
+    const isArticle = Object.values(updatedArticle).every(el => Boolean(el)) && updatedArticle.content !== "<p></p>"
     isArticle ? setDisabled(false) : setDisabled(true)
   },[updatedArticle])
 
@@ -32,8 +23,9 @@ const ArticleUpdate = ({ article, setShowArticle, setUpdate, t }) => {
     const name = event.target.name 
     setUpdatedArticle(prevState => ({ ...prevState, [name]: value }))
   } 
-  const handleChangeEditor = val => {
-    setUpdatedArticle(prevState => ({ ...prevState, content: val.target.innerHTML }))
+  const handleChangeEditor = e => {
+    const value = e.editor.getHTML()
+    setUpdatedArticle(prevState => ({ ...prevState, content: value }))
   }
 
   const handleSubmit = async event => {
@@ -101,10 +93,8 @@ const ArticleUpdate = ({ article, setShowArticle, setUpdate, t }) => {
           <Form.Field>
             <label>{t.article.update.content}</label>
             <RichTextEditor
-              radius="md"
-              value={updatedArticle.content}
-              onBlur={handleChangeEditor}
-              controls={editorOptions}
+              value={article.content}
+              handleChangeEditor={handleChangeEditor}  
             />
           </Form.Field>
           <Form.Group>

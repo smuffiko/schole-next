@@ -11,7 +11,8 @@
   "dependencies": {
     "@mantine/core": "^4.2.8",
     "@mantine/hooks": "^4.2.8",
-    "@mantine/rte": "^3.4.3",
+    "@tiptap/react": "^2.0.0-beta.114",
+    "@tiptap/starter-kit": "^2.0.0-beta.190",
     "bcrypt": "^5.0.1",
     "dotenv": "^16.0.1",
     "fs": "^0.0.1-security",

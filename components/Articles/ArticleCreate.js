@@ -8,7 +8,7 @@ import { convertBytes } from "../../utils/convertBytes"
 const INITIAL_ARTICLE = {
   title: "",
   description: "",
-  content: "<p><br></p>",
+  content: "",
   lang: "",
   videoUrl: "",
   video: null,
@@ -37,22 +37,13 @@ const ArticleCreate = ({ setNewArticles, t }) => {
       flag: "gb"
     }
   ]
-  const editorOptions = [
-    ["bold", "italic", "underline", "strike"],
-    ["h1", "h2", "h3", "h4", "h5", "h6"],
-    ["unorderedList", "orderedList"],
-    ["alignCenter", "alignLeft","alignRight"],
-    ["link", "blockquote"],
-    // ["link", "image", "video", "blockquote"], // TODO upload
-    ["clean"]
-  ]
 
   React.useEffect(()=>{
     const delayDebounceFn = setTimeout(() => {
       const isArticle = Boolean(article.title)
         && Boolean(article.description)
         && Boolean(article.content)
-        && article.content !== "<p><br></p>"
+        && article.content !== "<p></p>"
         && Boolean(article.lang)
       isArticle ? setDisabled(false) : setDisabled(true)
     }, 500)
@@ -66,8 +57,9 @@ const ArticleCreate = ({ setNewArticles, t }) => {
     } else setArticle(prevState => ({ ...prevState, lang: value })) // if target is select -> set lang
   } 
 
-  const handleChangeEditor = val => {
-    if(val) setArticle(prevState => ({ ...prevState, content: val }))
+  const handleChangeEditor = e => {
+    const value = e.editor.getHTML()
+    setArticle(prevState => ({ ...prevState, content: value }))
   }
 
   const handleChangeVideo = event => {
@@ -254,11 +246,9 @@ const ArticleCreate = ({ setNewArticles, t }) => {
           <Form.Field>
             <label>{t.article.create.content}</label>
             <RichTextEditor
-              radius="md"
               value={article.content}
               key={article.key}
-              onChange={(val) => handleChangeEditor(val)}
-              controls={editorOptions}
+              handleChangeEditor={handleChangeEditor}
             />
           </Form.Field>
           <Form.Field
