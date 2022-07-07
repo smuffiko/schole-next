@@ -7,7 +7,7 @@ import { isMobile } from "react-device-detect"
 import NProgress from "nprogress"
 
 const Header = ({ user, t }) => {
-  const isNew = user && user.role === "new" 
+  const isNew = user && user.role === "userN" 
   const isUser = user && user.role === "user" 
   const isRoot = user && user.role === "root"
   const isAdmin = user && user.role === "admin"
@@ -85,7 +85,7 @@ const Header = ({ user, t }) => {
                     </>
                   ) /* user, root, admin */
                 } 
-                {/* new, user, root, admin - ACCOUNT, LOGOUT */}
+                {/* userN, user, root, admin - ACCOUNT, LOGOUT */}
                   <Link href="/account" passHref>
                     <Menu.Item header active={isActive("/account")}>
                       <Icon name="user" />

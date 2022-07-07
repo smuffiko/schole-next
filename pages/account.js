@@ -13,7 +13,7 @@ const Account = ({ user, orders, t }) => {
         <AccountOrders orders={orders} t={t} />
       )}
       {user.role==="root" && (
-        <ManageAdmins />
+        <ManageAdmins t={t} />
       )}
     </Container>
   </>

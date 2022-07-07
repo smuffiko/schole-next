@@ -45,7 +45,7 @@ const handlePutRequest = async (req, res, t) => {
   const user = await User.findOne({ _id }).select("+password")
   const match = await bcrypt.compare(user.email+user.updatedAt, confirm)
   if(match) {
-    await User.findOneAndUpdate({ _id }, { $set: { role: "user" } })  // update user new -> user
+    await User.findOneAndUpdate({ _id }, { $set: { role: "user" } })  // update user userN -> user
     const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { // login
       expiresIn: "7d"
     })

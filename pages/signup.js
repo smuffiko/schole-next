@@ -70,7 +70,6 @@ const Signup = ({ t }) => {
 
   const sendEmail = async data =>{
     const { name, email, _id } = data.newUser
-    console.log("new User",data.newUser)
     const { emailHash } = data
     const a = `${baseUrl}/login?_id=${_id}&confirm=${encodeURIComponent(emailHash)}`
     const url = `${baseUrl}/api/email`

@@ -62,7 +62,7 @@ class MyApp extends App {
         pageProps.user = user
 
         // set roles
-        const isNew = user.role === "new"
+        const isNew = user.role === "userN"
         const isUser = user.role === "user"
         const isAdmin = user.role === "admin"
         const isRoot = user.role === "root"
