@@ -12,9 +12,9 @@ const Article = ({ boughtArticles, article, user, t }) => {
   const [showArticle, setShowArticle] = React.useState(article)
   const [error, setError] = React.useState("")
   const isBought = boughtArticles.some(doc => article._id === doc._id)
-  const isAuthorized = user.role==="admin" || user.role==="root" || isBought
 
   React.useEffect(()=>{
+    const isAuthorized = user.role==="admin" || user.role==="root" || isBought
     if(!isAuthorized) Router.push("/404")  // unauthorized -> redirect
   },[])
 
