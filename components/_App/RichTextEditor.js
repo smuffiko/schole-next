@@ -104,6 +104,7 @@ const MenuBar = ({ editor }) => {
         content={<ColorPicker color={backgroundColor} setColor={setBackgroundColor} />}
         on='click'
         pinned
+        position='top right'
         trigger={<span style={{ backgroundColor:backgroundColor}} className="rteField"><span style={{borderBottom:"3px double"}}><Icon name="font"/></span><Icon name="paint brush" /></span>}
         onClick={() => editor.chain().focus().setHighlight({ color: backgroundColor }).run()}
         className={editor.isActive('highlight', { color: backgroundColor }) ? 'is-active' : ''}
@@ -112,6 +113,7 @@ const MenuBar = ({ editor }) => {
         content={<ColorPicker color={textColor} setColor={setTextColor} />}
         on='click'
         pinned
+        position='top right'
         trigger={<span style={{ color:textColor, padding:"2px 4px"}} className="rteField"><span style={{textShadow:"0 0 1px black"}}><Icon name="font"/></span><Icon name="paint brush" /></span>}
         onClick={() => editor.chain().focus().setColor(textColor).run()}
         className={editor.isActive('textStyle', { color: textColor }) ? 'is-active' : ''}
